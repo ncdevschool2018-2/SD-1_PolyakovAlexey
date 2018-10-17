@@ -26,6 +26,12 @@
     margin-top: 5rem;
 }
 
+@media (max-width: 768px) {
+    .filter {
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+}
 
 
 /* Task modal styles

@@ -43,7 +43,7 @@
                         <button class="btn btn-outline-primary ml-2" type="button" data-toggle="modal" data-target="#newTask">New Task</button>
                         <button class="btn btn-outline-primary ml-2" type="button" data-toggle="modal" data-target="#newUser">New User</button>
                     </div>
-                    <div class="mr-3"><input type="text" class="form-control" placeholder="Filters..." disabled="disabled"></div>
+                    <div class="mr-3"><input type="text" class="form-control filter" placeholder="Filters..." disabled="disabled"></div>
                 </div>
 
                 <!-- New project modal -->
@@ -186,9 +186,9 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
-                            <tr data-toggle="modal" data-target="#taskView">
+                            <tr>
                                 <th scope="row" class="border-right">2</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
@@ -199,7 +199,7 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary  btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
                             <tr data-toggle="modal" data-target="#taskView">
                                 <th scope="row" class="border-right">3</th>
@@ -212,7 +212,7 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td >Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
                             <tr data-toggle="modal" data-target="#taskView">
                                 <th scope="row" class="border-right">4</th>
@@ -225,7 +225,7 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td >Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
                             <tr data-toggle="modal" data-target="#taskView">
                                 <th scope="row" class="border-right">5</th>
@@ -238,7 +238,7 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td >Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
                             <tr data-toggle="modal" data-target="#taskView">
                                 <th scope="row" class="border-right">6</th>
@@ -251,158 +251,10 @@
                                 <td>@mdo</td>
                                 <td>Mark</td>
                                 <td >Otto</td>
-                                <td class="border-left">@mdo</td>
+                                <td class="border-left"><a href="task.html" class="btn btn-outline-primary btn-sm pl-3 pr-3">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <!-- Task view modal-->
-                <div class="modal fade" id="taskView" tabindex="-1" role="form">
-                    <div class="modal-dialog modal-large">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Project</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container">
-                                    <!-- Action buttons-->
-                                    <div class="row mb-1"><h5>Actions:</h5></div>
-                                    <div class="row actions-row mb-1">
-                                        <div class="col col-lg col-md-4 mb-md-2 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Edit</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 mb-md-2 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Assign</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 mb-md-2 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Start</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 mb-md-2 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Resolve</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Ready for Test</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 col-12 mb-1">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">ReOpen</button>
-                                        </div>
-                                        <div class="col col-lg col-md-4 col-12 closeButton">
-                                            <button class="btn btn-outline-primary btn-block btn-sm">Close</button>
-                                        </div>
-                                    </div>
-                                    <!-- Details -->
-                                    <div class="row mb-1"><h5>Details:</h5></div>
-                                    <div class="row mb-1">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-3 pl-0"><label for="priority">Priority:</label></div>
-                                                <div class="col-md-9"><input type="email" class="form-control h-75 w-50 ml-1" id="priority" placeholder="Normal" disabled="disabled"></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3 pl-0"><label for="status">Status:</label></div>
-                                                <div class="col-md-9"><input type="email" class="form-control h-75 w-50 ml-1" id="status" placeholder="Open" disabled="disabled"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="assignee">Assignee:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="assignee" placeholder="User" disabled="disabled">
-                                                </div>
-                                            </div>
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="reporter">Reporter:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="reporter" placeholder="User" disabled="disabled">
-                                                </div>
-                                            </div>
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="estimation">Estimation:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="estimation" placeholder="3d" disabled="disabled">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Description -->
-                                    <div class="row mb-1"><h5>Description:</h5></div>
-                                    <div class="row mb-1">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <textarea class="form-control" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="created">Created:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="created" placeholder="21.09.2018" disabled="disabled">
-                                                </div>
-                                            </div>
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="updated">Updated:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="updated" placeholder="23.09.2018" disabled="disabled">
-                                                </div>
-                                            </div>
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="resolved">Resolved:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="resolved" placeholder="30.09.2018" disabled="disabled">
-                                                </div>
-                                            </div>
-                                            <div class="row offset-5">
-                                                <div class="col-md-3 pl-0">
-                                                    <label for="closed">Closed:</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="email" class="form-control h-75 w-95_1 ml-3" id="closed" placeholder="02.10.2018" disabled="disabled">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Attachments -->
-                                    <div class="row mb-1"><h5>Attachments:</h5></div>
-                                    <div class="row mb-1">
-                                        <div class="col-md-12">
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">index.html</li>
-                                                <li class="list-group-item">readme.md</li>
-                                                <li class="list-group-item">style.css</li>
-                                                <li class="list-group-item">main.js</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- Comments -->
-                                    <div class="row mb-1"><h5>Comments:</h5></div>
-                                    <div class="row mb-1">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="5"></textarea>
-                                            </div>
-                                            <button class="btn btn-outline-primary float-right"> Add Comment</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Pagination -->
