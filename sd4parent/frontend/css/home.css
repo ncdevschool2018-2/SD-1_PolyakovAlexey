@@ -16,8 +16,7 @@ a {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: no-repeat center center;
     background-size: cover;
     position: relative;
     top: 4px;
