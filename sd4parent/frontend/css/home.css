@@ -4,6 +4,10 @@
     width: 95.1%;
 }
 
+a {
+    text-decoration: none !important;
+
+}
 
 /* Navbar styles
 -------------------------------------------------- */
@@ -17,6 +21,7 @@
     background-size: cover;
     position: relative;
     top: 4px;
+    cursor: pointer;
 }
 
 /* Main content styles
