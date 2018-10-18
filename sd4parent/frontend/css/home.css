@@ -5,7 +5,6 @@
 }
 
 
-
 /* Navbar styles
 -------------------------------------------------- */
 .user {
@@ -16,9 +15,9 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    position: relative;
+    top: 4px;
 }
-
-
 
 /* Main content styles
 -------------------------------------------------- */
