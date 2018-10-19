@@ -9,15 +9,11 @@ body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
-
-
 /* Main content styles
 -------------------------------------------------- */
 .jumbotron {
     margin-top: 2rem;
 }
-
-
 
 /* Sign-in form modal styles
 -------------------------------------------------- */
@@ -52,8 +48,6 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
-
 
 /* Sticky footer styles
 -------------------------------------------------- */
