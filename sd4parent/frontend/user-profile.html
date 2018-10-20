@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/user-profile.css">
+
+    <title>Task</title>
+</head>
+
+<body>
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="home.html">Project System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="mr-auto"></div>
+            <button class="btn btn-outline-primary mr-2" type="button" data-toggle="modal" data-target="#newProject">New
+                Project
+            </button>
+            <button class="btn btn-outline-primary mr-4" type="button" data-toggle="modal" data-target="#newUser">New
+                User
+            </button>
+
+            <!-- Dropdown menu of user-->
+            <div class="dropdown position-static">
+                <div class="user" style="background-image: url('http://placehold.it/400x200')" id="dropdownMenu"
+                     data-toggle="dropdown"></div>
+                <div class="dropdown-menu dropdown-menu-right mr-1">
+                    <a class="dropdown-item">Profile</a>
+                    <a href="projects.html" class="dropdown-item">Project list</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- New project modal -->
+<div class="modal fade" id="newProject" tabindex="-1" role="form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="code">Project code</label>
+                        <input type="text" class="form-control" id="code">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Summary</label>
+                        <textarea class="form-control" id="summary" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">Add project</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New user modal -->
+<div class="modal fade" id="newUser" tabindex="-1" role="form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input type="text" class="form-control" id="login">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Email</label>
+                        <input type="email" class="form-control" id="newEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">User Role</label>
+                        <select class="form-control" id="userRole">
+                            <option>Project manager</option>
+                            <option>Developer</option>
+                            <option>Tester</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">Add user</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page content -->
+<main role="main" class="container">
+    <div class="jumbotron border bg-white clearfix">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 pl-0">
+                    <div class="avatar" style="background-image: url('http://via.placeholder.com/640x360')"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-3 pl-0">
+                            <label for="username">Username:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control h-75 ml-3" id="username" placeholder="Username"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 pl-0">
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control h-75 ml-3" id="email" placeholder="user@gmail.com"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 pl-0">
+                            <label for="role">Role:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control h-75 ml-3" id="role" placeholder="developer"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-1"><h5>Current tickets:</h5></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ProjectSystem-1</li>
+                        <li class="list-group-item">ProjectSystem-2</li>
+                        <li class="list-group-item">NetworkController-6</li>
+                        <li class="list-group-item">AndroidApp-3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

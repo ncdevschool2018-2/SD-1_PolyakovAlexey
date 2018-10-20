@@ -1,0 +1,20 @@
+.jumbotron {
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    margin-top: 5rem;
+    margin-left: 20vw;
+    width: 45vw;
+}
+
+.jumbotron > .container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 5%;
+    background: no-repeat center center;
+    background-size: cover;
+}
