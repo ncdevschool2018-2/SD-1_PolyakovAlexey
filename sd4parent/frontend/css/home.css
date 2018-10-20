@@ -1,54 +1,19 @@
-/* General styles
--------------------------------------------------- */
-.w-95_1 {
-    width: 95.1%;
-}
-
-a {
-    text-decoration: none !important;
-
-}
-
-/* Navbar styles
--------------------------------------------------- */
-.user {
-    display: inline-block;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: no-repeat center center;
-    background-size: cover;
-    position: relative;
-    top: 4px;
-    cursor: pointer;
-}
-
 /* Main content styles
 -------------------------------------------------- */
-.jumbotron {
+.wrapper {
+    margin-left: 5vw;
+}
+
+.jumbotron-size {
+    width: 88vw;
     margin-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
     .filter {
         margin-top: 1rem;
         margin-left: 1rem;
-    }
-}
-
-/* Task modal styles
--------------------------------------------------- */
-#taskView > .modal-large {
-    max-width: 50% !important;
-}
-
-.actions-row > .col {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-@media (min-width: 992px) and (max-width: 1100px) {
-    .closeButton {
-        max-width: 15.4% !important;
     }
 }

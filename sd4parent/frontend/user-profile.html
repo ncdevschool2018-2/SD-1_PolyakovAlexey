@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/task.css">
+    <link rel="stylesheet" href="css/user-profile.css">
 
-    <title>Task details</title>
+    <title>User profile</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <div class="dropdown position-static">
                 <div class="user" style="background-image: url('http://placehold.it/400x200')" id="dropdownMenu"
                      data-toggle="dropdown"></div>
-                <div class="dropdown-menu dropdown-menu-right mr-1 flex-lg-shrink-1">
+                <div class="dropdown-menu dropdown-menu-right mr-1">
                     <a href="user-profile.html" class="dropdown-item">Profile</a>
                     <a href="projects.html" class="dropdown-item">Project list</a>
                     <div class="dropdown-divider"></div>
@@ -117,162 +117,55 @@
 </div>
 
 <!-- Page content -->
-<main class="container wrapper">
+<main class="container">
     <div class="jumbotron border bg-white jumbotron-size">
         <div class="container ml-0 mr-0">
-            <div class="row border-bottom mb-3 pb-3"><h4>Project</h4></div>
-            <!-- Action buttons-->
-            <div class="row mb-1"><h5>Actions:</h5></div>
-            <div class="row actions-row mb-1">
-                <div class="col col-lg col-md-4 mb-md-2 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Edit</button>
+            <div class="row mb-5">
+                <div class="col-lg-6 mb-md-3 pl-0">
+                    <div class="avatar" style="background-image: url('http://via.placeholder.com/640x360')"></div>
                 </div>
-                <div class="col col-lg col-md-4 mb-md-2 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Assign</button>
-                </div>
-                <div class="col col-lg col-md-4 mb-md-2 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Start</button>
-                </div>
-                <div class="col col-lg col-md-4 mb-md-2 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Resolve</button>
-                </div>
-                <div class="col col-lg col-md-4 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Ready for Test</button>
-                </div>
-                <div class="col col-lg col-md-4 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">ReOpen</button>
-                </div>
-                <div class="col col-lg col-md-4 col-12">
-                    <button class="btn btn-outline-primary btn-block btn-sm">Close</button>
-                </div>
-            </div>
-
-            <!-- Details -->
-            <div class="row mb-1"><h5>Details:</h5></div>
-            <div class="row mb-1">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-lg-6">
                     <div class="row">
                         <div class="col-md-3 pl-0">
-                            <label for="priority">Priority:</label>
+                            <label for="username">Username:</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control h-75 w-50 media-width" id="priority"
-                                   placeholder="Normal" disabled="disabled">
+                            <input type="text" class="form-control h-75 ml-3" id="username" placeholder="Username"
+                                   disabled="disabled">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 pl-0">
-                            <label for="status">Status:</label>
+                            <label for="email">Email:</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control h-75 w-50 media-width" id="status"
-                                   placeholder="Open" disabled="disabled">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="assignee">Assignee:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="assignee" placeholder="User"
+                            <input type="text" class="form-control h-75 ml-3" id="email" placeholder="user@gmail.com"
                                    disabled="disabled">
                         </div>
                     </div>
-                    <div class="row offset-md-5">
+                    <div class="row">
                         <div class="col-md-3 pl-0">
-                            <label for="reporter">Reporter:</label>
+                            <label for="role">Role:</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="reporter" placeholder="User"
-                                   disabled="disabled">
-                        </div>
-                    </div>
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="estimation">Estimation:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="estimation" placeholder="3d"
+                            <input type="text" class="form-control h-75 ml-3" id="role" placeholder="developer"
                                    disabled="disabled">
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Description -->
-            <div class="row mb-1"><h5>Description:</h5></div>
-            <div class="row mb-1">
-                <div class="col-md-6 col-sm-12">
-                    <div class="row">
-                        <textarea class="form-control" rows="5" title="description"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="created">Created:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="created"
-                                   placeholder="21.09.2018" disabled="disabled">
-                        </div>
-                    </div>
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="updated">Updated:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="updated"
-                                   placeholder="23.09.2018" disabled="disabled">
-                        </div>
-                    </div>
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="resolved">Resolved:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="resolved"
-                                   placeholder="30.09.2018" disabled="disabled">
-                        </div>
-                    </div>
-                    <div class="row offset-md-5">
-                        <div class="col-md-3 pl-0">
-                            <label for="closed">Closed:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control h-75 ml-3" id="closed"
-                                   placeholder="02.10.2018" disabled="disabled">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Attachments -->
-            <div class="row mb-1"><h5>Attachments:</h5></div>
-            <div class="row mb-1">
+            <div class="row mb-1"><h5>Current tickets:</h5></div>
+            <div class="row">
                 <div class="col-md-12">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">index.html</li>
-                        <li class="list-group-item">readme.md</li>
-                        <li class="list-group-item">style.css</li>
-                        <li class="list-group-item">main.js</li>
+                        <li class="list-group-item">ProjectSystem-1</li>
+                        <li class="list-group-item">ProjectSystem-2</li>
+                        <li class="list-group-item">NetworkController-6</li>
+                        <li class="list-group-item">AndroidApp-3</li>
                     </ul>
                 </div>
             </div>
-
-            <!-- Comments -->
-            <div class="row mb-1"><h5>Comments:</h5></div>
-            <div class="row mb-1">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <textarea class="form-control" title="comments" rows="5"></textarea>
-                    </div>
-                    <button class="btn btn-outline-primary float-right">Add Comment</button>
-                </div>
-            </div>
-        </div> <!-- end container -->
+        </div>
     </div>
 </main>
 
