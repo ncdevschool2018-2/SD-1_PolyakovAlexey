@@ -28,7 +28,7 @@
                 User
             </button>
 
-            <!-- Dropdown menu -->
+            <!-- Dropdown menu of user-->
             <div class="dropdown position-static">
                 <div class="user" style="background-image: url('http://placehold.it/400x200')" id="dropdownMenu"
                      data-toggle="dropdown"></div>
@@ -43,6 +43,78 @@
     </nav>
 </header>
 
+<!-- New project modal -->
+<div class="modal fade" id="newProject" tabindex="-1" role="form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="code">Project code</label>
+                        <input type="text" class="form-control" id="code">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Summary</label>
+                        <textarea class="form-control" id="summary" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">Add project</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New user modal -->
+<div class="modal fade" id="newUser" tabindex="-1" role="form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input type="text" class="form-control" id="login">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">User Role</label>
+                        <select class="form-control" id="userRole">
+                            <option>Project manager</option>
+                            <option>Developer</option>
+                            <option>Tester</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">Add user</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Page content -->
 <main role="main" class="container">
     <div class="jumbotron border bg-white clearfix">
@@ -53,38 +125,7 @@
                     New Task
                 </button>
             </div>
-            <div class="mr-3"><input type="text" class="form-control filter" placeholder="Filters..."
-                                     disabled="disabled"></div>
-        </div>
-
-        <!-- New project modal -->
-        <div class="modal fade" id="newProject" tabindex="-1" role="form">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">New project</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="code">Code</label>
-                                <input type="email" class="form-control" id="code">
-                            </div>
-                            <div class="form-group">
-                                <label for="summary">Summary</label>
-                                <textarea class="form-control" id="summary" rows="3"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Add project</button>
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
+            <div class="mr-3"><input type="text" class="form-control filter" placeholder="Search..."></div>
         </div>
 
         <!-- New task modal -->
@@ -104,8 +145,8 @@
                                 <input type="email" class="form-control" id="newProjectCode">
                             </div>
                             <div class="form-group">
-                                <label for="newDescription">Description</label>
-                                <textarea class="form-control" id="newDescription" rows="3"></textarea>
+                                <label for="newSummary">Summary</label>
+                                <textarea class="form-control" id="newSummary" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="newPriority">Priority</label>
@@ -133,40 +174,6 @@
             </div>
         </div>
 
-        <!-- New user modal -->
-        <div class="modal fade" id="newUser" tabindex="-1" role="form">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">New user</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="personalData">Personal Data</label>
-                                <textarea class="form-control" id="personalData" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="userRole">User Role</label>
-                                <select class="form-control" id="userRole">
-                                    <option>Project manager</option>
-                                    <option>Developer</option>
-                                    <option>Tester</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Add user</button>
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Table of tasks  -->
         <div class="table-responsive">
             <table class="table table-hover">
@@ -181,7 +188,7 @@
                     <th scope="col">Due Date</th>
                     <th scope="col">Estimation</th>
                     <th scope="col">Assignee</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Summary</th>
                     <th scope="col" class="border-left">Action Edit</th>
                 </tr>
                 </thead>

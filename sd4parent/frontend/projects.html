@@ -29,6 +29,7 @@
             <button class="btn btn-outline-primary mr-4" type="button" data-toggle="modal" data-target="#newUser">New
                 User
             </button>
+
             <!-- Dropdown menu of user-->
             <div class="dropdown position-static"> <!-- Dropdown menu -->
                 <div class="user mr-3" style="background-image: url('http://placehold.it/400x200')" id="dropdownMenu"
@@ -44,40 +45,6 @@
     </nav>
 </header>
 
-<!-- New user modal -->
-<div class="modal fade" id="newUser" tabindex="-1" role="form">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">New user</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="personalData">Personal Data</label>
-                        <textarea class="form-control" id="personalData" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="userRole">User Role</label>
-                        <select class="form-control" id="userRole">
-                            <option>Project manager</option>
-                            <option>Developer</option>
-                            <option>Tester</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary">Add user</button>
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- New project modal -->
 <div class="modal fade" id="newProject" tabindex="-1" role="form">
     <div class="modal-dialog">
@@ -91,8 +58,8 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="code">Code</label>
-                        <input type="email" class="form-control" id="code">
+                        <label for="code">Project code</label>
+                        <input type="text" class="form-control" id="code">
                     </div>
                     <div class="form-group">
                         <label for="summary">Summary</label>
@@ -102,6 +69,48 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-primary">Add project</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New user modal -->
+<div class="modal fade" id="newUser" tabindex="-1" role="form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input type="text" class="form-control" id="login">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">User Role</label>
+                        <select class="form-control" id="userRole">
+                            <option>Project manager</option>
+                            <option>Developer</option>
+                            <option>Tester</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">Add user</button>
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>
