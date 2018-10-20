@@ -1,14 +1,11 @@
-.jumbotron {
+/* Main content styles
+-------------------------------------------------- */
+.jumbotron-size {
     padding-top: 1.5rem;
     padding-left: 1.5rem;
     margin-top: 5rem;
-    margin-left: 20vw;
+    margin-left: 11vw;
     width: 45vw;
-}
-
-.jumbotron > .container {
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .avatar {

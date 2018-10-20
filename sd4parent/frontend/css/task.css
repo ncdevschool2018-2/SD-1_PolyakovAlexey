@@ -1,16 +1,16 @@
 /* Main content styles
 -------------------------------------------------- */
-.container {
+.wrapper {
     margin-left: 10vw;
 }
 
-.jumbotron {
+.jumbotron-size {
     padding-top: 2rem;
     margin-top: 5rem;
     width: 76vw;
 }
 
-.jumbotron > .container {
-    margin-left: 0;
-    margin-right: 0;
+.actions-row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
 }
