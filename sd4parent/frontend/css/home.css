@@ -25,8 +25,14 @@ a {
 
 /* Main content styles
 -------------------------------------------------- */
+.container {
+    margin-left: 5rem;
+}
+
 .jumbotron {
+    padding-top: 3rem;
     margin-top: 5rem;
+    width: 88vw;
 }
 
 @media (max-width: 768px) {
