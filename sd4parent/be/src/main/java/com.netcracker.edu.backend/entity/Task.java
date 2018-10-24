@@ -12,15 +12,13 @@ public class Task {
     private String projectCode;
     private String summary;
     private String priority;
-    private String dueDate;
     private String estimation;
     private String assignee;
 
-    public Task(String projectCode, String summary, String priority, String dueDate, String estimation, String assignee) {
+    public Task(String projectCode, String summary, String priority, String estimation, String assignee) {
         this.projectCode = projectCode;
         this.summary = summary;
         this.priority = priority;
-        this.dueDate = dueDate;
         this.estimation = estimation;
         this.assignee = assignee;
     }
@@ -61,14 +59,6 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
     public String getEstimation() {
         return estimation;
     }
@@ -94,14 +84,13 @@ public class Task {
                 Objects.equals(projectCode, task.projectCode) &&
                 Objects.equals(summary, task.summary) &&
                 Objects.equals(priority, task.priority) &&
-                Objects.equals(dueDate, task.dueDate) &&
                 Objects.equals(estimation, task.estimation) &&
                 Objects.equals(assignee, task.assignee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(task_id, projectCode, summary, priority, dueDate, estimation, assignee);
+        return Objects.hash(task_id, projectCode, summary, priority,estimation, assignee);
     }
 
     @Override
@@ -111,7 +100,6 @@ public class Task {
                 ", projectCode='" + projectCode + '\'' +
                 ", summary='" + summary + '\'' +
                 ", priority='" + priority + '\'' +
-                ", dueDate='" + dueDate + '\'' +
                 ", estimation='" + estimation + '\'' +
                 ", assignee='" + assignee + '\'' +
                 '}';
