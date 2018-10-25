@@ -14,7 +14,7 @@ export class TasksComponent implements OnInit {
   public editMode = false;
 
   public tasks: Task[];
-  public editableTasks: Task = new Task();
+  public editableTask: Task = new Task();
   public modalRef: BsModalRef;
 
   private subscriptions: Subscription[] = [];
@@ -35,9 +35,9 @@ export class TasksComponent implements OnInit {
 
     if (task) {
       this.editMode = true;
-      this.editableTasks = Task.cloneBase(task);
+      this.editableTask = Task.cloneBase(task);
     } else {
-      this.refreshTasks();
+      this.refreshTask();
       this.editMode = false;
     }
 
@@ -45,9 +45,9 @@ export class TasksComponent implements OnInit {
   }
 
   public _addTask(): void {
-    this.subscriptions.push(this.taskService.saveTask(this.editableTasks).subscribe(() => {
+    this.subscriptions.push(this.taskService.saveTask(this.editableTask).subscribe(() => {
       this._updateTasks();
-      this.refreshTasks();
+      this.refreshTask();
       this._closeModal();
     }));
   }
@@ -62,8 +62,8 @@ export class TasksComponent implements OnInit {
     }));
   }
 
-  private refreshTasks(): void {
-    this.editableTasks = new Task();
+  private refreshTask(): void {
+    this.editableTask = new Task();
   }
 
   private loadTasks(): void {

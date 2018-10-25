@@ -25,7 +25,6 @@ public class TaskViewModel {
         this.assignee = assignee;
     }
 
-
     public int getTask_id() {
         return task_id;
     }
