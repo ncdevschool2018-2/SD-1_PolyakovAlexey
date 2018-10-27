@@ -24,8 +24,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Optional<Task> getTaskById(Long task_id) {
-        return repository.findById(task_id);
+    public Optional<Task> getTaskById(Long taskId) {
+        return repository.findById(taskId);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void deleteTask(Long task_id) {
-        repository.deleteById(task_id);
+    public void deleteTask(Long taskId) {
+        repository.deleteById(taskId);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/test_tasks")
+@RequestMapping("/api/tasks")
 public class TaskController {
 
     private TaskService taskService;
@@ -20,8 +20,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/{task_id}", method = RequestMethod.GET)
-    public ResponseEntity<Task> getTaskById(@PathVariable(name = "task_id") Long task_id) {
-        Optional<Task> task = taskService.getTaskById(task_id);
+    public ResponseEntity<Task> getTaskById(@PathVariable(name = "task_id") Long taskId) {
+        Optional<Task> task = taskService.getTaskById(taskId);
         if (task.isPresent()) {
             return ResponseEntity.ok(task.get());
         } else {
@@ -40,8 +40,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/{task_id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteTask(@PathVariable(name = "task_id") Long task_id) {
-        taskService.deleteTask(task_id);
+    public ResponseEntity deleteTask(@PathVariable(name = "task_id") Long taskId) {
+        taskService.deleteTask(taskId);
         return ResponseEntity.noContent().build();
     }
 }
