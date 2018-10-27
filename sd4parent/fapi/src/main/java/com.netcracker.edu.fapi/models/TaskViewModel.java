@@ -2,59 +2,128 @@ package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Date;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskViewModel {
-
-    private int task_id;
-    private String projectCode;
-    private String summary;
-    private String priority;
+    private long taskId;
+    private String ticketCode;
+    private long taskProjectId;
+    private long userReporterId;
+    private long userAssigneeId;
+    private long statusId;
+    private long priorityId;
+    private String description;
+    private Date createdDate;
+    private Date dueDate;
+    private Date updatedDate;
     private String estimation;
-    private String assignee;
+
+    public TaskViewModel(long taskId, String ticketCode, long taskProjectId, long userReporterId, long userAssigneeId, long statusId, long priorityId, String description, Date createdDate, Date dueDate, Date updatedDate, String estimation) {
+        this.taskId = taskId;
+        this.ticketCode = ticketCode;
+        this.taskProjectId = taskProjectId;
+        this.userReporterId = userReporterId;
+        this.userAssigneeId = userAssigneeId;
+        this.statusId = statusId;
+        this.priorityId = priorityId;
+        this.description = description;
+        this.createdDate = createdDate;
+        this.dueDate = dueDate;
+        this.updatedDate = updatedDate;
+        this.estimation = estimation;
+    }
 
     public TaskViewModel() {
 
     }
 
-    public TaskViewModel(int task_id, String projectCode, String summary, String priority, String estimation, String assignee) {
-        this.task_id = task_id;
-        this.projectCode = projectCode;
-        this.summary = summary;
-        this.priority = priority;
-        this.estimation = estimation;
-        this.assignee = assignee;
+    public long getTaskId() {
+        return taskId;
     }
 
-    public int getTask_id() {
-        return task_id;
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
     }
 
-    public void setTask_id(int task_id) {
-        this.task_id = task_id;
+    public String getTicketCode() {
+        return ticketCode;
     }
 
-    public String getProjectCode() {
-        return projectCode;
+    public void setTicketCode(String ticketCode) {
+        this.ticketCode = ticketCode;
     }
 
-    public void setProjectCode(String projectCode) {
-        this.projectCode = projectCode;
+    public long getTaskProjectId() {
+        return taskProjectId;
     }
 
-    public String getSummary() {
-        return summary;
+    public void setTaskProjectId(long taskProjectId) {
+        this.taskProjectId = taskProjectId;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public long getUserReporterId() {
+        return userReporterId;
     }
 
-    public String getPriority() {
-        return priority;
+    public void setUserReporterId(long userReporterId) {
+        this.userReporterId = userReporterId;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public long getUserAssigneeId() {
+        return userAssigneeId;
+    }
+
+    public void setUserAssigneeId(long userAssigneeId) {
+        this.userAssigneeId = userAssigneeId;
+    }
+
+    public long getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(long statusId) {
+        this.statusId = statusId;
+    }
+
+    public long getPriorityId() {
+        return priorityId;
+    }
+
+    public void setPriorityId(long priorityId) {
+        this.priorityId = priorityId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public String getEstimation() {
@@ -63,13 +132,5 @@ public class TaskViewModel {
 
     public void setEstimation(String estimation) {
         this.estimation = estimation;
-    }
-
-    public String getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
     }
 }

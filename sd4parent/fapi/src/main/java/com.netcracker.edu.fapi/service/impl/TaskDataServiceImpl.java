@@ -19,24 +19,24 @@ public class TaskDataServiceImpl implements TaskDataService {
     @Override
     public List<TaskViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        TaskViewModel[] taskViewModelResponse = restTemplate.getForObject(backendServerUrl + "/api/test_tasks/", TaskViewModel[].class);
+        TaskViewModel[] taskViewModelResponse = restTemplate.getForObject(backendServerUrl + "/api/tasks/", TaskViewModel[].class);
         return taskViewModelResponse == null ? Collections.emptyList() : Arrays.asList(taskViewModelResponse);
     }
 
     @Override
-    public TaskViewModel getTaskById(Long task_id) {
+    public TaskViewModel getTaskById(Long taskId) {
         return null;
     }
 
     @Override
     public TaskViewModel saveTask(TaskViewModel task) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/test_tasks", task, TaskViewModel.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/tasks", task, TaskViewModel.class).getBody();
     }
 
     @Override
-    public void deleteTask(Long task_id) {
+    public void deleteTask(Long taskId) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/test_tasks/" + task_id);
+        restTemplate.delete(backendServerUrl + "/api/tasks/" + taskId);
     }
 }

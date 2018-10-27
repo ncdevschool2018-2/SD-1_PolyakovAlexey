@@ -29,7 +29,7 @@ public class TaskDataController {
     }
 
     @RequestMapping(value = "/{task_id}", method = RequestMethod.DELETE)
-    public void deleteTask(@PathVariable String task_id) {
-        taskDataService.deleteTask(Long.valueOf(task_id));
+    public void deleteTask(@PathVariable String taskId) {
+        taskDataService.deleteTask(Long.valueOf(taskId));
     }
 }
