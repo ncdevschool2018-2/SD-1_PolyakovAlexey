@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeNavbarModule } from "./home-navbar/home-navbar.module";
+import {HomeContentModule} from "./home-content/home-content.module";
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { HomeNavbarModule } from "./home-navbar/home-navbar.module";
   imports: [
     BrowserModule,
     HomeNavbarModule,
+    HomeContentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
