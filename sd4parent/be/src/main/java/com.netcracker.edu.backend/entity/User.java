@@ -1,5 +1,7 @@
 package com.netcracker.edu.backend.entity;
 
+import com.netcracker.edu.backend.entity.enums.Role;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,6 +14,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+//    @Enumerated(EnumType.ORDINAL)
+//    private Role userRoleId;
     private long userRoleId;
 
     public User(String username, String email, String password, long userRoleId) {
