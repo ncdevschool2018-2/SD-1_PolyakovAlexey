@@ -9,7 +9,7 @@ import {TasksTableComponent} from "./home-page-content/tasks-table/tasks-table.c
 import {TasksTableItemComponent} from "./home-page-content/tasks-table/tasks-table-item/tasks-table-item.component";
 import {FiltersComponent} from "./home-page-content/filters/filters.component";
 import {TablePaginationComponent} from "./home-page-content/table-pagination/table-pagination.component";
-
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import {TablePaginationComponent} from "./home-page-content/table-pagination/tab
     TablePaginationComponent
   ],
   imports: [
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   exports: [
     HomePageComponent,
