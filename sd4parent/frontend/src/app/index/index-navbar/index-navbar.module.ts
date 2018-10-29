@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { IndexNavbarComponent } from "./index-navbar.component";
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -9,6 +9,7 @@ import { IndexNavbarComponent } from "./index-navbar.component";
     IndexNavbarComponent,
   ],
   imports: [
+    ModalModule.forRoot()
   ],
   exports: [
     IndexNavbarComponent,

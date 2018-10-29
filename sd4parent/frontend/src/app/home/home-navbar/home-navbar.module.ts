@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HomeNavbarComponent } from "./home-navbar.component";
 import { DropdownMenuComponent } from "./dropdown-menu/dropdown-menu.component";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     DropdownMenuComponent
   ],
   imports: [
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports: [
     HomeNavbarComponent,

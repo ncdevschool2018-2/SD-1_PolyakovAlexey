@@ -2,10 +2,29 @@
   <a class="navbar-brand" href="#">Project System</a>
   <div>
     <div class="mr-auto"></div>
-    <button class="btn btn-outline-primary">Sign in</button>
+    <button class="btn btn-outline-primary" (click)="_openModal(template)">Sign in</button>
   </div>
 </nav>
 
+<!-- Sign-in modal -->
+<ng-template #template>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body">
+      <form class="form-signin">
+        <button type="button" class="close" data-dismiss="modal" (click)="_closeModal()">
+          <span>&times;</span>
+        </button>
+        <h3 class="font-weight-normal">Please sign in</h3>
+        <input type="email" id="email" class="form-control" placeholder="Email address" required>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-2">
+          <input type="checkbox" value="remember-me" title="remember"> Remember me
+        </div>
+        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
+      </form>
+      </div>
+    </div>
+</ng-template>
 
 
 
