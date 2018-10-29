@@ -1,30 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
-import { HomeModule } from "./home/home.module";
-import { HomeComponent } from "./home/home.component";
+import {HomePageModule} from "./home-page/home-page.module";
+import {HomePageComponent} from "./home-page/home-page.component";
 
-import { ProfileModule } from "./profile/profile.module";
-import { ProfileComponent } from "./profile/profile.component";
+import {UserProfileModule} from "./user-profile/user-profile.module";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
-import { IndexModule } from "./index/index.module";
-import { IndexComponent } from "./index/index.component";
+import {WelcomePageModule} from "./welcome-page/welcome-page.module";
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
-import { TaskModule } from "./task/task.module";
-import { TaskComponent } from "./task/task.component";
+import {TaskDetailsModule} from "./task-details/task-details.module";
+import {TaskDetailsComponent} from "./task-details/task-details.component";
 
-import { ProjectsModule } from "./projects/projects.module";
-import { ProjectsComponent } from "./projects/projects.component";
+import {UserProjectsModule} from "./user-projects/user-projects.module";
+import {UserProjectsComponent} from "./user-projects/user-projects.component";
 
-const appRoutes: Routes =[
-  { path: '', component: IndexComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'projects', component: ProjectsComponent},
-  { path: 'task', component: TaskComponent},
-  { path: 'profile', component: ProfileComponent},
+const appRoutes: Routes = [
+  {path: '', component: WelcomePageComponent},
+  {path: 'home', component: HomePageComponent},
+  {path: 'user-projects', component: UserProjectsComponent},
+  {path: 'task-details', component: TaskDetailsComponent},
+  {path: 'user-profile', component: UserProfileComponent},
   // { path: '**', component: NotFoundComponent},
 ];
 
@@ -35,13 +35,14 @@ const appRoutes: Routes =[
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    IndexModule,
-    HomeModule,
-    ProjectsModule,
-    TaskModule,
-    ProfileModule
+    WelcomePageModule,
+    HomePageModule,
+    UserProjectsModule,
+    TaskDetailsModule,
+    UserProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

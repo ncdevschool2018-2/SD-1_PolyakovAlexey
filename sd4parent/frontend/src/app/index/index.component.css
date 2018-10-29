@@ -1,8 +1,0 @@
-html {
-  position: relative; /* For position absolute footer */
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px; /* Margin bottom by footer height */
-}
