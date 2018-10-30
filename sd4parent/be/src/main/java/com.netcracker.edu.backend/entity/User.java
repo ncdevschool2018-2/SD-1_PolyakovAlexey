@@ -1,11 +1,12 @@
 package com.netcracker.edu.backend.entity;
 
-import com.netcracker.edu.backend.entity.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
-@Entity
+@Entity(name = "User")
 @Table(name = "users")
 public class User {
     @Id
@@ -14,15 +15,22 @@ public class User {
     private String username;
     private String email;
     private String password;
-//    @Enumerated(EnumType.ORDINAL)
-//    private Role userRoleId;
     private long userRoleId;
+
+    // TODO: Создать необходимые связи для полей
+//    @OneToMany(
+//            mappedBy = "user",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true
+//    )
+//    private Set<Task> tasks;
 
     public User(String username, String email, String password, long userRoleId) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.userRoleId = userRoleId;
+        //this.tasks = tasks;
     }
 
     public User() {
@@ -69,6 +77,14 @@ public class User {
         this.userRoleId = userRoleId;
     }
 
+//    public Set<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(Set<Task> tasks) {
+//        this.tasks = tasks;
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +95,7 @@ public class User {
                 Objects.equals(username, user.username) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password);
+                // Objects.equals(tasks, user.tasks);
     }
 
     @Override
@@ -94,6 +111,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userRoleId=" + userRoleId +
+               // ", tasks=" + tasks +
                 '}';
     }
 }

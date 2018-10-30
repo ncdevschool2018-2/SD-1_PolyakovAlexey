@@ -1,10 +1,14 @@
 package com.netcracker.edu.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "Task")
 @Table(name = "tasks")
 public class Task {
     @Id
@@ -13,7 +17,17 @@ public class Task {
     private String ticketCode;
     private long taskProjectId;
     private long userReporterId;
-    private long userAssigneeId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_assignee_id")
+//    private User userAssigneeId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_assignee_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User userAssigneeId;
+
     private long statusId;
     private long priorityId;
     private String description;
@@ -22,7 +36,7 @@ public class Task {
     private Date updatedDate;
     private String estimation;
 
-    public Task(String ticketCode, long taskProjectId, long userReporterId, long userAssigneeId, long statusId, long priorityId, String description, Date createdDate, Date dueDate, Date updatedDate, String estimation) {
+    public Task(String ticketCode, long taskProjectId, long userReporterId, User userAssigneeId, long statusId, long priorityId, String description, Date createdDate, Date dueDate, Date updatedDate, String estimation) {
         this.ticketCode = ticketCode;
         this.taskProjectId = taskProjectId;
         this.userReporterId = userReporterId;
@@ -48,11 +62,11 @@ public class Task {
         this.taskId = taskId;
     }
 
-    public String getTickedCode() {
+    public String getTicketCode() {
         return ticketCode;
     }
 
-    public void setTickedCode(String ticketCode) {
+    public void setTicketCode(String ticketCode) {
         this.ticketCode = ticketCode;
     }
 
@@ -72,11 +86,11 @@ public class Task {
         this.userReporterId = userReporterId;
     }
 
-    public long getUserAssigneeId() {
+    public User getUserAssigneeId() {
         return userAssigneeId;
     }
 
-    public void setUserAssigneeId(long userAssigneeId) {
+    public void setUserAssigneeId(User userAssigneeId) {
         this.userAssigneeId = userAssigneeId;
     }
 
@@ -144,10 +158,10 @@ public class Task {
         return taskId == task.taskId &&
                 taskProjectId == task.taskProjectId &&
                 userReporterId == task.userReporterId &&
-                userAssigneeId == task.userAssigneeId &&
                 statusId == task.statusId &&
                 priorityId == task.priorityId &&
                 Objects.equals(ticketCode, task.ticketCode) &&
+                Objects.equals(userAssigneeId, task.userAssigneeId) &&
                 Objects.equals(description, task.description) &&
                 Objects.equals(createdDate, task.createdDate) &&
                 Objects.equals(dueDate, task.dueDate) &&
