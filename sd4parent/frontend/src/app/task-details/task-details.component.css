@@ -1,0 +1,25 @@
+.container-margin {
+  margin-left: 10vw;
+}
+
+.jumbotron-size {
+  width: 76vw;
+  margin-top: 5rem;
+  padding-top: 2rem;
+}
+
+.actions-row > .col {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .media-width {
+    width: inherit !important;
+    margin-left: 1rem;
+  }
+
+  .actions-row > .col {
+    margin-bottom: 0.25rem;
+  }
+}

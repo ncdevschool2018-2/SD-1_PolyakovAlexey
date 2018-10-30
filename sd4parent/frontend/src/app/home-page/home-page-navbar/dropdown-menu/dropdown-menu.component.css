@@ -1,0 +1,14 @@
+.user-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: no-repeat center center;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu-margin-top {
+  margin-top: 0.7rem;
+}
