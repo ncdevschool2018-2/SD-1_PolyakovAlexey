@@ -10,6 +10,7 @@ import {TasksTableItemComponent} from "./home-page-content/tasks-table/tasks-tab
 import {FiltersComponent} from "./home-page-content/filters/filters.component";
 import {TablePaginationComponent} from "./home-page-content/table-pagination/table-pagination.component";
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {NewProjectModalComponent} from "../modals/new-project-modal/new-project-modal.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     TasksTableComponent,
     TasksTableItemComponent,
     FiltersComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    NewProjectModalComponent
   ],
   imports: [
     PaginationModule.forRoot(),
@@ -34,7 +36,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     TasksTableComponent,
     TasksTableItemComponent,
     FiltersComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    NewProjectModalComponent
   ],
   providers: [],
 })
