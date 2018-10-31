@@ -24,8 +24,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Optional<Project> getProjectById(Long projectId) {
-        return repository.findById(projectId);
+    public Optional<Project> getProjectById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void deleteProject(Long projectId) {
-        repository.deleteById(projectId);
+    public void deleteProject(Long id) {
+        repository.deleteById(id);
     }
 }
