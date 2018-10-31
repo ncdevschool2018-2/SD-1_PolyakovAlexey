@@ -1,36 +1,39 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.netcracker.edu.fapi.models.enums.PriorityViewModel;
+import com.netcracker.edu.fapi.models.enums.StatusViewModel;
 
 import java.util.Date;
+import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskViewModel {
-    private long taskId;
-    private String ticketCode;
-    private long taskProjectId;
-    private long userReporterId;
-    private long userAssigneeId;
-    private long statusId;
-    private long priorityId;
+    private long id;
+    private String code;
+    private ProjectViewModel project;
+    private UserViewModel reporter;
+    private UserViewModel assignee;
+    private StatusViewModel status;
+    private PriorityViewModel priority;
     private String description;
-    private Date createdDate;
-    private Date dueDate;
-    private Date updatedDate;
+    private Date created;
+    private String dueDate;
+    private Date updated;
     private String estimation;
 
-    public TaskViewModel(long taskId, String ticketCode, long taskProjectId, long userReporterId, long userAssigneeId, long statusId, long priorityId, String description, Date createdDate, Date dueDate, Date updatedDate, String estimation) {
-        this.taskId = taskId;
-        this.ticketCode = ticketCode;
-        this.taskProjectId = taskProjectId;
-        this.userReporterId = userReporterId;
-        this.userAssigneeId = userAssigneeId;
-        this.statusId = statusId;
-        this.priorityId = priorityId;
+    public TaskViewModel(long id, String code, ProjectViewModel project, UserViewModel reporter, UserViewModel assignee, StatusViewModel status, PriorityViewModel priority, String description, Date created, String dueDate, Date updated, String estimation) {
+        this.id = id;
+        this.code = code;
+        this.project = project;
+        this.reporter = reporter;
+        this.assignee = assignee;
+        this.status = status;
+        this.priority = priority;
         this.description = description;
-        this.createdDate = createdDate;
+        this.created = created;
         this.dueDate = dueDate;
-        this.updatedDate = updatedDate;
+        this.updated = updated;
         this.estimation = estimation;
     }
 
@@ -38,60 +41,60 @@ public class TaskViewModel {
 
     }
 
-    public long getTaskId() {
-        return taskId;
+    public long getId() {
+        return id;
     }
 
-    public void setTaskId(long taskId) {
-        this.taskId = taskId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getTicketCode() {
-        return ticketCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setTicketCode(String ticketCode) {
-        this.ticketCode = ticketCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public long getTaskProjectId() {
-        return taskProjectId;
+    public ProjectViewModel getProject() {
+        return project;
     }
 
-    public void setTaskProjectId(long taskProjectId) {
-        this.taskProjectId = taskProjectId;
+    public void setProject(ProjectViewModel project) {
+        this.project = project;
     }
 
-    public long getUserReporterId() {
-        return userReporterId;
+    public UserViewModel getReporter() {
+        return reporter;
     }
 
-    public void setUserReporterId(long userReporterId) {
-        this.userReporterId = userReporterId;
+    public void setReporter(UserViewModel reporter) {
+        this.reporter = reporter;
     }
 
-    public long getUserAssigneeId() {
-        return userAssigneeId;
+    public UserViewModel getAssignee() {
+        return assignee;
     }
 
-    public void setUserAssigneeId(long userAssigneeId) {
-        this.userAssigneeId = userAssigneeId;
+    public void setAssignee(UserViewModel assignee) {
+        this.assignee = assignee;
     }
 
-    public long getStatusId() {
-        return statusId;
+    public StatusViewModel getStatus() {
+        return status;
     }
 
-    public void setStatusId(long statusId) {
-        this.statusId = statusId;
+    public void setStatus(StatusViewModel status) {
+        this.status = status;
     }
 
-    public long getPriorityId() {
-        return priorityId;
+    public PriorityViewModel getPriority() {
+        return priority;
     }
 
-    public void setPriorityId(long priorityId) {
-        this.priorityId = priorityId;
+    public void setPriority(PriorityViewModel priority) {
+        this.priority = priority;
     }
 
     public String getDescription() {
@@ -102,28 +105,28 @@ public class TaskViewModel {
         this.description = description;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public String getEstimation() {
@@ -132,5 +135,47 @@ public class TaskViewModel {
 
     public void setEstimation(String estimation) {
         this.estimation = estimation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskViewModel that = (TaskViewModel) o;
+        return id == that.id &&
+                Objects.equals(code, that.code) &&
+                Objects.equals(project, that.project) &&
+                Objects.equals(reporter, that.reporter) &&
+                Objects.equals(assignee, that.assignee) &&
+                status == that.status &&
+                priority == that.priority &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(created, that.created) &&
+                Objects.equals(dueDate, that.dueDate) &&
+                Objects.equals(updated, that.updated) &&
+                Objects.equals(estimation, that.estimation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, project, reporter, assignee, status, priority, description, created, dueDate, updated, estimation);
+    }
+
+    @Override
+    public String toString() {
+        return "TaskViewModel{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", project=" + project +
+                ", reporter=" + reporter +
+                ", assignee=" + assignee +
+                ", status=" + status +
+                ", priority=" + priority +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", dueDate='" + dueDate + '\'' +
+                ", updated=" + updated +
+                ", estimation='" + estimation + '\'' +
+                '}';
     }
 }

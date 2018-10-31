@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserDataService {
     List<UserViewModel> getAll();
-    UserViewModel getUserById(Long userId);
+    UserViewModel getUserById(Long id);
     UserViewModel saveUser(UserViewModel user);
-    void deleteUser(Long userId);
+    void deleteUser(Long id);
 }

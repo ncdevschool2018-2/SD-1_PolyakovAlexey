@@ -23,7 +23,7 @@ public class ProjectDataServiceImpl implements ProjectDataService {
     }
 
     @Override
-    public ProjectViewModel getProjectById(Long projectId) {
+    public ProjectViewModel getProjectById(Long id) {
         return null;
     }
 
@@ -34,8 +34,8 @@ public class ProjectDataServiceImpl implements ProjectDataService {
     }
 
     @Override
-    public void deleteProject(Long projectId) {
+    public void deleteProject(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/projects/" + projectId);
+        restTemplate.delete(backendServerUrl + "/api/projects/" + id);
     }
 }

@@ -3,51 +3,52 @@ package com.netcracker.edu.fapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;
+import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProjectViewModel {
-    private long projectId;
-    private String projectCode;
-    private long ownerId;
+    private long id;
+    private String code;
+    private UserViewModel owner;
     private String description;
-    private Date createdDate;
-    private Date closedDate;
+    private Date created;
+    private Date closed;
 
-    public ProjectViewModel(long projectId, String projectCode, long ownerId, String description, Date createdDate, Date closedDate) {
-        this.projectId = projectId;
-        this.projectCode = projectCode;
-        this.ownerId = ownerId;
+    public ProjectViewModel(long id, String code, UserViewModel owner, String description, Date created, Date closed) {
+        this.id = id;
+        this.code = code;
+        this.owner = owner;
         this.description = description;
-        this.createdDate = createdDate;
-        this.closedDate = closedDate;
+        this.created = created;
+        this.closed = closed;
     }
 
     public ProjectViewModel() {
 
     }
 
-    public long getProjectId() {
-        return projectId;
+    public long getId() {
+        return id;
     }
 
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getProjectCode() {
-        return projectCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setProjectCode(String projectCode) {
-        this.projectCode = projectCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public UserViewModel getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(UserViewModel owner) {
+        this.owner = owner;
     }
 
     public String getDescription() {
@@ -58,21 +59,49 @@ public class ProjectViewModel {
         this.description = description;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getClosedDate() {
-        return closedDate;
+    public Date getClosed() {
+        return closed;
     }
 
-    public void setClosedDate(Date closedDate) {
-        this.closedDate = closedDate;
+    public void setClosed(Date closed) {
+        this.closed = closed;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProjectViewModel that = (ProjectViewModel) o;
+        return id == that.id &&
+                Objects.equals(code, that.code) &&
+                Objects.equals(owner, that.owner) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(created, that.created) &&
+                Objects.equals(closed, that.closed);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, owner, description, created, closed);
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectViewModel{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", owner=" + owner +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", closed=" + closed +
+                '}';
+    }
 }

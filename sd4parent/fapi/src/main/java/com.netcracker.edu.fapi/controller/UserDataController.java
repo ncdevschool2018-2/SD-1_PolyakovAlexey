@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("api/usr")
 public class UserDataController {
 
     @Autowired
@@ -29,8 +28,8 @@ public class UserDataController {
         return null;
     }
 
-    @RequestMapping(value = "/{user_id}", method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable String userId) {
-        userDataService.deleteUser(Long.valueOf(userId));
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable String id) {
+        userDataService.deleteUser(Long.valueOf(id));
     }
 }

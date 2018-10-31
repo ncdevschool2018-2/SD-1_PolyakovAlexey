@@ -24,7 +24,7 @@ public class TaskDataServiceImpl implements TaskDataService {
     }
 
     @Override
-    public TaskViewModel getTaskById(Long taskId) {
+    public TaskViewModel getTaskById(Long id) {
         return null;
     }
 
@@ -35,8 +35,8 @@ public class TaskDataServiceImpl implements TaskDataService {
     }
 
     @Override
-    public void deleteTask(Long taskId) {
+    public void deleteTask(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/tasks/" + taskId);
+        restTemplate.delete(backendServerUrl + "/api/tasks/" + id);
     }
 }

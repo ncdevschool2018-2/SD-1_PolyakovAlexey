@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/project")
+@RequestMapping("/api/prj")
 public class ProjectDataController {
 
     @Autowired
@@ -28,9 +28,9 @@ public class ProjectDataController {
         return null;
     }
 
-    @RequestMapping(value = "/{project_id}", method = RequestMethod.DELETE)
-    public void deleteProject(@PathVariable String projectId) {
-        projectDataService.deleteProject(Long.valueOf(projectId));
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteProject(@PathVariable String id) {
+        projectDataService.deleteProject(Long.valueOf(id));
     }
 
 }
