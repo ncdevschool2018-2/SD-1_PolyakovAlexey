@@ -2,10 +2,10 @@ import {Component, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
-  selector: 'new-project-modal',
-  templateUrl: './new-project-modal.component.html',
+  selector: 'new-user-modal',
+  templateUrl: './new-user-modal.component.html',
 })
-export class NewProjectModalComponent {
+export class NewUserModalComponent {
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) {}
 
