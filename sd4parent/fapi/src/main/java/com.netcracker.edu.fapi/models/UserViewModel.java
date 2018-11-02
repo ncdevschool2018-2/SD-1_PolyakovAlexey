@@ -11,12 +11,14 @@ public class UserViewModel {
     private String username;
     private String password;
     private UserRoleViewModel role;
+    private long currentProjectId;
 
-    public UserViewModel(long id, String username, String password, UserRoleViewModel role) {
+    public UserViewModel(long id, String username, String password, UserRoleViewModel role, long currentProjectId) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.currentProjectId = currentProjectId;
     }
 
     public UserViewModel() {
@@ -55,6 +57,14 @@ public class UserViewModel {
         this.role = role;
     }
 
+    public long getCurrentProjectId() {
+        return currentProjectId;
+    }
+
+    public void setCurrentProjectId(long currentProjectId) {
+        this.currentProjectId = currentProjectId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,12 +73,13 @@ public class UserViewModel {
         return id == that.id &&
                 Objects.equals(username, that.username) &&
                 Objects.equals(password, that.password) &&
-                role == that.role;
+                role == that.role &&
+                currentProjectId == that.currentProjectId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, role);
+        return Objects.hash(id, username, password, role, currentProjectId);
     }
 
     @Override
@@ -78,7 +89,8 @@ public class UserViewModel {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", role=" + role + '\'' +
+                ", currentProjectId=" + currentProjectId +
                 '}';
     }
 }
