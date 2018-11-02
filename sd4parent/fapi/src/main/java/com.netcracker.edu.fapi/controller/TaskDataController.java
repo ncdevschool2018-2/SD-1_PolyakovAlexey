@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/task")
+@RequestMapping("/api/tsk")
 public class TaskDataController {
 
     @Autowired
@@ -28,8 +28,8 @@ public class TaskDataController {
         return null;
     }
 
-    @RequestMapping(value = "/{task_id}", method = RequestMethod.DELETE)
-    public void deleteTask(@PathVariable String taskId) {
-        taskDataService.deleteTask(Long.valueOf(taskId));
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteTask(@PathVariable String id) {
+        taskDataService.deleteTask(Long.valueOf(id));
     }
 }

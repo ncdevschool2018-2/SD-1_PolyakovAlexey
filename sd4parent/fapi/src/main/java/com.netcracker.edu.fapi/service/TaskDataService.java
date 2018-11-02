@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TaskDataService {
     List<TaskViewModel> getAll();
-    TaskViewModel getTaskById(Long taskId);
+    TaskViewModel getTaskById(Long id);
     TaskViewModel saveTask(TaskViewModel task);
-    void deleteTask(Long taskId);
+    void deleteTask(Long id);
 }

@@ -24,7 +24,7 @@ public class UserDataServiceImpl implements UserDataService {
     }
 
     @Override
-    public UserViewModel getUserById(Long userId) {
+    public UserViewModel getUserById(Long id) {
         return null;
     }
 
@@ -35,8 +35,8 @@ public class UserDataServiceImpl implements UserDataService {
     }
 
     @Override
-    public void deleteUser(Long userId) {
+    public void deleteUser(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/users/" + userId);
+        restTemplate.delete(backendServerUrl + "/api/users/" + id);
     }
 }

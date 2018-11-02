@@ -9,47 +9,48 @@ import java.util.Objects;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long projectId;
-    private String projectCode;
-    private long ownerId;
+    private long id;
+    private String code;
+    @ManyToOne
+    private User owner;
     private String description;
-    private Date createdDate;
-    private Date closedDate;
+    private Date created;
+    private Date closed;
 
-    public Project(String projectCode, long ownerId, String description, Date createdDate, Date closedDate) {
-        this.projectCode = projectCode;
-        this.ownerId = ownerId;
+    public Project(String code, User owner, String description, Date created, Date closed) {
+        this.code = code;
+        this.owner = owner;
         this.description = description;
-        this.createdDate = createdDate;
-        this.closedDate = closedDate;
+        this.created = created;
+        this.closed = closed;
     }
 
     public Project() {
 
     }
 
-    public long getProjectId() {
-        return projectId;
+    public long getId() {
+        return id;
     }
 
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getProjectCode() {
-        return projectCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setProjectCode(String projectCode) {
-        this.projectCode = projectCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public String getDescription() {
@@ -60,20 +61,20 @@ public class Project {
         this.description = description;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getClosedDate() {
-        return closedDate;
+    public Date getClosed() {
+        return closed;
     }
 
-    public void setClosedDate(Date closedDate) {
-        this.closedDate = closedDate;
+    public void setClosed(Date closed) {
+        this.closed = closed;
     }
 
     @Override
@@ -81,28 +82,28 @@ public class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return projectId == project.projectId &&
-                ownerId == project.ownerId &&
-                Objects.equals(projectCode, project.projectCode) &&
+        return id == project.id &&
+                Objects.equals(code, project.code) &&
+                Objects.equals(owner, project.owner) &&
                 Objects.equals(description, project.description) &&
-                Objects.equals(createdDate, project.createdDate) &&
-                Objects.equals(closedDate, project.closedDate);
+                Objects.equals(created, project.created) &&
+                Objects.equals(closed, project.closed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(projectId, projectCode, ownerId, description, createdDate, closedDate);
+        return Objects.hash(id, code, owner, description, created, closed);
     }
 
     @Override
     public String toString() {
         return "Project{" +
-                "projectId=" + projectId +
-                ", projectCode='" + projectCode + '\'' +
-                ", ownerId=" + ownerId +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", owner=" + owner +
                 ", description='" + description + '\'' +
-                ", createdDate=" + createdDate +
-                ", closedDate=" + closedDate +
+                ", created=" + created +
+                ", closed=" + closed +
                 '}';
     }
 }

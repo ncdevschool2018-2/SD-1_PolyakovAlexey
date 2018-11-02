@@ -19,9 +19,9 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @RequestMapping(value = "/{task_id}", method = RequestMethod.GET)
-    public ResponseEntity<Task> getTaskById(@PathVariable(name = "task_id") Long taskId) {
-        Optional<Task> task = taskService.getTaskById(taskId);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Task> getTaskById(@PathVariable(name = "id") Long id) {
+        Optional<Task> task = taskService.getTaskById(id);
         if (task.isPresent()) {
             return ResponseEntity.ok(task.get());
         } else {
@@ -39,9 +39,9 @@ public class TaskController {
         return taskService.saveTask(task);
     }
 
-    @RequestMapping(value = "/{task_id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteTask(@PathVariable(name = "task_id") Long taskId) {
-        taskService.deleteTask(taskId);
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteTask(@PathVariable(name = "id") Long id) {
+        taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(Long userId) {
-        return repository.findById(userId);
+    public Optional<User> getUserById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long userId) {
-        repository.deleteById(userId);
+    public void deleteUser(Long id) {
+        repository.deleteById(id);
     }
 }

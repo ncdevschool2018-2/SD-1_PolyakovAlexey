@@ -19,9 +19,9 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @RequestMapping(value = "/{project_id}", method = RequestMethod.GET)
-    public ResponseEntity<Project> getProjectById(@PathVariable(name = "project_id") Long projectId) {
-        Optional<Project> project = projectService.getProjectById(projectId);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Project> getProjectById(@PathVariable(name = "id") Long id) {
+        Optional<Project> project = projectService.getProjectById(id);
         if (project.isPresent()) {
             return ResponseEntity.ok(project.get());
         } else {
@@ -39,9 +39,9 @@ public class ProjectController {
         return projectService.saveProject(project);
     }
 
-    @RequestMapping(value = "/{project_id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteProject(@PathVariable(name = "project_id") Long projectId) {
-        projectService.deleteProject(projectId);
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteProject(@PathVariable(name = "id") Long id) {
+        projectService.deleteProject(id);
         return ResponseEntity.noContent().build();
     }
 }

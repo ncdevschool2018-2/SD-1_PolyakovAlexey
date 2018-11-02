@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProjectDataService {
     List<ProjectViewModel> getAll();
-    ProjectViewModel getProjectById(Long projectId);
+    ProjectViewModel getProjectById(Long id);
     ProjectViewModel saveProject(ProjectViewModel project);
-    void deleteProject(Long projectId);
+    void deleteProject(Long id);
 }

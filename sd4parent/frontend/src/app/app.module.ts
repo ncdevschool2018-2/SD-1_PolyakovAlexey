@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     HomePageModule,
     UserProjectsModule,
     TaskDetailsModule,
-    UserProfileModule
+    UserProfileModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

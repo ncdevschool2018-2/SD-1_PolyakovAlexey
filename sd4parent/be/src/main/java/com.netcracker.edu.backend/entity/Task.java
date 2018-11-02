@@ -1,52 +1,46 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import com.netcracker.edu.backend.entity.enums.Priority;
+import com.netcracker.edu.backend.entity.enums.Status;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity(name = "Task")
+@Entity
 @Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long taskId;
-    private String ticketCode;
-    private long taskProjectId;
-    private long userReporterId;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_assignee_id")
-//    private User userAssigneeId;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_assignee_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private User userAssigneeId;
-
-    private long statusId;
-    private long priorityId;
+    private long id;
+    private String code;
+    @ManyToOne
+    private Project project;
+    @ManyToOne
+    private User reporter;
+    @ManyToOne
+    private User assignee;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    @Enumerated(EnumType.STRING)
+    private Priority priority;
     private String description;
-    private Date createdDate;
-    private Date dueDate;
-    private Date updatedDate;
+    private Date created;
+    private String dueDate;
+    private Date updated;
     private String estimation;
 
-    public Task(String ticketCode, long taskProjectId, long userReporterId, User userAssigneeId, long statusId, long priorityId, String description, Date createdDate, Date dueDate, Date updatedDate, String estimation) {
-        this.ticketCode = ticketCode;
-        this.taskProjectId = taskProjectId;
-        this.userReporterId = userReporterId;
-        this.userAssigneeId = userAssigneeId;
-        this.statusId = statusId;
-        this.priorityId = priorityId;
+    public Task(String code, Project project, User reporter, User assignee, Status status, Priority priority, String description, Date created, String dueDate, Date updated, String estimation) {
+        this.code = code;
+        this.project = project;
+        this.reporter = reporter;
+        this.assignee = assignee;
+        this.status = status;
+        this.priority = priority;
         this.description = description;
-        this.createdDate = createdDate;
+        this.created = created;
         this.dueDate = dueDate;
-        this.updatedDate = updatedDate;
+        this.updated = updated;
         this.estimation = estimation;
     }
 
@@ -54,60 +48,60 @@ public class Task {
 
     }
 
-    public long getTaskId() {
-        return taskId;
+    public long getId() {
+        return id;
     }
 
-    public void setTaskId(long taskId) {
-        this.taskId = taskId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getTicketCode() {
-        return ticketCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setTicketCode(String ticketCode) {
-        this.ticketCode = ticketCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public long getTaskProjectId() {
-        return taskProjectId;
+    public Project getProject() {
+        return project;
     }
 
-    public void setTaskProjectId(long taskProjectId) {
-        this.taskProjectId = taskProjectId;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public long getUserReporterId() {
-        return userReporterId;
+    public User getReporter() {
+        return reporter;
     }
 
-    public void setUserReporterId(long userReporterId) {
-        this.userReporterId = userReporterId;
+    public void setReporter(User reporter) {
+        this.reporter = reporter;
     }
 
-    public User getUserAssigneeId() {
-        return userAssigneeId;
+    public User getAssignee() {
+        return assignee;
     }
 
-    public void setUserAssigneeId(User userAssigneeId) {
-        this.userAssigneeId = userAssigneeId;
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
     }
 
-    public long getStatusId() {
-        return statusId;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusId(long statusId) {
-        this.statusId = statusId;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    public long getPriorityId() {
-        return priorityId;
+    public Priority getPriority() {
+        return priority;
     }
 
-    public void setPriorityId(long priorityId) {
-        this.priorityId = priorityId;
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
     public String getDescription() {
@@ -118,28 +112,28 @@ public class Task {
         this.description = description;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public String getEstimation() {
@@ -155,39 +149,39 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return taskId == task.taskId &&
-                taskProjectId == task.taskProjectId &&
-                userReporterId == task.userReporterId &&
-                statusId == task.statusId &&
-                priorityId == task.priorityId &&
-                Objects.equals(ticketCode, task.ticketCode) &&
-                Objects.equals(userAssigneeId, task.userAssigneeId) &&
+        return id == task.id &&
+                Objects.equals(code, task.code) &&
+                Objects.equals(project, task.project) &&
+                Objects.equals(reporter, task.reporter) &&
+                Objects.equals(assignee, task.assignee) &&
+                status == task.status &&
+                priority == task.priority &&
                 Objects.equals(description, task.description) &&
-                Objects.equals(createdDate, task.createdDate) &&
+                Objects.equals(created, task.created) &&
                 Objects.equals(dueDate, task.dueDate) &&
-                Objects.equals(updatedDate, task.updatedDate) &&
+                Objects.equals(updated, task.updated) &&
                 Objects.equals(estimation, task.estimation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(taskId, ticketCode, taskProjectId, userReporterId, userAssigneeId, statusId, priorityId, description, createdDate, dueDate, updatedDate, estimation);
+        return Objects.hash(id, code, project, reporter, assignee, status, priority, description, created, dueDate, updated, estimation);
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                "taskId=" + taskId +
-                ", ticketCode='" + ticketCode + '\'' +
-                ", taskProjectId=" + taskProjectId +
-                ", userReporterId=" + userReporterId +
-                ", userAssigneeId=" + userAssigneeId +
-                ", statusId=" + statusId +
-                ", priorityId=" + priorityId +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", project=" + project +
+                ", reporter=" + reporter +
+                ", assignee=" + assignee +
+                ", status=" + status +
+                ", priority=" + priority +
                 ", description='" + description + '\'' +
-                ", createdDate=" + createdDate +
-                ", dueDate=" + dueDate +
-                ", updatedDate=" + updatedDate +
+                ", created=" + created +
+                ", dueDate='" + dueDate + '\'' +
+                ", updated=" + updated +
                 ", estimation='" + estimation + '\'' +
                 '}';
     }

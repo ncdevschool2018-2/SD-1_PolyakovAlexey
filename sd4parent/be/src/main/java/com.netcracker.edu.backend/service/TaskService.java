@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface TaskService {
     Task saveTask(Task task);
-    Optional<Task> getTaskById(Long taskId);
+    Optional<Task> getTaskById(Long id);
     Iterable<Task> getAllTasks();
-    void deleteTask(Long taskId);
+    void deleteTask(Long id);
 }
