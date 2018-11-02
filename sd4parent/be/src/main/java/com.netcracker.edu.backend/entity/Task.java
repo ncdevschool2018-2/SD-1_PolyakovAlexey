@@ -14,11 +14,11 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String code;
-    @ManyToOne()
+    @ManyToOne
     private Project project;
-    @ManyToOne()
+    @ManyToOne
     private User reporter;
-    @ManyToOne()
+    @ManyToOne
     private User assignee;
     @Enumerated(EnumType.STRING)
     private Status status;
