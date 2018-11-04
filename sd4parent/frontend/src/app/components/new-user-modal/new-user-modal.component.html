@@ -1,36 +1,31 @@
-<ng-template #newUser>
-  <div class="modal-header">
-    <h5 class="modal-title">New userAssigneeId</h5>
-    <button type="button" class="close" data-dismiss="modal" (click)="_closeModal()">
-      <span>&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="newUsername">Username:</label>
-        <input type="text" class="form-control" id="newUsername" required>
-      </div>
-      <div class="form-group">
-        <label for="newEmail">Email:</label>
-        <input type="email" class="HOME" id="newEmail" required>
-      </div>
-      <div class="form-group">
-        <label for="newPassword">Password:</label>
-        <input type="password" class="form-control" id="newPassword" required>
-      </div>
-      <div class="form-group">
-        <label for="newUserRole">Role:</label>
-        <select class="form-control" id="newUserRole">
-          <option>Project manager</option>
-          <option>Developer</option>
-          <option>Quality assurance</option>
-        </select>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary">Add userAssigneeId</button>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="_closeModal()">Cancel</button>
-  </div>
-</ng-template>
+<div class="modal-header">
+  <h5 class="modal-title">New user</h5>
+  <button type="button" class="close" data-dismiss="modal" (click)="closeModal()">
+    <span>&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" class="form-control" title="newUsername" required>
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" class="form-control" title="newPassword" required>
+    </div>
+    <div class="form-group">
+      <label>Role:</label>
+      <select class="form-control" title="newUserRole">
+        <option>Project manager</option>
+        <option>Developer</option>
+        <option>Quality assurance</option>
+      </select>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary">Add user</button>
+  <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="closeModal()">Cancel</button>
+</div>
+

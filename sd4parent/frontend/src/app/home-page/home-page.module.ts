@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 
 import {HomePageComponent} from "./home-page.component";
-import {HomePageNavbarComponent} from "../components/home-page-navbar/home-page-navbar.component";
+import {NavbarComponent} from "../components/navbar/navbar.component";
 import {DropdownMenuComponent} from "../components/dropdown-menu/dropdown-menu.component";
 import {HomePageContentComponent} from "./home-page-content/home-page-content.component";
 import {PaginationModule} from "ngx-bootstrap/pagination";
@@ -18,7 +18,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
   declarations: [
     HomePageComponent,
     DropdownMenuComponent,
-    HomePageNavbarComponent,
+    NavbarComponent,
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
@@ -35,7 +35,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
   exports: [
     HomePageComponent,
     DropdownMenuComponent,
-    HomePageNavbarComponent,
+    NavbarComponent,
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
@@ -45,6 +45,11 @@ import {ModalModule} from "ngx-bootstrap/modal";
     NewTaskModalComponent,
   ],
   providers: [],
+  entryComponents: [
+    NewProjectModalComponent,
+    NewUserModalComponent,
+    NewTaskModalComponent
+  ]
 })
 export class HomePageModule {
 }
