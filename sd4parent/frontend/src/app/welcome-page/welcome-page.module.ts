@@ -5,6 +5,7 @@ import {WelcomePageNavbarComponent} from "./welcome-page-navbar/welcome-page-nav
 import {WelcomePageContentComponent} from "./welcome-page-content/welcome-page-content.component";
 import {WelcomePageFooterComponent} from "./welcome-page-footer/welcome-page-footer.component";
 import {AuthorizationModalComponent} from "./authorization-modal/authorization-modal.component";
+import {ModalModule} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import {AuthorizationModalComponent} from "./authorization-modal/authorization-m
     WelcomePageFooterComponent,
     AuthorizationModalComponent
   ],
-  imports: [],
+  imports: [
+    ModalModule.forRoot()
+  ],
   exports: [
     WelcomePageComponent,
     WelcomePageNavbarComponent,
@@ -23,6 +26,9 @@ import {AuthorizationModalComponent} from "./authorization-modal/authorization-m
     AuthorizationModalComponent
   ],
   providers: [],
+  entryComponents: [
+    AuthorizationModalComponent
+  ]
 })
 export class WelcomePageModule {
 }
