@@ -1,0 +1,14 @@
+<div class="row mb-1">
+  <div class="col-md-12">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item pr-0 pl-0 pt-0 clearfix" *ngFor="let user of users">
+        <a href="profile" class="user" style="background-image: url('http://placehold.it/400x200')"></a>
+        <span><a href="profile">{{user.username}}</a></span>
+        <div class="float-right mt-2">
+          <button class="btn btn-outline-primary btn-sm btn-size">Edit</button>
+          <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="deleteUser(user.id)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

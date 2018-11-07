@@ -19,12 +19,17 @@ import {TaskDetailsPageComponent} from "./task-details-page/task-details-page.co
 import {ProjectsPageModule} from "./projects-page/projects-page.module";
 import {ProjectsPageComponent} from "./projects-page/projects-page.component";
 
+import {UsersPageModule} from "./users-page/users-page.module";
+import {UsersPageComponent} from "./users-page/users-page.component";
+
+
 const appRoutes: Routes = [
   {path: '', component: WelcomePageComponent},
   {path: 'home', component: HomePageComponent, data: {title: 'Home'}},
   {path: 'projects', component: ProjectsPageComponent, data: {title: 'Projects'}},
   {path: 'task-details', component: TaskDetailsPageComponent, data: {title: 'Task details'}},
   {path: 'profile', component: ProfilePageComponent, data: {title: 'Profile'}},
+  {path: 'users', component: UsersPageComponent, data: {title: 'Users'}},
   // { path: '**', component: NotFoundComponent},
 ];
 
@@ -40,6 +45,7 @@ const appRoutes: Routes = [
     ProjectsPageModule,
     TaskDetailsPageModule,
     ProfilePageModule,
+    UsersPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

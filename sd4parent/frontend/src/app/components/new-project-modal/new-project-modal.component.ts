@@ -7,7 +7,8 @@ import {BsModalRef} from "ngx-bootstrap";
 })
 export class NewProjectModalComponent {
 
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(public bsModalRef: BsModalRef) {
+  }
 
   closeModal() {
     this.bsModalRef.hide();

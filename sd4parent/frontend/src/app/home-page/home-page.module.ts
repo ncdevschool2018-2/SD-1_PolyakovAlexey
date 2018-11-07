@@ -13,6 +13,9 @@ import {NewTaskModalComponent} from "../components/new-task-modal/new-task-modal
 import {NewUserModalComponent} from "../components/new-user-modal/new-user-modal.component";
 import {NewProjectModalComponent} from "../components/new-project-modal/new-project-modal.component";
 import {ModalModule} from "ngx-bootstrap/modal";
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {ModalModule} from "ngx-bootstrap/modal";
   imports: [
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CommonModule,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     HomePageComponent,

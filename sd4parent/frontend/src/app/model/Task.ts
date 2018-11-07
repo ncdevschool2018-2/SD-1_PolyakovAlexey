@@ -1,7 +1,5 @@
 import {Project} from "./Project";
 import {User} from "./User";
-import {Status} from "./enums/Status";
-import {Priority} from "./enums/Priority";
 
 export class Task {
   id: number;
@@ -9,11 +7,11 @@ export class Task {
   project: Project;
   reporter: User;
   assignee: User;
-  status: Status;
-  priority: Priority;
+  status: string;
+  priority: string;
   description: string;
   created: string;
-  due_date: string;
+  dueDate: string;
   updated: string;
   estimation: string;
 
@@ -27,7 +25,7 @@ export class Task {
     clonedTask.priority = task.priority;
     clonedTask.description = task.description;
     clonedTask.created = task.created;
-    clonedTask.due_date = task.due_date;
+    clonedTask.dueDate = task.dueDate;
     clonedTask.updated = task.updated;
     clonedTask.estimation = task.estimation;
     return clonedTask;

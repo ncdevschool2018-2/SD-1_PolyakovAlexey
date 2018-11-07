@@ -5,6 +5,9 @@ import {ProjectsListComponent} from "./projects-content/projects-list/projects-l
 import {HomePageModule} from "../home-page/home-page.module";
 import {AccordionModule} from 'ngx-bootstrap/accordion';
 import {ProjectsContentComponent} from "./projects-content/projects-content.component";
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import {ProjectsContentComponent} from "./projects-content/projects-content.comp
   ],
   imports: [
     HomePageModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    CommonModule,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     ProjectsPageComponent,
