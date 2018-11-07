@@ -12,6 +12,7 @@ export class TasksTableComponent {
   @Output() onEdited = new EventEmitter<Task>();
   @Output() onDeleted = new EventEmitter<string>();
 
+
   edit(task: Task) {
     this.onEdited.emit(task);
   }

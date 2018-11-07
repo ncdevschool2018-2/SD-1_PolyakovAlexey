@@ -26,7 +26,9 @@
   </div>
   <div class="form-group">
     <label>Due Date:</label>
-    <input type="text" class="form-control" title="dueDate" required [ngModel]="editableTask.dueDate | date:'shortDate'"
+    <!--todo: add date pipe
+    | date:'shortDate'-->
+    <input type="text" class="form-control" title="dueDate" required [ngModel]="editableTask.dueDate"
            (ngModelChange)="editableTask.dueDate=$event">
   </div>
   <div class="form-group">

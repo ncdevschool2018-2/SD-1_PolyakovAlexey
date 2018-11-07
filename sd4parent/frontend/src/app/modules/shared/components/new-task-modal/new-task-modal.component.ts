@@ -34,6 +34,8 @@ export class NewTaskModalComponent implements OnInit {
   }
 
   public save(): void {
+    // todo: add finding user object by name
+    // Временный пользователь
     let user: User = new User();
 
     user.id = 2;
@@ -46,6 +48,7 @@ export class NewTaskModalComponent implements OnInit {
     this.editableTask.reporter = user;
 
     this.task = Task.cloneBase(this.editableTask);
+    // todo: add Priority pipe
     this.task.priority = this.task.priority.toUpperCase();
     this.subscriptions.push(this.taskService.saveTask(this.task).subscribe(() => {
       this.tableContent.updateTasks();

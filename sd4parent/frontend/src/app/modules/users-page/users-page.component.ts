@@ -26,7 +26,7 @@ export class UsersPageComponent {
     const initialState = {
       user: user,
       editMode: true,
-      subscriptions: this.subscriptionUsers,
+      subscriptionUsers: this.subscriptionUsers,
       usersComponent: this
     };
     this.bsModalRef = this.modalService.show(NewUserModalComponent, {initialState});

@@ -29,7 +29,7 @@ export class NavbarComponent {
 
   openNewUserModal() {
     const initialState = {
-      subscriptions: this.subscriptionUsers,
+      subscriptionUsers: this.subscriptionUsers,
       usersComponent: this.usersComponent
     };
     this.bsModalRef = this.modalService.show(NewUserModalComponent, {initialState});

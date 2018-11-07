@@ -32,6 +32,7 @@ export class NewUserModalComponent {
 
   public save(): void {
     this.user = User.cloneBase(this.editableUser);
+    // todo: add UserRole pipe
     this.user.role = this.user.role.toUpperCase();
     this.subscriptionUsers.push(this.userService.saveUser(this.user).subscribe(() => {
       this.usersComponent.updateUsers();
