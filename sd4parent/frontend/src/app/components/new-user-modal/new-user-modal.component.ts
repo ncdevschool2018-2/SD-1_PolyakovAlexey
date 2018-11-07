@@ -1,15 +1,15 @@
-import {Component, TemplateRef} from '@angular/core';
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {Component} from '@angular/core';
+import {BsModalRef} from "ngx-bootstrap";
 
 @Component({
   selector: 'new-user-modal',
   templateUrl: './new-user-modal.component.html',
 })
 export class NewUserModalComponent {
-  modalRef: BsModalRef;
-  constructor(private modalService: BsModalService) {}
+  constructor(public bsModalRef: BsModalRef) {
+  }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  closeModal() {
+    this.bsModalRef.hide();
   }
 }

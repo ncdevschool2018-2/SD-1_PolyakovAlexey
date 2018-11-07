@@ -1,18 +1,16 @@
-<div class="modal fade" id="signIn" tabindex="-1" role="form">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <form class="form-signin">
-        <button type="button" class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-        <h3 class="font-weight-normal">Please sign in</h3>
-        <input type="email" id="email" class="form-control" placeholder="Username" required>
-        <input type="password" id="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-2">
-          <input type="checkbox" value="remember-me" title="remember"> Remember me
-        </div>
-        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
-      </form>
+<div class="modal-body">
+  <form class="form-signin">
+    <button type="button" class="close" data-dismiss="modal" (click)="closeModal()">
+      <span>&times;</span>
+    </button>
+    <h3 class="font-weight-normal">Please sign in</h3>
+    <input type="email" id="email" class="form-control" placeholder="Username" required>
+    <input type="password" id="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-2">
+      <input type="checkbox" value="remember-me" title="remember"> Remember me
     </div>
-  </div>
+    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
+  </form>
 </div>
+
+

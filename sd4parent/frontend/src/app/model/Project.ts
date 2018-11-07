@@ -7,7 +7,7 @@ export class Project {
   description: string;
   created: string;
   closed: string;
-  
+
   static cloneBase(project: Project): Project {
     let clonedProject: Project = new Project();
     clonedProject.id = project.id;

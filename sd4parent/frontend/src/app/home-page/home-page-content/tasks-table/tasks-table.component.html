@@ -10,23 +10,36 @@
       <th scope="col">Due Date</th>
       <th scope="col">Estimation</th>
       <th scope="col">Assignee</th>
-      <th scope="col" class="border-left">Show Details</th>
+      <th scope="col" class="border-left">Edit</th>
+      <th scope="col" class="border-left">Details</th>
+      <th scope="col" class="border-left">Delete</th>
     </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row" class="border-right">ServiceManager-6</th>
-        <td>major</td>
-        <td>open</td>
-        <td>15.07.2018</td>
-        <td>15.07.2018</td>
-        <td>20.07.2018</td>
-        <td>-</td>
-        <td>test_2</td>
-        <td class="border-left">
-          <a href="task-details" class="btn btn-outline-primary btn-sm btn-block">Details</a>
-        </td>
-      </tr>
+    <tr *ngFor="let task of tasks">
+      <th scope="row" class="border-right">{{task.code}}</th>
+      <td>{{task.priority}}</td>
+      <td>{{task.status}}</td>
+      <!--
+      .toString().toLowerCase()
+      .toString().toLowerCase().replace("_", " ").replace("_", " ")
+      -->
+      <td>{{task.created.substring(0, 10)}}</td>
+      <td>{{task.updated.substring(0,10)}}</td>
+      <td>{{task.dueDate}}</td>
+      <td>{{task.estimation}}</td>
+      <td>{{task.assignee.username}}</td>
+      <td class="border-left">
+        <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="editTask()">Edit</button>
+      </td>
+      <td class="border-left">
+        <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size">Details</a>
+      </td>
+      <td class="border-left">
+        <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="deleteTask(task.id)">Delete</button>
+      </td>
+    </tr>
+
     </tbody>
   </table>
 </div>

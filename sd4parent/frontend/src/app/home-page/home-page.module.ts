@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 
 import {HomePageComponent} from "./home-page.component";
-import {HomePageNavbarComponent} from "../components/home-page-navbar/home-page-navbar.component";
+import {NavbarComponent} from "../components/navbar/navbar.component";
 import {DropdownMenuComponent} from "../components/dropdown-menu/dropdown-menu.component";
 import {HomePageContentComponent} from "./home-page-content/home-page-content.component";
 import {PaginationModule} from "ngx-bootstrap/pagination";
@@ -13,12 +13,15 @@ import {NewTaskModalComponent} from "../components/new-task-modal/new-task-modal
 import {NewUserModalComponent} from "../components/new-user-modal/new-user-modal.component";
 import {NewProjectModalComponent} from "../components/new-project-modal/new-project-modal.component";
 import {ModalModule} from "ngx-bootstrap/modal";
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     DropdownMenuComponent,
-    HomePageNavbarComponent,
+    NavbarComponent,
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
@@ -30,12 +33,15 @@ import {ModalModule} from "ngx-bootstrap/modal";
   imports: [
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CommonModule,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     HomePageComponent,
     DropdownMenuComponent,
-    HomePageNavbarComponent,
+    NavbarComponent,
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
@@ -45,6 +51,11 @@ import {ModalModule} from "ngx-bootstrap/modal";
     NewTaskModalComponent,
   ],
   providers: [],
+  entryComponents: [
+    NewProjectModalComponent,
+    NewUserModalComponent,
+    NewTaskModalComponent
+  ]
 })
 export class HomePageModule {
 }

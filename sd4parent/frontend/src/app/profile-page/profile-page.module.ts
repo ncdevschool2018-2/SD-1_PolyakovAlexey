@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 
-import {UserProfileComponent} from "./user-profile.component";
+import {ProfilePageComponent} from "./profile-page.component";
 import {HomePageModule} from "../home-page/home-page.module";
 
 @NgModule({
   declarations: [
-    UserProfileComponent,
+    ProfilePageComponent,
   ],
   imports: [
     HomePageModule,
   ],
   exports: [
-    UserProfileComponent,
+    ProfilePageComponent,
   ],
   providers: [],
 })
-export class UserProfileModule {
+export class ProfilePageModule {
 }

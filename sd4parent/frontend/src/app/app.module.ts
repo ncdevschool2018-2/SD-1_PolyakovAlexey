@@ -1,30 +1,35 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
 
 import {HomePageModule} from "./home-page/home-page.module";
 import {HomePageComponent} from "./home-page/home-page.component";
 
-import {UserProfileModule} from "./user-profile/user-profile.module";
-import {UserProfileComponent} from "./user-profile/user-profile.component";
+import {ProfilePageModule} from "./profile-page/profile-page.module";
+import {ProfilePageComponent} from "./profile-page/profile-page.component";
 
 import {WelcomePageModule} from "./welcome-page/welcome-page.module";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
-import {TaskDetailsModule} from "./task-details/task-details.module";
-import {TaskDetailsComponent} from "./task-details/task-details.component";
+import {TaskDetailsPageModule} from "./task-details-page/task-details-page.module";
+import {TaskDetailsPageComponent} from "./task-details-page/task-details-page.component";
 
-import {UserProjectsModule} from "./user-projects/user-projects.module";
-import {UserProjectsComponent} from "./user-projects/user-projects.component";
+import {ProjectsPageModule} from "./projects-page/projects-page.module";
+import {ProjectsPageComponent} from "./projects-page/projects-page.component";
+
+import {UsersPageModule} from "./users-page/users-page.module";
+import {UsersPageComponent} from "./users-page/users-page.component";
+
 
 const appRoutes: Routes = [
   {path: '', component: WelcomePageComponent},
-  {path: 'home', component: HomePageComponent},
-  {path: 'user-projects', component: UserProjectsComponent},
-  {path: 'task-details', component: TaskDetailsComponent},
-  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'home', component: HomePageComponent, data: {title: 'Home'}},
+  {path: 'projects', component: ProjectsPageComponent, data: {title: 'Projects'}},
+  {path: 'task-details', component: TaskDetailsPageComponent, data: {title: 'Task details'}},
+  {path: 'profile', component: ProfilePageComponent, data: {title: 'Profile'}},
+  {path: 'users', component: UsersPageComponent, data: {title: 'Users'}},
   // { path: '**', component: NotFoundComponent},
 ];
 
@@ -37,9 +42,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     WelcomePageModule,
     HomePageModule,
-    UserProjectsModule,
-    TaskDetailsModule,
-    UserProfileModule,
+    ProjectsPageModule,
+    TaskDetailsPageModule,
+    ProfilePageModule,
+    UsersPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {NewTaskModalComponent} from "../../components/new-task-modal/new-task-modal.component";
 
 @Component({
   selector: 'home-page-content',
@@ -6,4 +8,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./home-page-content.component.css']
 })
 export class HomePageContentComponent {
+  bsModalRef: BsModalRef;
+
+  constructor(private _modalService: BsModalService) {
+  }
+
+  openNewTaskModal() {
+    this.bsModalRef = this._modalService.show(NewTaskModalComponent);
+  }
 }
