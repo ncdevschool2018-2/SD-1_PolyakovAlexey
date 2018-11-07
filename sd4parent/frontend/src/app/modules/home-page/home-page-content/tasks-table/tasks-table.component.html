@@ -1,0 +1,40 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col" class="border-right">Ticket Code</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created</th>
+      <th scope="col">Updated</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Estimation</th>
+      <th scope="col">Assignee</th>
+      <th scope="col" class="border-left">Edit</th>
+      <th scope="col" class="border-left">Details</th>
+      <th scope="col" class="border-left">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks">
+      <th scope="row" class="border-right">{{task.code}}</th>
+      <td>{{task.priority | lowercase}}</td>
+      <td>{{task.status | lowercase}}</td>
+      <td>{{task.created | date:'short'}}</td>
+      <td>{{task.updated | date:'short'}}</td>
+      <td>{{task.dueDate | date:'shortDate'}}</td>
+      <td>{{task.estimation}}</td>
+      <td>{{task.assignee.username}}</td>
+      <td class="border-left">
+        <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edit(task)">Edit</button>
+      </td>
+      <td class="border-left">
+        <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size">Details</a>
+      </td>
+      <td class="border-left">
+        <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="delete(task.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

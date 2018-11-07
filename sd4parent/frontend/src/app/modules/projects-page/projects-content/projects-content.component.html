@@ -1,0 +1,5 @@
+<main class="container">
+  <div class="jumbotron jumbotron-size border bg-white ">
+    <projects-list [projects]="projects" (onEdited)="edit($event)" (onDeleted)="delete($event)"></projects-list>
+  </div>
+</main>

@@ -1,0 +1,11 @@
+<main class="container wrapper">
+  <div class="jumbotron border bg-white clearfix jumbotron-size">
+    <div class="row mb-3">
+      <div class="col-6 col-sm-6 col-md-8 col-lg-8"><h5>Users:</h5></div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-4"><input type="text" class="form-control" placeholder="Search...">
+      </div>
+    </div>
+    <users-list [users]="users" (onEdited)="edit($event)" (onDeleted)="delete($event)"></users-list>
+  </div>
+</main>
+

@@ -4,23 +4,23 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
 
-import {HomePageModule} from "./home-page/home-page.module";
-import {HomePageComponent} from "./home-page/home-page.component";
+import {HomePageModule} from "./modules/home-page/home-page.module";
+import {HomePageComponent} from "./modules/home-page/home-page.component";
 
-import {ProfilePageModule} from "./profile-page/profile-page.module";
-import {ProfilePageComponent} from "./profile-page/profile-page.component";
+import {ProfilePageModule} from "./modules/profile-page/profile-page.module";
+import {ProfilePageComponent} from "./modules/profile-page/profile-page.component";
 
-import {WelcomePageModule} from "./welcome-page/welcome-page.module";
-import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import {WelcomePageModule} from "./modules/welcome-page/welcome-page.module";
+import {WelcomePageComponent} from "./modules/welcome-page/welcome-page.component";
 
-import {TaskDetailsPageModule} from "./task-details-page/task-details-page.module";
-import {TaskDetailsPageComponent} from "./task-details-page/task-details-page.component";
+import {TaskDetailsPageModule} from "./modules/task-details-page/task-details-page.module";
+import {TaskDetailsPageComponent} from "./modules/task-details-page/task-details-page.component";
 
-import {ProjectsPageModule} from "./projects-page/projects-page.module";
-import {ProjectsPageComponent} from "./projects-page/projects-page.component";
+import {ProjectsPageModule} from "./modules/projects-page/projects-page.module";
+import {ProjectsPageComponent} from "./modules/projects-page/projects-page.component";
 
-import {UsersPageModule} from "./users-page/users-page.module";
-import {UsersPageComponent} from "./users-page/users-page.component";
+import {UsersPageModule} from "./modules/users-page/users-page.module";
+import {UsersPageComponent} from "./modules/users-page/users-page.component";
 
 
 const appRoutes: Routes = [
