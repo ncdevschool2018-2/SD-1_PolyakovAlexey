@@ -18,11 +18,17 @@ public class TaskViewModel {
     private PriorityViewModel priority;
     private String description;
     private Date created;
-    private String dueDate;
+    private Date dueDate;
     private Date updated;
     private String estimation;
 
-    public TaskViewModel(long id, String code, ProjectViewModel project, UserViewModel reporter, UserViewModel assignee, StatusViewModel status, PriorityViewModel priority, String description, Date created, String dueDate, Date updated, String estimation) {
+    {
+        status = StatusViewModel.OPEN;
+        created = new Date();
+        updated = new Date();
+    }
+
+    public TaskViewModel(long id, String code, ProjectViewModel project, UserViewModel reporter, UserViewModel assignee, StatusViewModel status, PriorityViewModel priority, String description, Date created, Date dueDate, Date updated, String estimation) {
         this.id = id;
         this.code = code;
         this.project = project;
@@ -113,11 +119,11 @@ public class TaskViewModel {
         this.created = created;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 

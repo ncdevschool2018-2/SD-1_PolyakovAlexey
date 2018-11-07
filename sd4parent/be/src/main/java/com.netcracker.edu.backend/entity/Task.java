@@ -26,11 +26,11 @@ public class Task {
     private Priority priority;
     private String description;
     private Date created;
-    private String dueDate;
+    private Date dueDate;
     private Date updated;
     private String estimation;
 
-    public Task(String code, Project project, User reporter, User assignee, Status status, Priority priority, String description, Date created, String dueDate, Date updated, String estimation) {
+    public Task(String code, Project project, User reporter, User assignee, Status status, Priority priority, String description, Date created, Date dueDate, Date updated, String estimation) {
         this.code = code;
         this.project = project;
         this.reporter = reporter;
@@ -120,11 +120,11 @@ public class Task {
         this.created = created;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 

@@ -1,0 +1,14 @@
+<main class="container container-margin">
+  <div class="jumbotron jumbotron-size border bg-white clearfix">
+    <div class="row justify-content-between mb-4">
+      <div class="float-left">
+        <button class="btn btn-outline-primary ml-3" type="button" (click)="onAdd()">
+          New Task
+        </button>
+      </div>
+      <filters></filters>
+    </div>
+    <tasks-table [tasks]="tasks" (onEdited)="onEdited($event)" (onDeleted)="onDeleted($event)"></tasks-table>
+    <table-pagination></table-pagination>
+  </div>
+</main>
