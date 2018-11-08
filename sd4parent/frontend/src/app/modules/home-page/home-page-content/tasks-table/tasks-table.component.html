@@ -36,9 +36,9 @@
       <th scope="row" class="border-right">{{task.code}}</th>
       <td>{{task.priority | lowercase}}</td>
       <td>{{task.status | lowercase}}</td>
-      <td>{{task.created | date:'short'}}</td>
-      <td>{{task.updated | date:'short'}}</td>
-      <td>{{task.dueDate | date:'shortDate'}}</td>
+      <td>{{task.created | date:'yyyy-MM-dd in HH:mm'}}</td>
+      <td>{{task.updated | date:'yyyy-MM-dd in HH:mm'}}</td>
+      <td>{{task.dueDate | date:'yyyy-MM-dd'}}</td>
       <td>{{task.estimation}}</td>
       <td>{{task.assignee.username}}</td>
       <td class="border-left">
