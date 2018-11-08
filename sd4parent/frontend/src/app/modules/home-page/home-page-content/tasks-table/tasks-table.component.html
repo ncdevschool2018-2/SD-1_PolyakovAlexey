@@ -1,22 +1,38 @@
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover" [mfData]="tasks" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead class="thead-light">
     <tr>
-      <th scope="col" class="border-right">Ticket Code</th>
-      <th scope="col">Priority</th>
-      <th scope="col">Status</th>
-      <th scope="col">Created</th>
-      <th scope="col">Updated</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Estimation</th>
-      <th scope="col">Assignee</th>
+      <th scope="col" class="border-right">
+        <mfDefaultSorter by="code">Ticket Code</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="priority">Priority</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="status">Status</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="created">Created</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="updated">Updated</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="dueDate">Due Date</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="estimation">Estimation</mfDefaultSorter>
+      </th>
+      <th scope="col">
+        <mfDefaultSorter by="assignee">Assignee</mfDefaultSorter>
+      </th>
       <th scope="col" class="border-left">Edit</th>
       <th scope="col" class="border-left">Details</th>
       <th scope="col" class="border-left">Delete</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let task of tasks">
+    <tr *ngFor="let task of mf.data">
       <th scope="row" class="border-right">{{task.code}}</th>
       <td>{{task.priority | lowercase}}</td>
       <td>{{task.status | lowercase}}</td>
@@ -36,5 +52,12 @@
       </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5">
+        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+    </tr>
+    </tfoot>
   </table>
 </div>

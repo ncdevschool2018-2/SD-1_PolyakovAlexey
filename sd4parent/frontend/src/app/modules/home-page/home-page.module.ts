@@ -7,7 +7,6 @@ import {HomePageContentComponent} from "./home-page-content/home-page-content.co
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {TasksTableComponent} from "./home-page-content/tasks-table/tasks-table.component";
 import {FiltersComponent} from "./home-page-content/filters/filters.component";
-import {TablePaginationComponent} from "./home-page-content/table-pagination/table-pagination.component";
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {NewTaskModalComponent} from "./home-page-content/new-task-modal/new-task-modal.component";
 import {NewUserModalComponent} from "../users-page/users-content/new-user-modal/new-user-modal.component";
@@ -16,6 +15,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from '@angular/forms';
+import {DataTableModule} from "angular-6-datatable";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import {FormsModule} from '@angular/forms';
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
-    TablePaginationComponent,
     NewProjectModalComponent,
     NewUserModalComponent,
     NewTaskModalComponent,
@@ -36,7 +35,8 @@ import {FormsModule} from '@angular/forms';
     ModalModule.forRoot(),
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DataTableModule
   ],
   exports: [
     HomePageComponent,
@@ -45,7 +45,6 @@ import {FormsModule} from '@angular/forms';
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
-    TablePaginationComponent,
     NewProjectModalComponent,
     NewUserModalComponent,
     NewTaskModalComponent,

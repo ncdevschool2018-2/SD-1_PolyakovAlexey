@@ -1,2 +1,3 @@
 <navbar></navbar>
-<home-page-content></home-page-content>
+<home-page-content [tasks]="tasks" [subscriptionTasks]="subscriptionTasks" [tasksComponent]="this"
+                   (onEdited)="onEdited($event)" (onDeleted)="onDeleted($event)"></home-page-content>

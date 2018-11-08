@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {NewTaskModalComponent} from "./new-task-modal/new-task-modal.component";
 import {Task} from "../../shared/models/Task";
 import {Subscription} from "rxjs";
-import {TaskService} from "../../shared/services/task.service";
+import {HomePageComponent} from "../home-page.component";
 
 @Component({
   selector: 'home-page-content',
@@ -11,53 +11,31 @@ import {TaskService} from "../../shared/services/task.service";
   styleUrls: ['./home-page-content.component.css']
 })
 export class HomePageContentComponent {
-  tasks: Task[];
+  @Input() tasks: Task[];
+  @Input() subscriptionTasks: Subscription[];
+  @Input() tasksComponent: HomePageComponent;
+
+  @Output() onEdited = new EventEmitter<Task>();
+  @Output() onDeleted = new EventEmitter<string>();
+
   bsModalRef: BsModalRef;
-  subscriptions: Subscription[] = [];
 
-  constructor(private modalService: BsModalService, private taskService: TaskService) {
+  constructor(private modalService: BsModalService) {
   }
 
-  ngOnInit() {
-    this.loadTasks();
-  }
-
-  onAdd() {
+  openNewUserModal() {
     const initialState = {
-      editMode: false,
-      subscriptions: this.subscriptions,
-      tableContent: this
+      subscriptionTasks: this.subscriptionTasks,
+      tasksComponent: this.tasksComponent
     };
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  onEdited(task: Task) {
-    const initialState = {
-      task: task,
-      editMode: true,
-      subscriptions: this.subscriptions,
-      tableContent: this
-    };
-    this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
+  edit(task: Task) {
+    this.onEdited.emit(task);
   }
 
-  onDeleted(id: string): void {
-    this.subscriptions.push(this.taskService.deleteTask(id).subscribe(() => {
-      this.updateTasks();
-    }));
-  }
-
-  updateTasks(): void {
-    this.loadTasks();
-  }
-
-  private loadTasks(): void {
-    this.subscriptions.push(this.taskService.getTasks().subscribe(tasks => {
-      this.tasks = tasks as Task[];
-    }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  delete(id: string) {
+    this.onDeleted.emit(id);
   }
 }

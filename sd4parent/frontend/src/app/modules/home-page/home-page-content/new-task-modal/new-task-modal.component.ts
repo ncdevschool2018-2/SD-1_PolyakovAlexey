@@ -4,8 +4,8 @@ import {Task} from "../../../shared/models/Task";
 import {User} from "../../../shared/models/User";
 import {TaskService} from "../../../shared/services/task.service";
 import {Subscription} from "rxjs";
-import {HomePageContentComponent} from "../home-page-content.component";
 import {Priority} from "../../../shared/models/enums/Priority";
+import {HomePageComponent} from "../../home-page.component";
 
 @Component({
   selector: 'new-task-modal',
@@ -16,8 +16,8 @@ export class NewTaskModalComponent implements OnInit {
   task: Task;
 
   editMode: boolean;
-  subscriptions: Subscription[];
-  tableContent: HomePageContentComponent;
+  subscriptionTasks: Subscription[];
+  tasksComponent: HomePageComponent;
 
   priorities = Priority;
 
@@ -50,8 +50,8 @@ export class NewTaskModalComponent implements OnInit {
     this.task = Task.cloneBase(this.editableTask);
     // todo: add Priority pipe
     this.task.priority = this.task.priority.toUpperCase();
-    this.subscriptions.push(this.taskService.saveTask(this.task).subscribe(() => {
-      this.tableContent.updateTasks();
+    this.subscriptionTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
+      this.tasksComponent.updateTasks();
       this.closeModal();
     }));
   }

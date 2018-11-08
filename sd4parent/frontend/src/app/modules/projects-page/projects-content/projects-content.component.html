@@ -1,6 +1,8 @@
 <main class="container">
   <div class="jumbotron jumbotron-size border bg-white ">
-    <button class="btn btn-outline-primary mb-3" type="button" (click)="openNewProjectModal()">New Project</button>
+    <div><h5>Projects:</h5>
+      <button class="btn btn-outline-primary mb-3" type="button" (click)="openNewProjectModal()">New Project</button>
+    </div>
     <projects-list [projects]="projects" (onEdited)="edit($event)" (onDeleted)="delete($event)"></projects-list>
   </div>
 </main>
