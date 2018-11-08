@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap";
-import {Task} from "../../models/Task";
-import {User} from "../../models/User";
-import {TaskService} from "../../services/task.service";
+import {Task} from "../../../shared/models/Task";
+import {User} from "../../../shared/models/User";
+import {TaskService} from "../../../shared/services/task.service";
 import {Subscription} from "rxjs";
-import {HomePageContentComponent} from "../../../home-page/home-page-content/home-page-content.component";
-import {Priority} from "../../models/enums/Priority";
+import {HomePageContentComponent} from "../home-page-content.component";
+import {Priority} from "../../../shared/models/enums/Priority";
 
 @Component({
   selector: 'new-task-modal',

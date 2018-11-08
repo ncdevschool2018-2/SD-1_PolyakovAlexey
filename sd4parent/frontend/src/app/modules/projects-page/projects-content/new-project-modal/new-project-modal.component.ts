@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
-import {Project} from "../../models/Project";
-import {ProjectsPageComponent} from "../../../projects-page/projects-page.component";
-import {ProjectService} from "../../services/project.service";
-import {User} from "../../models/User";
+import {Project} from "../../../shared/models/Project";
+import {ProjectsPageComponent} from "../../projects-page.component";
+import {ProjectService} from "../../../shared/services/project.service";
+import {User} from "../../../shared/models/User";
 
 @Component({
   selector: 'new-project-modal',

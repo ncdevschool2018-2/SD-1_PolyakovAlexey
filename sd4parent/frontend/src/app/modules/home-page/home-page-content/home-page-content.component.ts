@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {NewTaskModalComponent} from "../../shared/components/new-task-modal/new-task-modal.component";
+import {NewTaskModalComponent} from "./new-task-modal/new-task-modal.component";
 import {Task} from "../../shared/models/Task";
 import {Subscription} from "rxjs";
 import {TaskService} from "../../shared/services/task.service";

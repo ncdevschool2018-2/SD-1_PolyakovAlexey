@@ -1,2 +1,3 @@
-<navbar [subscriptionUsers]="subscriptionUsers" [usersComponent]="this"></navbar>
-<users-content [users]="users" (onEdited)="onEdited($event)" (onDeleted)="onDeleted($event)"></users-content>
+<navbar></navbar>
+<users-content [users]="users" [subscriptionUsers]="this.subscriptionUsers" [usersComponent]="this"
+               (onEdited)="onEdited($event)" (onDeleted)="onDeleted($event)"></users-content>
