@@ -1,5 +1,7 @@
 import {Project} from "./Project";
 import {User} from "./User";
+import {Priority} from "./enums/Priority";
+import {Status} from "./enums/Status";
 
 export class Task {
   id: number;
@@ -7,8 +9,8 @@ export class Task {
   project: Project;
   reporter: User;
   assignee: User;
-  status: string;
-  priority: string;
+  status: Status;
+  priority: Priority;
   description: string;
   created: string;
   dueDate: string;
