@@ -25,8 +25,8 @@ export class HomePageComponent {
     const initialState = {
       task: task,
       editMode: true,
-      subscriptions: this.subscriptionTasks,
-      tableContent: this
+      subscriptionTasks: this.subscriptionTasks,
+      tasksComponent: this
     };
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
