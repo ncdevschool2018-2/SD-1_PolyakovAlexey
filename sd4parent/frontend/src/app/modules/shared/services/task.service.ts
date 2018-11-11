@@ -20,7 +20,7 @@ export class TaskService {
     return this.http.post<Task>('/api/tsk', task);
   }
 
-  deleteTask(id: string): Observable<void> {
+  deleteTask(id: number): Observable<void> {
     return this.http.delete<void>('/api/tsk/' + id);
   }
 

@@ -34,8 +34,13 @@ export class NewTaskModalComponent implements OnInit {
 
   ngOnInit() {
     this.editableTask = this.task ? Task.cloneBase(this.task) : new Task();
-    // this.assignee = this.editableTask.assignee.username;
-    // this.projectCode = "NewProject";
+    if (this.task) {
+      this.editableTask = Task.cloneBase(this.task);
+      this.assignee = this.editableTask.assignee.username
+      this.projectCode = this.editableTask.project.code;
+    } else {
+      this.editableTask = new Task();
+    }
   }
 
   public save(): void {
@@ -77,19 +82,20 @@ export class NewTaskModalComponent implements OnInit {
         project = this.projects[i];
       }
     }
-    console.log(project);
     return project;
   }
 
   private getTicketCodeByProjectCode(code: string): string {
-
-    let numberOfTask: number = 1;
+    if (this.task && this.task.project.code === code) {
+      return this.task.code;
+    }
+    let numberOfTasks: number = 0;
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].project.code === code) {
-        numberOfTask++;
+        numberOfTasks++;
       }
     }
-    return code + " - " + numberOfTask;
+    return code + " - " + (numberOfTasks + 1);
   }
 
   private closeModal() {

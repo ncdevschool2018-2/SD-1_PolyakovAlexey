@@ -58,7 +58,18 @@ export class HomePageComponent {
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  onDeleted(id: string): void {
+  onDeleted(id: number): void {
+    // let task: Task = this.getTaskById(id);
+    // for (let i = 0; i < this.tasks.length; i++) {
+    //   if (this.tasks[i].project.code === task.project.code) {
+    //     this.tasks[i].project.code;
+    //   }
+    // }
+
+    // this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
+    //   this.updateTasks();
+    // }));
+
     this.subscriptionsOnTasks.push(this.taskService.deleteTask(id).subscribe(() => {
       this.updateTasks();
     }));
@@ -70,6 +81,16 @@ export class HomePageComponent {
 
   ngOnDestroy(): void {
     this.subscriptionsOnTasks.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private getTaskById(id: number): Task {
+    let task: Task;
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].id === id) {
+        task = this.tasks[i];
+      }
+    }
+    return task;
   }
 
   private loadTasks(): void {
