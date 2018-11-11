@@ -6,6 +6,8 @@ import {TaskService} from "../shared/services/task.service";
 import {NewTaskModalComponent} from "./home-page-content/new-task-modal/new-task-modal.component";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/User";
+import {Project} from "../shared/models/Project";
+import {ProjectService} from "../shared/services/project.service";
 
 @Component({
   selector: 'app-home-page',
@@ -13,32 +15,51 @@ import {User} from "../shared/models/User";
 })
 export class HomePageComponent {
   tasks: Task[];
-  bsModalRef: BsModalRef;
-  subscriptionTasks: Subscription[] = [];
-
+  projects: Project[];
   users: User[];
-  subscriptionUsers: Subscription[] = [];
 
-  constructor(private modalService: BsModalService, private taskService: TaskService, private userService: UserService) {
+  subscriptionsOnTasks: Subscription[] = [];
+  subscriptionsOnUsers: Subscription[] = [];
+  subscriptionsOnProjects: Subscription[] = [];
+
+  bsModalRef: BsModalRef;
+
+  constructor(private modalService: BsModalService, private taskService: TaskService, private userService: UserService, private projectService: ProjectService) {
   }
 
   ngOnInit() {
     this.loadTasks();
+    this.loadProjects();
+    this.loadUsers();
+  }
+
+  onAdded() {
+    const initialState = {
+      subscriptionsOnTasks: this.subscriptionsOnTasks,
+      tasks: this.tasks,
+      projects: this.projects,
+      users: this.users,
+      homePageComponent: this,
+      editMode: false
+    };
+    this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
   onEdited(task: Task) {
     const initialState = {
       task: task,
+      tasks: this.tasks,
+      subscriptionsOnTasks: this.subscriptionsOnTasks,
+      projects: this.projects,
+      users: this.users,
+      homePageComponent: this,
       editMode: true,
-      subscriptionTasks: this.subscriptionTasks,
-      tasksComponent: this,
-      subscriptionUsers: this.subscriptionUsers,
     };
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
   onDeleted(id: string): void {
-    this.subscriptionTasks.push(this.taskService.deleteTask(id).subscribe(() => {
+    this.subscriptionsOnTasks.push(this.taskService.deleteTask(id).subscribe(() => {
       this.updateTasks();
     }));
   }
@@ -47,19 +68,25 @@ export class HomePageComponent {
     this.loadTasks();
   }
 
+  ngOnDestroy(): void {
+    this.subscriptionsOnTasks.forEach(subscription => subscription.unsubscribe());
+  }
+
   private loadTasks(): void {
-    this.subscriptionTasks.push(this.taskService.getTasks().subscribe(tasks => {
+    this.subscriptionsOnTasks.push(this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks as Task[];
     }));
   }
 
-  private loadUsers(): void {
-    this.subscriptionUsers.push(this.userService.getUsers().subscribe(users => {
-      this.users = users as User[];
+  private loadProjects(): void {
+    this.subscriptionsOnProjects.push(this.projectService.getProjects().subscribe(projects => {
+      this.projects = projects as Project[];
     }));
   }
 
-  ngOnDestroy(): void {
-    this.subscriptionTasks.forEach(subscription => subscription.unsubscribe());
+  private loadUsers(): void {
+    this.subscriptionsOnUsers.push(this.userService.getUsers().subscribe(users => {
+      this.users = users as User[];
+    }));
   }
 }

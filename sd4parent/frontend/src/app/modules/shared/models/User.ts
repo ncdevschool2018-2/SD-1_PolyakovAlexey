@@ -1,10 +1,8 @@
-import {UserRole} from "./enums/UserRole";
-
 export class User {
   id: number;
   username: string;
   password: string;
-  role: UserRole;
+  role: string;
   current_project_id: number;
 
   static cloneBase(user: User): User {

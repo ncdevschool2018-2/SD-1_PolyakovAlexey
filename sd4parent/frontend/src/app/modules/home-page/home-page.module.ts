@@ -9,13 +9,12 @@ import {TasksTableComponent} from "./home-page-content/tasks-table/tasks-table.c
 import {FiltersComponent} from "./home-page-content/filters/filters.component";
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {NewTaskModalComponent} from "./home-page-content/new-task-modal/new-task-modal.component";
-import {NewUserModalComponent} from "../users-page/users-content/new-user-modal/new-user-modal.component";
-import {NewProjectModalComponent} from "../projects-page/projects-content/new-project-modal/new-project-modal.component";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from '@angular/forms';
 import {DataTableModule} from "angular-6-datatable";
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -25,14 +24,13 @@ import {DataTableModule} from "angular-6-datatable";
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
-    NewProjectModalComponent,
-    NewUserModalComponent,
-    NewTaskModalComponent,
+    NewTaskModalComponent
   ],
   imports: [
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     CommonModule,
     HttpClientModule,
     FormsModule,
@@ -45,14 +43,10 @@ import {DataTableModule} from "angular-6-datatable";
     HomePageContentComponent,
     TasksTableComponent,
     FiltersComponent,
-    NewProjectModalComponent,
-    NewUserModalComponent,
-    NewTaskModalComponent,
+    NewTaskModalComponent
   ],
   providers: [],
   entryComponents: [
-    NewProjectModalComponent,
-    NewUserModalComponent,
     NewTaskModalComponent
   ]
 })

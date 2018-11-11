@@ -7,7 +7,9 @@
 <div class="modal-body">
   <div class="form-group">
     <label>Project Code:</label>
-    <input type="text" class="form-control" title="code" required [(ngModel)]="editableTask.code">
+    <select class="form-control" title="priority" required [(ngModel)]="projectCode">
+      <option *ngFor="let project of projects">{{project.code}}</option>
+    </select>
   </div>
   <div class="form-group">
     <label>Description:</label>
@@ -17,18 +19,16 @@
     <label>Priority:</label>
     <select class="form-control" title="priority" required [ngModel]="editableTask.priority | lowercase"
             (ngModelChange)="editableTask.priority=$event">
-      <option>{{priorities[priorities.BLOCKER] | lowercase}}</option>
-      <option>{{priorities[priorities.CRITICAL] | lowercase}}</option>
-      <option>{{priorities[priorities.MAJOR] | lowercase}}</option>
-      <option>{{priorities[priorities.NORMAL] | lowercase}}</option>
-      <option>{{priorities[priorities.MINOR] | lowercase}}</option>
+      <option *ngFor="let priority of priorities">{{priority | lowercase}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Due Date:</label>
-    <input type="text" class="form-control" title="dueDate" required
-           [ngModel]="editableTask.dueDate | date:'yyyy-MM-dd'"
-           (ngModelChange)="editableTask.dueDate=$event">
+    <input class="form-control"
+           placeholder="Datepicker"
+           ngModel
+           bsDatepicker
+           [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
   </div>
   <div class="form-group">
     <label>Estimation:</label>
@@ -36,11 +36,15 @@
   </div>
   <div class="form-group">
     <label>Assignee:</label>
-    <input type="text" class="form-control" title="assignee" [(ngModel)]="editableTask.assignee">
+    <select class="form-control" title="priority" required [(ngModel)]="assignee">
+      <ng-container *ngFor="let user of users">
+        <option *ngIf="user.role !== 'ADMIN'">{{user.username}}</option>
+      </ng-container>
+    </select>
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-primary" (click)="save()">{{editMode ? "Edit": "Add"}}</button>
+  <button type="submit" class="btn btn-outline-primary" (click)="save()">{{editMode ? "Edit": "Add"}}</button>
   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="closeModal()">Cancel</button>
 </div>
 

@@ -1,9 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {NewTaskModalComponent} from "./new-task-modal/new-task-modal.component";
 import {Task} from "../../shared/models/Task";
-import {Subscription} from "rxjs";
-import {HomePageComponent} from "../home-page.component";
 
 @Component({
   selector: 'home-page-content',
@@ -12,23 +8,13 @@ import {HomePageComponent} from "../home-page.component";
 })
 export class HomePageContentComponent {
   @Input() tasks: Task[];
-  @Input() subscriptionTasks: Subscription[];
-  @Input() tasksComponent: HomePageComponent;
 
+  @Output() onAdded = new EventEmitter();
   @Output() onEdited = new EventEmitter<Task>();
   @Output() onDeleted = new EventEmitter<string>();
 
-  bsModalRef: BsModalRef;
-
-  constructor(private modalService: BsModalService) {
-  }
-
-  openNewUserModal() {
-    const initialState = {
-      subscriptionTasks: this.subscriptionTasks,
-      tasksComponent: this.tasksComponent
-    };
-    this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
+  add() {
+    this.onAdded.emit();
   }
 
   edit(task: Task) {

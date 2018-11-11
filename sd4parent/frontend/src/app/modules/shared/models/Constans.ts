@@ -1,11 +1,11 @@
 export class Constans {
-  statuses: {
+  static statuses: {
     open: "open",
     inProgress: "in progress",
     readyForTest: "ready for test"
   };
 
-  priorities: {
+  static priorities: {
     blocker: "blocker",
     critical: "critical",
     major: "major",
@@ -13,7 +13,7 @@ export class Constans {
     minor: "minor"
   };
 
-  userRoles: {
+  static userRoles: {
     admin: "admin",
     projectManager: "project manager",
     developer: "developer",
