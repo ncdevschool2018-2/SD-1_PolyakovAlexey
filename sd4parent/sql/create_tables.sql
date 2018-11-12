@@ -66,7 +66,7 @@ create table tasks
   priority    varchar(10)                        null,
   description mediumtext                         null,
   created     datetime default CURRENT_TIMESTAMP null,
-  due_date    varchar(45)                        null,
+  due_date    date                               null,
   updated     datetime default CURRENT_TIMESTAMP null,
   estimation  varchar(45)                        null,
   constraint code_UNIQUE
