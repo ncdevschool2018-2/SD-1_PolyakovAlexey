@@ -45,10 +45,11 @@
         <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edit(task)">Edit</button>
       </td>
       <td class="border-left">
-        <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size">Details</a>
+        <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size"
+           (click)="details(task)">Details</a>
       </td>
       <td class="border-left">
-        <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="delete(task.id)">Delete</button>
+        <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="delete(task)">Delete</button>
       </td>
     </tr>
     </tbody>

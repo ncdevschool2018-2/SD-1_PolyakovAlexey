@@ -58,21 +58,22 @@ export class HomePageComponent {
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  onDeleted(id: number): void {
-    // let task: Task = this.getTaskById(id);
-    // for (let i = 0; i < this.tasks.length; i++) {
-    //   if (this.tasks[i].project.code === task.project.code) {
-    //     this.tasks[i].project.code;
-    //   }
-    // }
-
-    // this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
-    //   this.updateTasks();
-    // }));
-
-    this.subscriptionsOnTasks.push(this.taskService.deleteTask(id).subscribe(() => {
+  onDeleted(task: Task): void {
+    this.subscriptionsOnTasks.push(this.taskService.deleteTask(task.id).subscribe(() => {
       this.updateTasks();
+      // this.changeTicketCodes(task);
     }));
+  }
+
+  changeTicketCodes(task: Task) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i] !== task && this.tasks[i].project.code === task.project.code) {
+        this.tasks[i].code = this.getNewTicketCode(task.project.code);
+        this.subscriptionsOnTasks.push(this.taskService.saveTask(this.tasks[i]).subscribe(() => {
+          this.updateTasks();
+        }));
+      }
+    }
   }
 
   updateTasks(): void {
@@ -81,6 +82,16 @@ export class HomePageComponent {
 
   ngOnDestroy(): void {
     this.subscriptionsOnTasks.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private getNewTicketCode(code: string): string {
+    let numberOfTasks: number = 0;
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].project.code === code) {
+        numberOfTasks++;
+      }
+    }
+    return code + " - " + (numberOfTasks - 1);
   }
 
   private getTaskById(id: number): Task {

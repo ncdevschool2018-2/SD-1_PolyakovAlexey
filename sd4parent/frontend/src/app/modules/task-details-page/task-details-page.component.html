@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control media-width h-75 w-50" id="priority"
-                     placeholder="Normal" disabled="disabled">
+                     [(ngModel)]="task.priority" disabled="disabled">
             </div>
           </div>
           <div class="row">
@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control h-75 w-50 media-width" id="status"
-                     placeholder="Open" disabled="disabled">
+                     [(ngModel)]="task.status" disabled="disabled">
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@
               <label for="assignee">Assignee:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="assignee" placeholder="User"
+              <input type="text" class="form-control h-75 ml-3" id="assignee" [(ngModel)]="task.assignee.username"
                      disabled="disabled">
             </div>
           </div>
@@ -66,7 +66,7 @@
               <label for="reporter">Reporter:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="reporter" placeholder="User"
+              <input type="text" class="form-control h-75 ml-3" id="reporter" [(ngModel)]="task.reporter.username"
                      disabled="disabled">
             </div>
           </div>
@@ -75,7 +75,7 @@
               <label for="estimation">Estimation:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="estimation" placeholder="3d"
+              <input type="text" class="form-control h-75 ml-3" id="estimation" [(ngModel)]="task.estimation"
                      disabled="disabled">
             </div>
           </div>
@@ -87,7 +87,7 @@
       <div class="row mb-1">
         <div class="col-md-6 col-sm-12">
           <div class="row">
-            <textarea class="form-control" rows="5" title="description"></textarea>
+            <textarea class="form-control" rows="5" title="description" [(ngModel)]="task.description"></textarea>
           </div>
         </div>
         <div class="col-md-6 col-sm-12">
@@ -97,7 +97,7 @@
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control h-75 ml-3" id="created"
-                     placeholder="21.09.2018" disabled="disabled">
+                     [(ngModel)]="task.created" disabled="disabled">
             </div>
           </div>
           <div class="row offset-md-5">
@@ -106,25 +106,25 @@
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control h-75 ml-3" id="updated"
-                     placeholder="23.09.2018" disabled="disabled">
+                     [(ngModel)]="task.updated" disabled="disabled">
             </div>
           </div>
-          <div class="row offset-md-5">
-            <div class="col-md-3 pl-0">
-              <label for="resolved">Resolved:</label>
-            </div>
-            <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="resolved"
-                     placeholder="30.09.2018" disabled="disabled">
-            </div>
-          </div>
+          <!--<div class="row offset-md-5">-->
+          <!--<div class="col-md-3 pl-0">-->
+          <!--<label for="resolved">Resolved:</label>-->
+          <!--</div>-->
+          <!--<div class="col-md-9">-->
+          <!--<input type="text" class="form-control h-75 ml-3" id="resolved"-->
+          <!--placeholder="30.09.2018" disabled="disabled">-->
+          <!--</div>-->
+          <!--</div>-->
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
               <label for="closed">Closed:</label>
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control h-75 ml-3" id="closed"
-                     placeholder="02.10.2018" disabled="disabled">
+                     placeholder="to do" disabled="disabled">
             </div>
           </div>
         </div>

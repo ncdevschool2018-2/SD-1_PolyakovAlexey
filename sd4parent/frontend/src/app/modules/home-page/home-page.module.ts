@@ -34,7 +34,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    DataTableModule
+    DataTableModule,
   ],
   exports: [
     HomePageComponent,

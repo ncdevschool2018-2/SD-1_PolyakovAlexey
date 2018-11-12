@@ -8,12 +8,14 @@ import {ProjectsContentComponent} from "./projects-content/projects-content.comp
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {NewProjectModalComponent} from "./projects-content/new-project-modal/new-project-modal.component";
 
 @NgModule({
   declarations: [
     ProjectsPageComponent,
     ProjectsContentComponent,
     ProjectsListComponent,
+    NewProjectModalComponent
   ],
   imports: [
     HomePageModule,
@@ -26,8 +28,12 @@ import {FormsModule} from "@angular/forms";
     ProjectsPageComponent,
     ProjectsContentComponent,
     ProjectsListComponent,
+    NewProjectModalComponent
   ],
   providers: [],
+  entryComponents: [
+    NewProjectModalComponent
+  ],
 })
 export class ProjectsPageModule {
 }

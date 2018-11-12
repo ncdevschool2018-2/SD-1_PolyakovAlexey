@@ -11,7 +11,7 @@ export class HomePageContentComponent {
 
   @Output() onAdded = new EventEmitter();
   @Output() onEdited = new EventEmitter<Task>();
-  @Output() onDeleted = new EventEmitter<string>();
+  @Output() onDeleted = new EventEmitter<Task>();
 
   add() {
     this.onAdded.emit();
@@ -21,7 +21,7 @@ export class HomePageContentComponent {
     this.onEdited.emit(task);
   }
 
-  delete(id: string) {
-    this.onDeleted.emit(id);
+  delete(task: Task) {
+    this.onDeleted.emit(task);
   }
 }

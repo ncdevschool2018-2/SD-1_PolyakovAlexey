@@ -22,7 +22,6 @@ import {ProjectsPageComponent} from "./modules/projects-page/projects-page.compo
 import {UsersPageModule} from "./modules/users-page/users-page.module";
 import {UsersPageComponent} from "./modules/users-page/users-page.component";
 
-
 const appRoutes: Routes = [
   {path: '', component: WelcomePageComponent},
   {path: 'home', component: HomePageComponent, data: {title: 'Home'}},
