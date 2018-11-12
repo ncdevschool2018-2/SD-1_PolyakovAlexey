@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile-page',
@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent {
-  currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 }

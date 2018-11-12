@@ -1,23 +1,23 @@
-import {Component} from '@angular/core';
-import {Task} from "../shared/models/Task";
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {Subscription} from "rxjs";
-import {TaskService} from "../shared/services/task.service";
-import {NewTaskModalComponent} from "./home-page-content/new-task-modal/new-task-modal.component";
-import {UserService} from "../shared/services/user.service";
-import {User} from "../shared/models/User";
-import {Project} from "../shared/models/Project";
-import {ProjectService} from "../shared/services/project.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Task } from '../shared/models/Task';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs';
+import { TaskService } from '../shared/services/task.service';
+import { NewTaskModalComponent } from './home-page-content/new-task-modal/new-task-modal.component';
+import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/models/User';
+import { Project } from '../shared/models/Project';
+import { ProjectService } from '../shared/services/project.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit, OnDestroy {
   tasks: Task[];
   projects: Project[];
   users: User[];
-  currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   subscriptionsOnTasks: Subscription[] = [];
   subscriptionsOnUsers: Subscription[] = [];
@@ -25,7 +25,8 @@ export class HomePageComponent {
 
   bsModalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService, private taskService: TaskService, private userService: UserService, private projectService: ProjectService) {
+  constructor(private modalService: BsModalService, private taskService: TaskService,
+              private userService: UserService, private projectService: ProjectService) {
   }
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class HomePageComponent {
     this.loadUsers();
   }
 
-  onAdded() {
+  added() {
     const initialState = {
       subscriptionsOnTasks: this.subscriptionsOnTasks,
       tasks: this.tasks,
@@ -46,7 +47,7 @@ export class HomePageComponent {
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  onEdited(task: Task) {
+  edited(task: Task) {
     const initialState = {
       task: task,
       tasks: this.tasks,
@@ -59,7 +60,7 @@ export class HomePageComponent {
     this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  onDeleted(task: Task): void {
+  deleted(task: Task): void {
     this.subscriptionsOnTasks.push(this.taskService.deleteTask(task.id).subscribe(() => {
       this.updateTasks();
       // this.changeTicketCodes(task);
@@ -86,13 +87,13 @@ export class HomePageComponent {
   }
 
   private getNewTicketCode(code: string): string {
-    let numberOfTasks: number = 0;
+    let numberOfTasks = 0;
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].project.code === code) {
         numberOfTasks++;
       }
     }
-    return code + " - " + (numberOfTasks - 1);
+    return code + ' - ' + (numberOfTasks - 1);
   }
 
   private getTaskById(id: number): Task {

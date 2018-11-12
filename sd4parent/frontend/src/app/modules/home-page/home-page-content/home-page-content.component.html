@@ -8,9 +8,9 @@
           </button>
         </ng-container>
       </div>
-      <filters></filters>
+      <app-filters></app-filters>
     </div>
-    <tasks-table [tasks]="tasks" [currentUser]="currentUser" (onEdited)="edit($event)"
-                 (onDeleted)="delete($event)"></tasks-table>
+    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser" (edited)="edit($event)"
+                     (deleted)="delete($event)"></app-tasks-table>
   </div>
 </main>

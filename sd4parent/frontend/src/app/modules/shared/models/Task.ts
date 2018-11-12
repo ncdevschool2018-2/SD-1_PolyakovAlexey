@@ -1,5 +1,5 @@
-import {Project} from "./Project";
-import {User} from "./User";
+import { Project } from './Project';
+import { User } from './User';
 
 export class Task {
   id: number;
@@ -7,7 +7,7 @@ export class Task {
   project: Project;
   reporter: User;
   assignee: User;
-  status: string = "OPEN";
+  status = 'OPEN';
   priority: string;
   description: string;
   created: Date = new Date(Date.now());
@@ -16,7 +16,7 @@ export class Task {
   estimation: string;
 
   static cloneBase(task: Task): Task {
-    let clonedTask: Task = new Task();
+    const clonedTask: Task = new Task();
     clonedTask.id = task.id;
     clonedTask.code = task.code;
     clonedTask.project = Project.cloneBase(task.project);

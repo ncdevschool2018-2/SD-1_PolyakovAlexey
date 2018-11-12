@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {BsModalRef} from "ngx-bootstrap";
-import {Task} from "../../../shared/models/Task";
-import {User} from "../../../shared/models/User";
-import {TaskService} from "../../../shared/services/task.service";
-import {Subscription} from "rxjs";
-import {HomePageComponent} from "../../home-page.component";
-import {Project} from "../../../shared/models/Project";
-import {Priority} from "../../../shared/models/enums/Priority";
+import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap';
+import { Task } from '../../../shared/models/Task';
+import { User } from '../../../shared/models/User';
+import { TaskService } from '../../../shared/services/task.service';
+import { Subscription } from 'rxjs';
+import { HomePageComponent } from '../../home-page.component';
+import { Project } from '../../../shared/models/Project';
+import { Priority } from '../../../shared/models/enums/Priority';
 
 @Component({
-  selector: 'new-task-modal',
+  selector: 'app-new-task-modal',
   templateUrl: './new-task-modal.component.html',
 })
 export class NewTaskModalComponent implements OnInit {
@@ -27,7 +27,7 @@ export class NewTaskModalComponent implements OnInit {
   homePageComponent: HomePageComponent;
   editMode: boolean;
 
-  priorities = Object.keys(Priority).filter(priority => typeof Priority[priority as any] === "number");
+  priorities = Object.keys(Priority).filter(priority => typeof Priority[priority as any] === 'number');
 
   constructor(private bsModalRef: BsModalRef, public taskService: TaskService) {
   }
@@ -36,7 +36,7 @@ export class NewTaskModalComponent implements OnInit {
     this.editableTask = this.task ? Task.cloneBase(this.task) : new Task();
     if (this.task) {
       this.editableTask = Task.cloneBase(this.task);
-      this.assignee = this.editableTask.assignee.username
+      this.assignee = this.editableTask.assignee.username;
       this.projectCode = this.editableTask.project.code;
     } else {
       this.editableTask = new Task();
@@ -45,11 +45,11 @@ export class NewTaskModalComponent implements OnInit {
 
   public save(): void {
     // todo: get reporter through LocalStorage
-    let user: User = new User();
+    const user: User = new User();
     user.id = 2;
-    user.username = "pm_1";
-    user.password = "root";
-    user.role = "PROJECT_MANAGER";
+    user.username = 'pm_1';
+    user.password = 'root';
+    user.role = 'PROJECT_MANAGER';
     user.current_project_id = 2;
     this.editableTask.reporter = user;
 
@@ -89,13 +89,13 @@ export class NewTaskModalComponent implements OnInit {
     if (this.task && this.task.project.code === code) {
       return this.task.code;
     }
-    let numberOfTasks: number = 0;
+    let numberOfTasks = 0;
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].project.code === code) {
         numberOfTasks++;
       }
     }
-    return code + " - " + (numberOfTasks + 1);
+    return code + ' - ' + (numberOfTasks + 1);
   }
 
   private closeModal() {

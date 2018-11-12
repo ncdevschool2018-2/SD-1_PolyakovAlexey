@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
-import {BsModalRef} from "ngx-bootstrap";
-import {Subscription} from "rxjs";
-import {User} from "../../../shared/models/User";
-import {UserService} from "../../../shared/services/user.service";
-import {UserRole} from "../../../shared/models/enums/UserRole";
-import {UsersPageComponent} from "../../users-page.component";
+import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs';
+import { User } from '../../../shared/models/User';
+import { UserService } from '../../../shared/services/user.service';
+import { UserRole } from '../../../shared/models/enums/UserRole';
+import { UsersPageComponent } from '../../users-page.component';
 
 @Component({
-  selector: 'new-user-modal',
+  selector: 'app-new-user-modal',
   templateUrl: './new-user-modal.component.html',
 })
-export class NewUserModalComponent {
+export class NewUserModalComponent implements OnInit {
   editableUser: User;
   user: User;
   subscriptionUsers: Subscription[];
@@ -24,8 +24,7 @@ export class NewUserModalComponent {
   ngOnInit() {
     if (this.user) {
       this.editableUser = User.cloneBase(this.user);
-    }
-    else {
+    } else {
       this.editableUser = new User();
     }
   }

@@ -1,19 +1,19 @@
-import {Component} from '@angular/core';
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {Subscription} from "rxjs";
-import {Project} from "../shared/models/Project";
-import {ProjectService} from "../shared/services/project.service";
-import {NewProjectModalComponent} from "./projects-content/new-project-modal/new-project-modal.component";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs';
+import { Project } from '../shared/models/Project';
+import { ProjectService } from '../shared/services/project.service';
+import { NewProjectModalComponent } from './projects-content/new-project-modal/new-project-modal.component';
 
 @Component({
   selector: 'app-projects-page',
   templateUrl: './projects-page.component.html',
 })
-export class ProjectsPageComponent {
+export class ProjectsPageComponent implements OnInit, OnDestroy {
   projects: Project[];
   bsModalRef: BsModalRef;
   subscriptionProjects: Subscription[] = [];
-  currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private modalService: BsModalService, private projectService: ProjectService) {
   }
@@ -22,7 +22,7 @@ export class ProjectsPageComponent {
     this.loadProjects();
   }
 
-  onEdited(project: Project) {
+  edited(project: Project) {
     const initialState = {
       project: project,
       editMode: true,
@@ -32,7 +32,7 @@ export class ProjectsPageComponent {
     this.bsModalRef = this.modalService.show(NewProjectModalComponent, {initialState});
   }
 
-  public onDeleted(id: string): void {
+  public deleted(id: string): void {
     this.subscriptionProjects.push(this.projectService.deleteProject(id).subscribe(() => {
       this.updateProjects();
     }));
@@ -42,13 +42,13 @@ export class ProjectsPageComponent {
     this.loadProjects();
   }
 
+  ngOnDestroy(): void {
+    this.subscriptionProjects.forEach(subscription => subscription.unsubscribe());
+  }
+
   private loadProjects(): void {
     this.subscriptionProjects.push(this.projectService.getProjects().subscribe(projects => {
       this.projects = projects as Project[];
     }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptionProjects.forEach(subscription => subscription.unsubscribe());
   }
 }

@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from "../../../shared/models/Task";
-import {DetailsService} from "../../../shared/services/details.service";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../../../shared/models/Task';
+import { DetailsService } from '../../../shared/services/details.service';
 
 @Component({
-  selector: 'tasks-table',
+  selector: 'app-tasks-table',
   templateUrl: './tasks-table.component.html',
   styleUrls: ['./tasks-table.component.css']
 })
@@ -11,8 +11,8 @@ export class TasksTableComponent {
   @Input() tasks: Task[];
   @Input() currentUser;
 
-  @Output() onEdited = new EventEmitter<Task>();
-  @Output() onDeleted = new EventEmitter<Task>();
+  @Output() edited = new EventEmitter<Task>();
+  @Output() deleted = new EventEmitter<Task>();
 
 
   constructor(private data: DetailsService) {
@@ -20,7 +20,7 @@ export class TasksTableComponent {
   }
 
   edit(task: Task) {
-    this.onEdited.emit(task);
+    this.edited.emit(task);
   }
 
   details(task: Task) {
@@ -28,7 +28,7 @@ export class TasksTableComponent {
   }
 
   delete(task: Task) {
-    this.onDeleted.emit(task);
+    this.deleted.emit(task);
   }
 }
 

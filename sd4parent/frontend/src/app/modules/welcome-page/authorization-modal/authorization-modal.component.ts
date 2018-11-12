@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {BsModalRef} from "ngx-bootstrap";
-import {User} from "../../shared/models/User";
-import {Subscription} from "rxjs";
-import {UserService} from "../../shared/services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap';
+import { User } from '../../shared/models/User';
+import { Subscription } from 'rxjs';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
-  selector: 'authorization-modal',
+  selector: 'app-authorization-modal',
   templateUrl: './authorization-modal.component.html',
   styleUrls: ['./authorization-modal.component.css']
 })
@@ -19,24 +19,23 @@ export class AuthorizationModalComponent implements OnInit {
   }
 
   signIn(): void {
-    let user: User = this.getCheckedUser(this.user);
+    const user: User = this.getCheckedUser(this.user);
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.closeModal();
     }
-    console.log("incorrect password or username");
+    console.log('incorrect password or username');
   }
 
   getCheckedUser(user: User): User {
     let checkedUser: User;
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].username == user.username && this.users[i].password == user.password) {
+      if (this.users[i].username === user.username && this.users[i].password === user.password) {
         checkedUser = this.users[i];
       }
     }
     return checkedUser;
   }
-
 
 
   closeModal() {

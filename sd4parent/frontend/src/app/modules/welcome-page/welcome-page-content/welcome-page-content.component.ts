@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {AuthorizationModalComponent} from "../authorization-modal/authorization-modal.component";
+import { Component } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { AuthorizationModalComponent } from '../authorization-modal/authorization-modal.component';
 
 @Component({
-  selector: 'welcome-page-content',
+  selector: 'app-welcome-page-content',
   templateUrl: './welcome-page-content.component.html',
   styleUrls: ['./welcome-page-content.component.css']
 })

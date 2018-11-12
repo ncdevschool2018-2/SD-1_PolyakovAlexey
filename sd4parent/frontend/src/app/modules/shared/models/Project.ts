@@ -1,4 +1,4 @@
-import {User} from "./User";
+import { User } from './User';
 
 export class Project {
   id: number;
@@ -9,7 +9,7 @@ export class Project {
   closed: string;
 
   static cloneBase(project: Project): Project {
-    let clonedProject: Project = new Project();
+    const clonedProject: Project = new Project();
     clonedProject.id = project.id;
     clonedProject.code = project.code;
     clonedProject.owner = User.cloneBase(project.owner);

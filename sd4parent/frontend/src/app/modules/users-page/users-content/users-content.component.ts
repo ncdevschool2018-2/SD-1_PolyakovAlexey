@@ -1,13 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {User} from "../../shared/models/User";
-import {NewUserModalComponent} from "./new-user-modal/new-user-modal.component";
-import {Subscription} from "rxjs";
-import {UsersPageComponent} from "../users-page.component";
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from '../../shared/models/User';
+import { NewUserModalComponent } from './new-user-modal/new-user-modal.component';
+import { Subscription } from 'rxjs';
+import { UsersPageComponent } from '../users-page.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 
 @Component({
-  selector: 'users-content',
+  selector: 'app-users-content',
   templateUrl: './users-content.component.html',
   styleUrls: ['./users-content.component.css']
 })
@@ -17,8 +17,8 @@ export class UsersContentComponent {
   @Input() usersComponent: UsersPageComponent;
   @Input() currentUser;
 
-  @Output() onEdited = new EventEmitter<User>();
-  @Output() onDeleted = new EventEmitter<string>();
+  @Output() edited = new EventEmitter<User>();
+  @Output() deleted = new EventEmitter<string>();
 
   bsModalRef: BsModalRef;
 
@@ -35,10 +35,10 @@ export class UsersContentComponent {
   }
 
   edit(user: User) {
-    this.onEdited.emit(user);
+    this.edited.emit(user);
   }
 
   delete(id: string) {
-    this.onDeleted.emit(id);
+    this.deleted.emit(id);
   }
 }

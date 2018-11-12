@@ -8,8 +8,8 @@
         <button class="btn btn-outline-primary ml-3" type="button" (click)="openNewUserModal()">New User</button>
       </ng-container>
     </div>
-    <users-list [users]="users" [currentUser]="currentUser" (onEdited)="edit($event)"
-                (onDeleted)="delete($event)"></users-list>
+    <app-users-list [users]="users" [currentUser]="currentUser" (edited)="edit($event)"
+                    (deleted)="delete($event)"></app-users-list>
   </div>
 </main>
 

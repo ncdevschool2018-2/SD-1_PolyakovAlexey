@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from "../../shared/models/Task";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../../shared/models/Task';
 
 @Component({
-  selector: 'home-page-content',
+  selector: 'app-home-page-content',
   templateUrl: './home-page-content.component.html',
   styleUrls: ['./home-page-content.component.css']
 })
@@ -10,19 +10,19 @@ export class HomePageContentComponent {
   @Input() tasks: Task[];
   @Input() currentUser;
 
-  @Output() onAdded = new EventEmitter();
-  @Output() onEdited = new EventEmitter<Task>();
-  @Output() onDeleted = new EventEmitter<Task>();
+  @Output() added = new EventEmitter();
+  @Output() edited = new EventEmitter<Task>();
+  @Output() deleted = new EventEmitter<Task>();
 
   add() {
-    this.onAdded.emit();
+    this.added.emit();
   }
 
   edit(task: Task) {
-    this.onEdited.emit(task);
+    this.edited.emit(task);
   }
 
   delete(task: Task) {
-    this.onDeleted.emit(task);
+    this.deleted.emit(task);
   }
 }

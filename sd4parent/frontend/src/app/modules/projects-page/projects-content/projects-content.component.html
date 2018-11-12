@@ -5,7 +5,7 @@
         <button class="btn btn-outline-primary mb-3" type="button" (click)="openNewProjectModal()">New Project</button>
       </ng-container>
     </div>
-    <projects-list [projects]="projects" [currentUser]="currentUser" (onEdited)="edit($event)"
-                   (onDeleted)="delete($event)"></projects-list>
+    <app-projects-list [projects]="projects" [currentUser]="currentUser" (edited)="edit($event)"
+                       (deleted)="delete($event)"></app-projects-list>
   </div>
 </main>

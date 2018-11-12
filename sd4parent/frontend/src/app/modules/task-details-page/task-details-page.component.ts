@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {DetailsService} from "../shared/services/details.service";
-import {Task} from "../shared/models/Task";
+import { Component } from '@angular/core';
+import { DetailsService } from '../shared/services/details.service';
+import { Task } from '../shared/models/Task';
 
 @Component({
   selector: 'app-task-details-page',
@@ -9,7 +9,7 @@ import {Task} from "../shared/models/Task";
 })
 export class TaskDetailsPageComponent {
   public task: Task;
-  currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private data: DetailsService) {
     this.task = this.data.getTask();
