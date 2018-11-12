@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Task } from '../shared/models/Task';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs';
 import { TaskService } from '../shared/services/task.service';
 import { NewTaskModalComponent } from './home-page-content/new-task-modal/new-task-modal.component';
@@ -17,13 +17,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   tasks: Task[];
   projects: Project[];
   users: User[];
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   subscriptionsOnTasks: Subscription[] = [];
-  subscriptionsOnUsers: Subscription[] = [];
   subscriptionsOnProjects: Subscription[] = [];
+  subscriptionsOnUsers: Subscription[] = [];
 
-  bsModalRef: BsModalRef;
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private modalService: BsModalService, private taskService: TaskService,
               private userService: UserService, private projectService: ProjectService) {
@@ -37,46 +36,57 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   added() {
     const initialState = {
-      subscriptionsOnTasks: this.subscriptionsOnTasks,
       tasks: this.tasks,
       projects: this.projects,
       users: this.users,
+      subscriptionsOnTasks: this.subscriptionsOnTasks,
+      currentUser: this.currentUser,
       homePageComponent: this,
       editMode: false
     };
-    this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
+    this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
   edited(task: Task) {
     const initialState = {
       task: task,
       tasks: this.tasks,
-      subscriptionsOnTasks: this.subscriptionsOnTasks,
       projects: this.projects,
       users: this.users,
+      subscriptionsOnTasks: this.subscriptionsOnTasks,
       homePageComponent: this,
       editMode: true,
     };
-    this.bsModalRef = this.modalService.show(NewTaskModalComponent, {initialState});
+    this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
   deleted(task: Task): void {
     this.subscriptionsOnTasks.push(this.taskService.deleteTask(task.id).subscribe(() => {
-      this.updateTasks();
       // this.changeTicketCodes(task);
+      this.updateTasks();
     }));
   }
 
-  changeTicketCodes(task: Task) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i] !== task && this.tasks[i].project.code === task.project.code) {
-        this.tasks[i].code = this.getNewTicketCode(task.project.code);
-        this.subscriptionsOnTasks.push(this.taskService.saveTask(this.tasks[i]).subscribe(() => {
-          this.updateTasks();
-        }));
-      }
-    }
-  }
+  // private changeTicketCodes(task: Task) {
+  //   for (let i = 0; i < this.tasks.length; i++) {
+  //     if (this.tasks[i] !== task && this.tasks[i].project.code === task.project.code) {
+  //       this.tasks[i].code = this.calculateTicketCode(task.project.code);
+  //       this.subscriptionsOnTasks.push(this.taskService.saveTask(this.tasks[i]).subscribe(() => {
+  //         this.updateTasks();
+  //       }));
+  //     }
+  //   }
+  // }
+  //
+  // private calculateTicketCode(code: string): string {
+  //   let numberOfTasks = 0;
+  //   for (let i = 0; i < this.tasks.length; i++) {
+  //     if (this.tasks[i].project.code === code) {
+  //       numberOfTasks++;
+  //     }
+  //   }
+  //   return code + ' - ' + (numberOfTasks - 1);
+  // }
 
   updateTasks(): void {
     this.loadTasks();
@@ -84,26 +94,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionsOnTasks.forEach(subscription => subscription.unsubscribe());
-  }
-
-  private getNewTicketCode(code: string): string {
-    let numberOfTasks = 0;
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].project.code === code) {
-        numberOfTasks++;
-      }
-    }
-    return code + ' - ' + (numberOfTasks - 1);
-  }
-
-  private getTaskById(id: number): Task {
-    let task: Task;
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].id === id) {
-        task = this.tasks[i];
-      }
-    }
-    return task;
   }
 
   private loadTasks(): void {

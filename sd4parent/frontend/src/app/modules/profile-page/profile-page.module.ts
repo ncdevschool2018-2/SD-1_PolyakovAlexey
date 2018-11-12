@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { ProfilePageComponent } from './profile-page.component';
-import { HomePageModule } from '../home-page/home-page.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     ProfilePageComponent,
   ],
   imports: [
-    HomePageModule,
+    SharedModule,
     FormsModule,
     CommonModule
   ],

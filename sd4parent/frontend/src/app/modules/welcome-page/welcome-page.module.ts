@@ -7,7 +7,6 @@ import { WelcomePageFooterComponent } from './welcome-page-footer/welcome-page-f
 import { AuthorizationModalComponent } from './authorization-modal/authorization-modal.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     ModalModule.forRoot(),
     FormsModule,
-    CommonModule
   ],
   exports: [
     WelcomePageComponent,

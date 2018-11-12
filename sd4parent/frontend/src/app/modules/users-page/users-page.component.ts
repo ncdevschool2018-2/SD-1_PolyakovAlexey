@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../shared/models/User';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
 import { NewUserModalComponent } from './users-content/new-user-modal/new-user-modal.component';
@@ -11,10 +11,10 @@ import { NewUserModalComponent } from './users-content/new-user-modal/new-user-m
 })
 export class UsersPageComponent implements OnInit, OnDestroy {
   users: User[];
-  bsModalRef: BsModalRef;
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   subscriptionUsers: Subscription[] = [];
+
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private modalService: BsModalService, private userService: UserService) {
   }
@@ -30,7 +30,7 @@ export class UsersPageComponent implements OnInit, OnDestroy {
       subscriptionUsers: this.subscriptionUsers,
       usersComponent: this
     };
-    this.bsModalRef = this.modalService.show(NewUserModalComponent, {initialState});
+    this.modalService.show(NewUserModalComponent, {initialState});
   }
 
   public deleted(id: string): void {

@@ -26,14 +26,14 @@ export class NewTaskModalComponent implements OnInit {
 
   homePageComponent: HomePageComponent;
   editMode: boolean;
-
+  // Get Priority enum as array of string values in order to display in select
   priorities = Object.keys(Priority).filter(priority => typeof Priority[priority as any] === 'number');
+  currentUser: User;
 
   constructor(private bsModalRef: BsModalRef, public taskService: TaskService) {
   }
 
   ngOnInit() {
-    this.editableTask = this.task ? Task.cloneBase(this.task) : new Task();
     if (this.task) {
       this.editableTask = Task.cloneBase(this.task);
       this.assignee = this.editableTask.assignee.username;
@@ -43,36 +43,20 @@ export class NewTaskModalComponent implements OnInit {
     }
   }
 
-  public save(): void {
-    // todo: get reporter through LocalStorage
-    const user: User = new User();
-    user.id = 2;
-    user.username = 'pm_1';
-    user.password = 'root';
-    user.role = 'PROJECT_MANAGER';
-    user.current_project_id = 2;
-    this.editableTask.reporter = user;
-
+  save(): void {
     this.editableTask.project = this.getProjectByCode(this.projectCode);
     this.editableTask.assignee = this.getUserByUsername(this.assignee);
-    this.editableTask.code = this.getTicketCodeByProjectCode(this.projectCode);
+    this.editableTask.code = this.calculateTicketCode(this.projectCode);
     this.editableTask.priority = this.editableTask.priority.toUpperCase();
+    if (!this.editMode) {
+      this.editableTask.reporter = this.currentUser;
+    }
 
     this.task = Task.cloneBase(this.editableTask);
     this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
       this.homePageComponent.updateTasks();
       this.closeModal();
     }));
-  }
-
-  private getUserByUsername(username: string): User {
-    let user: User;
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].username === username) {
-        user = this.users[i];
-      }
-    }
-    return user;
   }
 
   private getProjectByCode(code: string): Project {
@@ -85,7 +69,17 @@ export class NewTaskModalComponent implements OnInit {
     return project;
   }
 
-  private getTicketCodeByProjectCode(code: string): string {
+  private getUserByUsername(username: string): User {
+    let user: User;
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].username === username) {
+        user = this.users[i];
+      }
+    }
+    return user;
+  }
+
+  private calculateTicketCode(code: string): string {
     if (this.task && this.task.project.code === code) {
       return this.task.code;
     }

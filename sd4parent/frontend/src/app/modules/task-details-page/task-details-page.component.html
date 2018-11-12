@@ -6,28 +6,24 @@
       <div class="row border-bottom mb-3 pb-3"><h4>Project</h4></div>
 
       <!-- Action buttons-->
-      <div class="row mb-1"><h5>Actions:</h5></div>
-      <div class="row mb-1 actions-row">
-        <div class="col col-lg col-md-4 mb-md-2 col-12" *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-          <button class="btn btn-outline-primary btn-block btn-sm">Edit</button>
+      <ng-container *ngIf="currentUser.role !== 'ADMIN'">
+        <div class="row mb-1"><h5>Actions:</h5></div>
+        <div class="row mb-3 actions-row">
+          <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
+            <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3">Edit</button>
+          </ng-container>
+          <button class="btn btn-outline-primary btn-sm pl-3 pr-3">Assign</button>
+          <ng-container *ngIf="currentUser.role === 'DEVELOPER'">
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3 ml-3 mr-3">In progress</button>
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3">Ready for Test</button>
+          </ng-container>
+          <ng-container *ngIf="currentUser.role === 'QUALITY_ASSURANCE'">
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3 ml-3 mr-3">Reopened</button>
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3">Closed</button>
+          </ng-container>
         </div>
-        <div class="col col-lg col-md-4 mb-md-2 col-12">
-          <button class="btn btn-outline-primary btn-block btn-sm">Assign</button>
-        </div>
-        <div class="col col-lg col-md-4 mb-md-2 col-12" *ngIf="currentUser.role === 'DEVELOPER'">
-          <button class="btn btn-outline-primary btn-block btn-sm">In progress</button>
-        </div>
-        <div class="col col-lg col-md-4 col-12" *ngIf="currentUser.role === 'DEVELOPER'">
-          <button class="btn btn-outline-primary btn-block btn-sm">Ready for Test</button>
-        </div>
-        <div class="col col-lg col-md-4 col-12" *ngIf="currentUser.role === 'QUALITY_ASSURANCE'">
-          <button class="btn btn-outline-primary btn-block btn-sm">Reopened</button>
-        </div>
-        <div class="col col-lg col-md-4 col-12" *ngIf="currentUser.role === 'QUALITY_ASSURANCE'">
-          <button class="btn btn-outline-primary btn-block btn-sm">Closed</button>
-        </div>
-      </div>
-
+      </ng-container>
+      
       <!-- Details -->
       <div class="row mb-1"><h5>Details:</h5></div>
       <div class="row mb-1">
@@ -109,15 +105,6 @@
                      [(ngModel)]="task.updated" disabled="disabled">
             </div>
           </div>
-          <!--<div class="row offset-md-5">-->
-          <!--<div class="col-md-3 pl-0">-->
-          <!--<label for="resolved">Resolved:</label>-->
-          <!--</div>-->
-          <!--<div class="col-md-9">-->
-          <!--<input type="text" class="form-control h-75 ml-3" id="resolved"-->
-          <!--placeholder="30.09.2018" disabled="disabled">-->
-          <!--</div>-->
-          <!--</div>-->
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
               <label for="closed">Closed:</label>
