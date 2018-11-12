@@ -15,6 +15,7 @@ export class UsersContentComponent {
   @Input() users: User[];
   @Input() subscriptionUsers: Subscription[];
   @Input() usersComponent: UsersPageComponent;
+  @Input() currentUser;
 
   @Output() onEdited = new EventEmitter<User>();
   @Output() onDeleted = new EventEmitter<string>();

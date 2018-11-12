@@ -9,6 +9,7 @@ import {Task} from "../shared/models/Task";
 })
 export class TaskDetailsPageComponent {
   public task: Task;
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   constructor(private data: DetailsService) {
     this.task = this.data.getTask();

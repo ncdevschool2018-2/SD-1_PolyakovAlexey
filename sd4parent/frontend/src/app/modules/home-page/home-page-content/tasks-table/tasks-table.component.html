@@ -26,9 +26,9 @@
       <th scope="col">
         <mfDefaultSorter by="assignee">Assignee</mfDefaultSorter>
       </th>
-      <th scope="col" class="border-left">Edit</th>
+      <th scope="col" class="border-left" *ngIf="currentUser.role === 'PROJECT_MANAGER'">Edit</th>
       <th scope="col" class="border-left">Details</th>
-      <th scope="col" class="border-left">Delete</th>
+      <th scope="col" class="border-left" *ngIf="currentUser.role === 'PROJECT_MANAGER'">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -41,14 +41,14 @@
       <td>{{task.dueDate | date:'yyyy-MM-dd'}}</td>
       <td>{{task.estimation}}</td>
       <td>{{task.assignee.username}}</td>
-      <td class="border-left">
+      <td class="border-left" *ngIf="currentUser.role === 'PROJECT_MANAGER'">
         <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edit(task)">Edit</button>
       </td>
       <td class="border-left">
         <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size"
            (click)="details(task)">Details</a>
       </td>
-      <td class="border-left">
+      <td class="border-left" *ngIf="currentUser.role === 'PROJECT_MANAGER'">
         <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="delete(task)">Delete</button>
       </td>
     </tr>

@@ -15,7 +15,8 @@ import {FormsModule} from "@angular/forms";
     FormsModule
   ],
   exports: [
-    TaskDetailsPageComponent
+    TaskDetailsPageComponent,
+    HomePageModule
   ],
   providers: [],
 })

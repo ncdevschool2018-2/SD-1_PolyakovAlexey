@@ -6,6 +6,8 @@ import {WelcomePageContentComponent} from "./welcome-page-content/welcome-page-c
 import {WelcomePageFooterComponent} from "./welcome-page-footer/welcome-page-footer.component";
 import {AuthorizationModalComponent} from "./authorization-modal/authorization-modal.component";
 import {ModalModule} from "ngx-bootstrap";
+import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {ModalModule} from "ngx-bootstrap";
     AuthorizationModalComponent
   ],
   imports: [
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule,
+    CommonModule
   ],
   exports: [
     WelcomePageComponent,

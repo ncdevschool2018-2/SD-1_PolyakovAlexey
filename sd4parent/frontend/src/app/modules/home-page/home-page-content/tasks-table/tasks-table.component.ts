@@ -9,9 +9,11 @@ import {DetailsService} from "../../../shared/services/details.service";
 })
 export class TasksTableComponent {
   @Input() tasks: Task[];
+  @Input() currentUser;
 
   @Output() onEdited = new EventEmitter<Task>();
   @Output() onDeleted = new EventEmitter<Task>();
+
 
   constructor(private data: DetailsService) {
 

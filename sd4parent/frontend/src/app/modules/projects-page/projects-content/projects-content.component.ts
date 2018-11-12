@@ -14,6 +14,7 @@ export class ProjectsContentComponent {
   @Input() projects: Project[];
   @Input() subscriptionProjects: Subscription[];
   @Input() projectsComponent: ProjectsPageComponent;
+  @Input() currentUser;
 
   @Output() onEdited = new EventEmitter<Project>();
   @Output() onDeleted = new EventEmitter<string>();

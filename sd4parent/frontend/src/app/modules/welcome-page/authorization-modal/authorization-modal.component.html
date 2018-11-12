@@ -4,12 +4,14 @@
       <span>&times;</span>
     </button>
     <h3 class="font-weight-normal">Please sign in</h3>
-    <input type="email" id="email" class="form-control" placeholder="Username" required>
-    <input type="password" id="password" class="form-control" placeholder="Password" required>
+    <input type="email" name="username" class="form-control" placeholder="Username" required
+           [(ngModel)]="user.username">
+    <input type="password" name="password" class="form-control" placeholder="Password" required
+           [(ngModel)]="user.password">
     <div class="checkbox mb-2">
       <input type="checkbox" value="remember-me" title="remember"> Remember me
     </div>
-    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
+    <a href="home" class="btn btn-lg btn-outline-primary btn-block" type="submit" (click)="signIn()">Sign in</a>
   </form>
 </div>
 

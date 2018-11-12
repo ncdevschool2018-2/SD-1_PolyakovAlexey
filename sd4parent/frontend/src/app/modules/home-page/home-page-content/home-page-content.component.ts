@@ -8,6 +8,7 @@ import {Task} from "../../shared/models/Task";
 })
 export class HomePageContentComponent {
   @Input() tasks: Task[];
+  @Input() currentUser;
 
   @Output() onAdded = new EventEmitter();
   @Output() onEdited = new EventEmitter<Task>();

@@ -17,6 +17,7 @@ export class HomePageComponent {
   tasks: Task[];
   projects: Project[];
   users: User[];
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   subscriptionsOnTasks: Subscription[] = [];
   subscriptionsOnUsers: Subscription[] = [];

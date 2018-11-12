@@ -12,6 +12,7 @@ import {NewUserModalComponent} from "./users-content/new-user-modal/new-user-mod
 export class UsersPageComponent {
   users: User[];
   bsModalRef: BsModalRef;
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   subscriptionUsers: Subscription[] = [];
 

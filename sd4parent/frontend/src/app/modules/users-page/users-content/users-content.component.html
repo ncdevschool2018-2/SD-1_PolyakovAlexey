@@ -4,9 +4,12 @@
       <div class="col-6 col-sm-6 col-md-8 col-lg-8"><h5>Users:</h5></div>
       <div class="col-6 col-sm-6 col-md-4 col-lg-4"><input type="text" class="form-control" placeholder="Search...">
       </div>
-      <button class="btn btn-outline-primary ml-3" type="button" (click)="openNewUserModal()">New User</button>
+      <ng-container *ngIf="currentUser.role === 'ADMIN'">
+        <button class="btn btn-outline-primary ml-3" type="button" (click)="openNewUserModal()">New User</button>
+      </ng-container>
     </div>
-    <users-list [users]="users" (onEdited)="edit($event)" (onDeleted)="delete($event)"></users-list>
+    <users-list [users]="users" [currentUser]="currentUser" (onEdited)="edit($event)"
+                (onDeleted)="delete($event)"></users-list>
   </div>
 </main>
 

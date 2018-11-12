@@ -13,6 +13,7 @@ export class ProjectsPageComponent {
   projects: Project[];
   bsModalRef: BsModalRef;
   subscriptionProjects: Subscription[] = [];
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   constructor(private modalService: BsModalService, private projectService: ProjectService) {
   }

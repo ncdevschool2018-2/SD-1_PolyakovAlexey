@@ -3,11 +3,14 @@
     <button class="btn btn-link btn-block clearfix" accordion-heading>
       <div class="float-left">{{project.code}}</div>
       <div class="float-right">
-        <button class="btn btn-outline-primary btn-sm btn-size" (click)="edit(project)">Edit
-        </button>
-        <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="delete(project.id)">
-          Delete
-        </button>
+        <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
+          <button class="btn btn-outline-primary btn-sm btn-size" (click)="edit(project)">Edit
+          </button>
+          <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="delete(project.id)">
+            Delete
+          </button>
+        </ng-container>
+
       </div>
     </button>
     <h5>Description:</h5>

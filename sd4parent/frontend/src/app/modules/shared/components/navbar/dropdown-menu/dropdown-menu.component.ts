@@ -6,5 +6,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./dropdown-menu.component.css']
 })
 export class DropdownMenuComponent {
-
+  signOut() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+  }
 }
