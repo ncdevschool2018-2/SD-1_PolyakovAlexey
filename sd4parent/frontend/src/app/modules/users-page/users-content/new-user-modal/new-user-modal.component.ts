@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
-import {User} from "../../models/User";
-import {UserService} from "../../services/user.service";
-import {UserRole} from "../../models/enums/UserRole";
-import {UsersPageComponent} from "../../../users-page/users-page.component";
+import {User} from "../../../shared/models/User";
+import {UserService} from "../../../shared/services/user.service";
+import {UserRole} from "../../../shared/models/enums/UserRole";
+import {UsersPageComponent} from "../../users-page.component";
 
 @Component({
   selector: 'new-user-modal',

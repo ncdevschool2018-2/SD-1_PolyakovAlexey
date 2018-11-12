@@ -1,2 +1,4 @@
 <navbar></navbar>
-<home-page-content></home-page-content>
+<home-page-content [tasks]="tasks" [currentUser]="currentUser"
+                   (onAdded)="onAdded($event)" (onEdited)="onEdited($event)"
+                   (onDeleted)="onDeleted($event)"></home-page-content>

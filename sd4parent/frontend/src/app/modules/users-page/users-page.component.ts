@@ -3,7 +3,7 @@ import {User} from "../shared/models/User";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
 import {UserService} from "../shared/services/user.service";
-import {NewUserModalComponent} from "../shared/components/new-user-modal/new-user-modal.component";
+import {NewUserModalComponent} from "./users-content/new-user-modal/new-user-modal.component";
 
 @Component({
   selector: 'app-users-page',
@@ -12,6 +12,7 @@ import {NewUserModalComponent} from "../shared/components/new-user-modal/new-use
 export class UsersPageComponent {
   users: User[];
   bsModalRef: BsModalRef;
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   subscriptionUsers: Subscription[] = [];
 

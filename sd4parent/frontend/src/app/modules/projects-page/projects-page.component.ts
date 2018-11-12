@@ -3,7 +3,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
 import {Project} from "../shared/models/Project";
 import {ProjectService} from "../shared/services/project.service";
-import {NewProjectModalComponent} from "../shared/components/new-project-modal/new-project-modal.component";
+import {NewProjectModalComponent} from "./projects-content/new-project-modal/new-project-modal.component";
 
 @Component({
   selector: 'app-projects-page',
@@ -13,6 +13,7 @@ export class ProjectsPageComponent {
   projects: Project[];
   bsModalRef: BsModalRef;
   subscriptionProjects: Subscription[] = [];
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   constructor(private modalService: BsModalService, private projectService: ProjectService) {
   }

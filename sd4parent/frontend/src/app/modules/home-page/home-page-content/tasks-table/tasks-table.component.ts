@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from "../../../shared/models/Task";
+import {DetailsService} from "../../../shared/services/details.service";
 
 @Component({
   selector: 'tasks-table',
@@ -8,17 +9,26 @@ import {Task} from "../../../shared/models/Task";
 })
 export class TasksTableComponent {
   @Input() tasks: Task[];
+  @Input() currentUser;
 
   @Output() onEdited = new EventEmitter<Task>();
-  @Output() onDeleted = new EventEmitter<string>();
+  @Output() onDeleted = new EventEmitter<Task>();
 
+
+  constructor(private data: DetailsService) {
+
+  }
 
   edit(task: Task) {
     this.onEdited.emit(task);
   }
 
-  delete(id: string) {
-    this.onDeleted.emit(id);
+  details(task: Task) {
+    this.data.setTask(task);
+  }
+
+  delete(task: Task) {
+    this.onDeleted.emit(task);
   }
 }
 

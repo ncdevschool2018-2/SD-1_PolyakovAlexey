@@ -1,3 +1,4 @@
-<navbar [subscriptionProjects]="subscriptionProjects" [projectsComponent]="this"></navbar>
-<projects-content [projects]="projects" (onEdited)="onEdited($event)"
+<navbar></navbar>
+<projects-content [projects]="projects" [subscriptionProjects]="this.subscriptionProjects"
+                  [projectsComponent]="this" [currentUser]="currentUser" (onEdited)="onEdited($event)"
                   (onDeleted)="onDeleted($event)"></projects-content>

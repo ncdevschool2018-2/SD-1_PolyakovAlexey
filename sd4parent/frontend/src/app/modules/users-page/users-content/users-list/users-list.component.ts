@@ -8,6 +8,7 @@ import {User} from "../../../shared/models/User";
 })
 export class UsersListComponent {
   @Input() users: User[];
+  @Input() currentUser;
 
   @Output() onEdited = new EventEmitter<User>();
   @Output() onDeleted = new EventEmitter<string>();

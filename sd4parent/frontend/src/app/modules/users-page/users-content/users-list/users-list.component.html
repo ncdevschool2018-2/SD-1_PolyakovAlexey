@@ -6,8 +6,10 @@
         <span><a href="profile">{{user.username}}</a></span>
         <span class="ml-4 text-muted ">{{user.role | lowercase}}</span>
         <div class="float-right mt-2">
-          <button class="btn btn-outline-primary btn-sm btn-size" (click)="edit(user)">Edit</button>
-          <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="delete(user.id)">Delete</button>
+          <ng-container *ngIf="currentUser.role === 'ADMIN'">
+            <button class="btn btn-outline-primary btn-sm btn-size" (click)="edit(user)">Edit</button>
+            <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="delete(user.id)">Delete</button>
+          </ng-container>
         </div>
       </li>
     </ul>

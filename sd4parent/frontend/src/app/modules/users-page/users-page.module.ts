@@ -7,12 +7,14 @@ import {UsersListComponent} from "./users-content/users-list/users-list.componen
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {NewUserModalComponent} from "./users-content/new-user-modal/new-user-modal.component";
 
 @NgModule({
   declarations: [
     UsersPageComponent,
     UsersContentComponent,
-    UsersListComponent
+    UsersListComponent,
+    NewUserModalComponent
   ],
   imports: [
     HomePageModule,
@@ -23,9 +25,13 @@ import {FormsModule} from "@angular/forms";
   exports: [
     UsersPageComponent,
     UsersContentComponent,
-    UsersListComponent
+    UsersListComponent,
+    NewUserModalComponent
   ],
   providers: [],
+  entryComponents: [
+    NewUserModalComponent
+  ],
 })
 export class UsersPageModule {
 }

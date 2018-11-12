@@ -22,12 +22,6 @@ public class TaskViewModel {
     private Date updated;
     private String estimation;
 
-    {
-        status = StatusViewModel.OPEN;
-        created = new Date();
-        updated = new Date();
-    }
-
     public TaskViewModel(long id, String code, ProjectViewModel project, UserViewModel reporter, UserViewModel assignee, StatusViewModel status, PriorityViewModel priority, String description, Date created, Date dueDate, Date updated, String estimation) {
         this.id = id;
         this.code = code;

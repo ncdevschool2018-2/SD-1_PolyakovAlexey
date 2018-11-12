@@ -7,18 +7,19 @@ export class Task {
   project: Project;
   reporter: User;
   assignee: User;
-  status: string;
+  status: string = "OPEN";
   priority: string;
   description: string;
-  created: string;
-  dueDate: string;
-  updated: string;
+  created: Date = new Date(Date.now());
+  dueDate: Date;
+  updated: Date = new Date(Date.now());
   estimation: string;
 
   static cloneBase(task: Task): Task {
     let clonedTask: Task = new Task();
     clonedTask.id = task.id;
     clonedTask.code = task.code;
+    clonedTask.project = Project.cloneBase(task.project);
     clonedTask.reporter = User.cloneBase(task.reporter);
     clonedTask.assignee = User.cloneBase(task.assignee);
     clonedTask.status = task.status;

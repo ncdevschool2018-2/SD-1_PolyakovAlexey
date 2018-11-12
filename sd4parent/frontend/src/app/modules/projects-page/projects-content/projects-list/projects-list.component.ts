@@ -8,7 +8,7 @@ import {Project} from "../../../shared/models/Project";
 })
 export class ProjectsListComponent {
   @Input() projects: Project[];
-
+  @Input() currentUser;
   @Output() onEdited = new EventEmitter<Project>();
   @Output() onDeleted = new EventEmitter<string>();
 
