@@ -20,7 +20,7 @@ export class TasksTableComponent {
 
   details(task: Task) {
     console.log('details()');
-    this.detailsService.setTaskObservable(task);
+    this.detailsService.changeTask(task);
   }
 }
 

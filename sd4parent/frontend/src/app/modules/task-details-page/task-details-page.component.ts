@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class TaskDetailsPageComponent implements OnInit, OnDestroy {
   task: Task;
-  private taskSubscription: Subscription;
+  subscriptionTask: Subscription;
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -19,13 +19,12 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('ngOnInit()');
-    this.taskSubscription = this.detailsService.getTaskObservable$().subscribe(task => {
-      console.log('current task: ' + task);
-      this.task = task;
-    });
+    this.subscriptionTask = this.detailsService.currentTask.subscribe(newTask => this.task = newTask);
+    console.log('current this.task: ' + this.task);
   }
 
   ngOnDestroy() {
-    this.taskSubscription.unsubscribe();
+    this.subscriptionTask.unsubscribe();
   }
+
 }
