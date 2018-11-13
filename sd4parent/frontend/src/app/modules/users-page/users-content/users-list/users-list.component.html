@@ -7,8 +7,9 @@
         <span class="ml-4 text-muted ">{{user.role | view}}</span>
         <div class="float-right mt-2">
           <ng-container *ngIf="currentUser.role === 'ADMIN'">
-            <button class="btn btn-outline-primary btn-sm btn-size" (click)="edit(user)">Edit</button>
-            <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)="delete(user)">Delete</button>
+            <button class="btn btn-outline-primary btn-sm btn-size" (click)=" this.edited.emit(user)">Edit</button>
+            <button class="btn btn-outline-danger btn-sm btn-size ml-2" (click)=" this.deleted.emit(user)">Delete
+            </button>
           </ng-container>
         </div>
       </li>

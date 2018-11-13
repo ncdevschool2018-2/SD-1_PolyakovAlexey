@@ -21,7 +21,7 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.loadProjects();
   }
 
-  added() {
+  onAdded() {
     const initialState = {
       currentUser: this.currentUser,
       subscriptionsOnProjects: this.subscriptionsOnProjects,
@@ -31,7 +31,7 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.modalService.show(NewProjectModalComponent, {initialState});
   }
 
-  edited(project: Project) {
+  onEdited(project: Project) {
     const initialState = {
       project: project,
       subscriptionsOnProjects: this.subscriptionsOnProjects,
@@ -41,13 +41,13 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.modalService.show(NewProjectModalComponent, {initialState});
   }
 
-  public deleted(project: Project): void {
+  onDeleted(project: Project): void {
     this.subscriptionsOnProjects.push(this.projectService.deleteProject(project.id).subscribe(() => {
       this.updateProjects();
     }));
   }
 
-  public updateProjects(): void {
+  updateProjects(): void {
     this.loadProjects();
   }
 

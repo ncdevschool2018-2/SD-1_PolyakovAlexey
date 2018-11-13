@@ -13,16 +13,4 @@ export class ProjectsContentComponent {
   @Output() added = new EventEmitter();
   @Output() edited = new EventEmitter<Project>();
   @Output() deleted = new EventEmitter<Project>();
-
-  add() {
-    this.added.emit();
-  }
-
-  edit(project: Project) {
-    this.edited.emit(project);
-  }
-
-  delete(project: Project) {
-    this.deleted.emit(project);
-  }
 }

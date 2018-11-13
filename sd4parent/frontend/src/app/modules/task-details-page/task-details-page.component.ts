@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DetailsService} from '../shared/services/details.service';
-import {Task} from '../shared/models/Task';
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DetailsService } from '../shared/services/details.service';
+import { Task } from '../shared/models/Task';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-details-page',
@@ -18,9 +18,9 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log("ngOnInit()");
+    console.log('ngOnInit()');
     this.taskSubscription = this.detailsService.getTaskObservable$().subscribe(task => {
-      console.log("current task: " + task);
+      console.log('current task: ' + task);
       this.task = task;
     });
   }

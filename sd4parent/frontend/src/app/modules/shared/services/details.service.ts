@@ -1,8 +1,7 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Observer} from "rxjs/Observer";
-import {Task} from "../models/Task";
-import {share} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
+import { Task } from '../models/Task';
+import { share } from 'rxjs/operators';
 
 @Injectable()
 export class DetailsService {
@@ -16,12 +15,12 @@ export class DetailsService {
   }
 
   getTaskObservable$() {
-    console.log("getTaskObservable$()")
+    console.log('getTaskObservable$()');
     return this.taskObservable$;
   }
 
   setTaskObservable(task: Task) {
-    console.log("setTaskObservable()")
+    console.log('setTaskObservable()');
     if (this.taskObserver) {
       this.taskObserver.next(task);
     }

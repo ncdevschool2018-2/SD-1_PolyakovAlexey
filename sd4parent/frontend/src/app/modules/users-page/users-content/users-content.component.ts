@@ -14,16 +14,4 @@ export class UsersContentComponent {
   @Output() added = new EventEmitter();
   @Output() edited = new EventEmitter<User>();
   @Output() deleted = new EventEmitter<User>();
-
-  add() {
-    this.added.emit();
-  }
-
-  edit(user: User) {
-    this.edited.emit(user);
-  }
-
-  delete(user: User) {
-    this.deleted.emit(user);
-  }
 }

@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
 <app-projects-content [projects]="projects" [currentUser]="currentUser"
-                      (edited)="edited($event)" (added)="added($event)"
-                      (deleted)="deleted($event)"></app-projects-content>
+                      (edited)="onEdited($event)" (added)="onAdded($event)"
+                      (deleted)="onDeleted($event)"></app-projects-content>

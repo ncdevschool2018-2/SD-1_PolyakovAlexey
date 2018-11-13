@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 <app-home-page-content [tasks]="tasks" [currentUser]="currentUser"
-                       (added)="added($event)"
-                       (edited)="edited($event)"
-                       (deleted)="deleted($event)"></app-home-page-content>
+                       (added)="onAdded($event)"
+                       (edited)="onEdited($event)"
+                       (deleted)="onDeleted($event)"></app-home-page-content>

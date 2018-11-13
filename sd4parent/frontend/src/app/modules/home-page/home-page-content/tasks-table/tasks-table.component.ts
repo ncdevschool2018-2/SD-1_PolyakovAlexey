@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from '../../../shared/models/Task';
-import {DetailsService} from '../../../shared/services/details.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../../../shared/models/Task';
+import { DetailsService } from '../../../shared/services/details.service';
 
 @Component({
   selector: 'app-tasks-table',
@@ -19,7 +19,7 @@ export class TasksTableComponent {
   }
 
   details(task: Task) {
-    console.log("details()")
+    console.log('details()');
     this.detailsService.setTaskObservable(task);
   }
 }

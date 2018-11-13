@@ -12,12 +12,4 @@ export class ProjectsListComponent {
 
   @Output() edited = new EventEmitter<Project>();
   @Output() deleted = new EventEmitter<Project>();
-
-  edit(project: Project) {
-    this.edited.emit(project);
-  }
-
-  delete(project: Project) {
-    this.deleted.emit(project);
-  }
 }

@@ -2,10 +2,11 @@
   <div class="jumbotron jumbotron-size border bg-white ">
     <div><h5>Projects:</h5>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-        <button class="btn btn-outline-primary mb-3" type="button" (click)="add($event)">New Project</button>
+        <button class="btn btn-outline-primary mb-3" type="button" (click)="this.added.emit($event)">New Project
+        </button>
       </ng-container>
     </div>
-    <app-projects-list [projects]="projects" [currentUser]="currentUser" (edited)="edit($event)"
-                       (deleted)="delete($event)"></app-projects-list>
+    <app-projects-list [projects]="projects" [currentUser]="currentUser" (edited)="this.edited.emit($event)"
+                       (deleted)="this.deleted.emit($event)"></app-projects-list>
   </div>
 </main>

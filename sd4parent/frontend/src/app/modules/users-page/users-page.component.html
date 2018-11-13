@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
 <app-users-content [users]="users" [currentUser]="currentUser"
-                   (added)="added($event)" (edited)="edited($event)"
-                   (deleted)="deleted($event)"></app-users-content>
+                   (added)="onAdded($event)" (edited)="onEdited($event)"
+                   (deleted)="onDeleted($event)"></app-users-content>

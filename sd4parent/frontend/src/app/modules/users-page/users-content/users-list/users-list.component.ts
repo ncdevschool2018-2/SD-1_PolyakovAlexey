@@ -12,12 +12,4 @@ export class UsersListComponent {
 
   @Output() edited = new EventEmitter<User>();
   @Output() deleted = new EventEmitter<User>();
-
-  edit(user: User) {
-    this.edited.emit(user);
-  }
-
-  delete(user: User) {
-    this.deleted.emit(user);
-  }
 }

@@ -34,7 +34,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.loadUsers();
   }
 
-  added() {
+  onAdded() {
     const initialState = {
       tasks: this.tasks,
       projects: this.projects,
@@ -47,7 +47,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  edited(task: Task) {
+  onEdited(task: Task) {
     const initialState = {
       task: task,
       tasks: this.tasks,
@@ -60,7 +60,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.modalService.show(NewTaskModalComponent, {initialState});
   }
 
-  deleted(task: Task): void {
+  onDeleted(task: Task): void {
     this.subscriptionsOnTasks.push(this.taskService.deleteTask(task.id).subscribe(() => {
       // this.changeTicketCodes(task);
       this.updateTasks();
