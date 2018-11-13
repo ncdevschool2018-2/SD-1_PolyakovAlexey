@@ -15,11 +15,8 @@
   </div>
   <div class="form-group">
     <label>Role:</label>
-    <select class="form-control" title="role" [ngModel]="editableUser.role | lowercase"
-            (ngModelChange)="editableUser.role=$event">
-      <option>{{roles[roles.PROJECT_MANAGER] | lowercase}}</option>
-      <option>{{roles[roles.DEVELOPER] | lowercase}}</option>
-      <option>{{roles[roles.QUALITY_ASSURANCE] | lowercase}}</option>
+    <select class="form-control" title="role" [(ngModel)]="editableUser.role">
+      <option *ngFor="let role of roles">{{role}}</option>
     </select>
   </div>
 </div>

@@ -3,22 +3,24 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs';
 import { User } from '../../../shared/models/User';
 import { UserService } from '../../../shared/services/user.service';
-import { UserRole } from '../../../shared/models/enums/UserRole';
 import { UsersPageComponent } from '../../users-page.component';
+import { Constans } from '../../../shared/models/Constans';
+import { EnumPipe } from '../../../shared/pipes/enum.pipe';
 
 @Component({
   selector: 'app-new-user-modal',
   templateUrl: './new-user-modal.component.html',
 })
 export class NewUserModalComponent implements OnInit {
-  editableUser: User;
   user: User;
+  editableUser: User;
   subscriptionUsers: Subscription[];
+
   usersComponent: UsersPageComponent;
   editMode: boolean;
-  roles = UserRole;
+  roles = Object.values(Constans.roles);
 
-  constructor(public bsModalRef: BsModalRef, public userService: UserService) {
+  constructor(public bsModalRef: BsModalRef, public userService: UserService, private enumPipe: EnumPipe) {
   }
 
   ngOnInit() {
@@ -31,8 +33,7 @@ export class NewUserModalComponent implements OnInit {
 
   public save(): void {
     this.user = User.cloneBase(this.editableUser);
-    // todo: add UserRole pipe
-    this.user.role = this.user.role.toUpperCase();
+    this.user.role = this.enumPipe.transform(this.user.role);
     this.subscriptionUsers.push(this.userService.saveUser(this.user).subscribe(() => {
       this.usersComponent.updateUsers();
       this.closeModal();

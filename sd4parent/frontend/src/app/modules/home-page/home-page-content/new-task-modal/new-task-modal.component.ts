@@ -6,7 +6,7 @@ import { TaskService } from '../../../shared/services/task.service';
 import { Subscription } from 'rxjs';
 import { HomePageComponent } from '../../home-page.component';
 import { Project } from '../../../shared/models/Project';
-import { Priority } from '../../../shared/models/enums/Priority';
+import { Constans } from '../../../shared/models/Constans';
 
 @Component({
   selector: 'app-new-task-modal',
@@ -26,8 +26,7 @@ export class NewTaskModalComponent implements OnInit {
 
   homePageComponent: HomePageComponent;
   editMode: boolean;
-  // Get Priority enum as array of string values in order to display in select
-  priorities = Object.keys(Priority).filter(priority => typeof Priority[priority as any] === 'number');
+  priorities = Object.values(Constans.priorities);
   currentUser: User;
 
   constructor(private bsModalRef: BsModalRef, public taskService: TaskService) {

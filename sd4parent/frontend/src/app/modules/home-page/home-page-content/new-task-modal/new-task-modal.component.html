@@ -17,9 +17,8 @@
   </div>
   <div class="form-group">
     <label>Priority:</label>
-    <select class="form-control" title="priority" required [ngModel]="editableTask.priority | lowercase"
-            (ngModelChange)="editableTask.priority=$event">
-      <option *ngFor="let priority of priorities">{{priority | lowercase}}</option>
+    <select class="form-control" title="priority" required [(ngModel)]="editableTask.priority">
+      <option *ngFor="let priority of priorities">{{priority}}</option>
     </select>
   </div>
   <div class="form-group">

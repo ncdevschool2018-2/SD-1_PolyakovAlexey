@@ -39,7 +39,7 @@
     <tr *ngFor="let task of mf.data">
       <th scope="row" class="border-right">{{task.code}}</th>
       <td>{{task.priority | lowercase}}</td>
-      <td>{{task.status | lowercase}}</td>
+      <td>{{task.status | view}}</td>
       <td>{{task.created | date:'yyyy-MM-dd in HH:mm'}}</td>
       <td>{{task.updated | date:'yyyy-MM-dd in HH:mm'}}</td>
       <td>{{task.dueDate | date:'yyyy-MM-dd'}}</td>
