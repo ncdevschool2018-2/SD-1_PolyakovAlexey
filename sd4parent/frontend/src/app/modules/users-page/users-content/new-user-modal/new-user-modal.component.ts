@@ -7,6 +7,7 @@ import { UsersPageComponent } from '../../users-page.component';
 import { Constans } from '../../../shared/models/Constans';
 import { EnumPipe } from '../../../shared/pipes/enum.pipe';
 import { ViewPipe } from '../../../shared/pipes/view.pipe';
+import { Project } from '../../../shared/models/Project';
 
 @Component({
   selector: 'app-new-user-modal',
@@ -16,6 +17,8 @@ export class NewUserModalComponent implements OnInit {
   user: User;
   editableUser: User;
   subscriptionsOnUsers: Subscription[];
+  projects: Project[];
+  currentProjectCode: string;
 
   usersPageComponent: UsersPageComponent;
   roles = Object.values(Constans.roles);

@@ -19,6 +19,12 @@
       <option *ngFor="let role of roles">{{role}}</option>
     </select>
   </div>
+  <div class="form-group">
+    <label>Work project:</label>
+    <select class="form-control" title="role" [(ngModel)]="currentProjectCode">
+      <option *ngFor="let project of projects">{{project.code}}</option>
+    </select>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-primary" (click)="save()">{{editMode ? "Edit": "Add"}}</button>

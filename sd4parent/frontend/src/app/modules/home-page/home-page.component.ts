@@ -94,6 +94,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionsOnTasks.forEach(subscription => subscription.unsubscribe());
+    this.subscriptionsOnUsers.forEach(subscription => subscription.unsubscribe());
+    this.subscriptionsOnProjects.forEach(subscription => subscription.unsubscribe());
   }
 
   private loadTasks(): void {

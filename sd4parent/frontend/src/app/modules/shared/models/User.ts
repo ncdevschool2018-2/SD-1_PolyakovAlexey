@@ -3,7 +3,7 @@ export class User {
   username: string;
   password: string;
   role: string;
-  current_project_id: number;
+  currentProjectId: number;
 
   static cloneBase(user: User): User {
     const clonedUser: User = new User();
@@ -11,7 +11,7 @@ export class User {
     clonedUser.username = user.username;
     clonedUser.password = user.password;
     clonedUser.role = user.role;
-    clonedUser.current_project_id = user.current_project_id;
+    clonedUser.currentProjectId = user.currentProjectId;
     return clonedUser;
   }
 }

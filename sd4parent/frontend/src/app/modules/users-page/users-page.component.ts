@@ -4,6 +4,8 @@ import { BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
 import { NewUserModalComponent } from './users-content/new-user-modal/new-user-modal.component';
+import { Project } from '../shared/models/Project';
+import { ProjectService } from '../shared/services/project.service';
 
 @Component({
   selector: 'app-users-page',
@@ -12,20 +14,27 @@ import { NewUserModalComponent } from './users-content/new-user-modal/new-user-m
 export class UsersPageComponent implements OnInit, OnDestroy {
   users: User[];
   subscriptionsOnUsers: Subscription[] = [];
+
+  projects: Project[];
+  subscriptionsOnProjects: Subscription[] = [];
+
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  constructor(private modalService: BsModalService, private userService: UserService) {
+  constructor(private modalService: BsModalService, private userService: UserService,
+              private projectService: ProjectService) {
   }
 
   ngOnInit() {
     this.loadUsers();
+    this.loadProjects();
   }
 
   added() {
     const initialState = {
-      editMode: false,
       subscriptionsOnUsers: this.subscriptionsOnUsers,
-      usersPageComponent: this
+      projects: this.projects,
+      usersPageComponent: this,
+      editMode: false
     };
     this.modalService.show(NewUserModalComponent, {initialState});
   }
@@ -33,9 +42,10 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   edited(user: User) {
     const initialState = {
       user: user,
-      editMode: true,
       subscriptionsOnUsers: this.subscriptionsOnUsers,
-      usersPageComponent: this
+      projects: this.projects,
+      usersPageComponent: this,
+      editMode: true
     };
     this.modalService.show(NewUserModalComponent, {initialState});
   }
@@ -52,6 +62,13 @@ export class UsersPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionsOnUsers.forEach(subscription => subscription.unsubscribe());
+    this.subscriptionsOnProjects.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private loadProjects(): void {
+    this.subscriptionsOnProjects.push(this.projectService.getProjects().subscribe(projects => {
+      this.projects = projects as Project[];
+    }));
   }
 
   private loadUsers(): void {
