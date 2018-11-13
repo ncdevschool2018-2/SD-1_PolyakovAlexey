@@ -46,6 +46,16 @@ export class NewUserModalComponent implements OnInit {
     }));
   }
 
+  //
+  // private getProjectIdByCode(code: string) {
+  //   let id = -1;
+  //   for (let i = 0; i < this.projects.length; i++) {
+  //     if ()
+  //   }
+  //
+  //   return id;
+  // }
+
   closeModal() {
     this.bsModalRef.hide();
   }
