@@ -47,16 +47,16 @@
       <td>{{task.assignee.username}}</td>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
         <td class="border-left" >
-          <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edit(task)">Edit</button>
+          <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edited.emit(task)">Edit</button>
         </td>
       </ng-container>
       <td class="border-left">
-        <a href="task-details" class="btn btn-outline-primary btn-sm btn-block btn-size"
+        <a routerLink="/task-details" class="btn btn-outline-primary btn-sm btn-block btn-size"
            (click)="details(task)">Details</a>
       </td>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
         <td class="border-left" >
-          <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="delete(task)">Delete</button>
+          <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="deleted.emit(task);">Delete</button>
         </td>
       </ng-container>
     </tr>

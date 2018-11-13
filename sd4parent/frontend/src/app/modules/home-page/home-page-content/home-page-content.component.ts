@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../../shared/models/Task';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Task} from '../../shared/models/Task';
 
 @Component({
   selector: 'app-home-page-content',
@@ -13,16 +13,4 @@ export class HomePageContentComponent {
   @Output() added = new EventEmitter();
   @Output() edited = new EventEmitter<Task>();
   @Output() deleted = new EventEmitter<Task>();
-
-  add() {
-    this.added.emit();
-  }
-
-  edit(task: Task) {
-    this.edited.emit(task);
-  }
-
-  delete(task: Task) {
-    this.deleted.emit(task);
-  }
 }

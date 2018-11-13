@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { HomePageComponent } from './home-page.component';
-import { HomePageContentComponent } from './home-page-content/home-page-content.component';
-import { TasksTableComponent } from './home-page-content/tasks-table/tasks-table.component';
-import { FiltersComponent } from './home-page-content/filters/filters.component';
-import { NewTaskModalComponent } from './home-page-content/new-task-modal/new-task-modal.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { DataTableModule } from 'angular-6-datatable';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { SharedModule } from '../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HomePageComponent} from './home-page.component';
+import {HomePageContentComponent} from './home-page-content/home-page-content.component';
+import {TasksTableComponent} from './home-page-content/tasks-table/tasks-table.component';
+import {FiltersComponent} from './home-page-content/filters/filters.component';
+import {NewTaskModalComponent} from './home-page-content/new-task-modal/new-task-modal.component';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {DataTableModule} from 'angular-6-datatable';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {SharedModule} from '../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     DataTableModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     HomePageComponent,

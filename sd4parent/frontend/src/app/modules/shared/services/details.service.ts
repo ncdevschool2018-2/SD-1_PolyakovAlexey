@@ -1,25 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Task } from '../models/Task';
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
+import {Observer} from "rxjs/Observer";
+import {Task} from "../models/Task";
+import {share} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class DetailsService {
-  private task: Task;
+
+  private taskObservable$: Observable<Task>;
+  private taskObserver: Observer<Task>;
 
   constructor() {
-    console.log('this is the default task');
+    this.taskObservable$ =
+      Observable.create((observer: Observer<Task>) => this.taskObserver = observer).pipe(share());
   }
 
-  setTask(task: Task) {
-    console.log('this is the task');
-    console.log(task);
-    this.task = task;
+  getTaskObservable$() {
+    console.log("getTaskObservable$()")
+    return this.taskObservable$;
   }
 
-  getTask(): Task {
-    console.log('get fucking task');
-    return this.task;
+  setTaskObservable(task: Task) {
+    console.log("setTaskObservable()")
+    if (this.taskObserver) {
+      this.taskObserver.next(task);
+    }
   }
 }

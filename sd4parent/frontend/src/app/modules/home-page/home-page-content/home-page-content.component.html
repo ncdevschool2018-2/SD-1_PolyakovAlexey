@@ -3,14 +3,14 @@
     <div class="row justify-content-between mb-4">
       <div class="float-left">
         <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-          <button class="btn btn-outline-primary ml-3" type="button" (click)="add($event)">
+          <button class="btn btn-outline-primary ml-3" type="button" (click)="added.emit($event)">
             New Task
           </button>
         </ng-container>
       </div>
       <app-filters></app-filters>
     </div>
-    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser" (edited)="edit($event)"
-                     (deleted)="delete($event)"></app-tasks-table>
+    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser" (edited)="edited.emit($event)"
+                     (deleted)="deleted.emit($event)"></app-tasks-table>
   </div>
 </main>
