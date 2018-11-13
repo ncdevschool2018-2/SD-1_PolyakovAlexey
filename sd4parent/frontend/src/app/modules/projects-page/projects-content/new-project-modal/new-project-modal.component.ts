@@ -11,11 +11,13 @@ import { User } from '../../../shared/models/User';
   templateUrl: './new-project-modal.component.html',
 })
 export class NewProjectModalComponent implements OnInit {
-  editableProject: Project;
   project: Project;
+  editableProject: Project;
+  subscriptionsOnProjects: Subscription[];
+
+  projectsPageComponent: ProjectsPageComponent;
+  currentUser: User;
   editMode: boolean;
-  subscriptionProjects: Subscription[];
-  projectsComponent: ProjectsPageComponent;
 
   constructor(public bsModalRef: BsModalRef, public projectService: ProjectService) {
   }
@@ -29,22 +31,12 @@ export class NewProjectModalComponent implements OnInit {
   }
 
   public save(): void {
-    // todo: add finding user object by name
-    // Временный пользователь
     if (!this.editMode) {
-      const user: User = new User();
-
-      user.id = 2;
-      user.username = 'pm_1';
-      user.password = 'root';
-      user.role = 'PROJECT_MANAGER';
-      user.current_project_id = 2;
-
-      this.editableProject.owner = user;
+      this.editableProject.owner = this.currentUser;
     }
     this.project = Project.cloneBase(this.editableProject);
-    this.subscriptionProjects.push(this.projectService.saveProject(this.project).subscribe(() => {
-      this.projectsComponent.updateProjects();
+    this.subscriptionsOnProjects.push(this.projectService.saveProject(this.project).subscribe(() => {
+      this.projectsPageComponent.updateProjects();
       this.closeModal();
     }));
   }

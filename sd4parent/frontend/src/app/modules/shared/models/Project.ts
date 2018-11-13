@@ -5,7 +5,7 @@ export class Project {
   code: string;
   owner: User;
   description: string;
-  created: string;
+  created: Date = new Date(Date.now());
   closed: string;
 
   static cloneBase(project: Project): Project {

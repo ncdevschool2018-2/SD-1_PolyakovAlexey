@@ -6,7 +6,7 @@ export class User {
   current_project_id: number;
 
   static cloneBase(user: User): User {
-    let clonedUser: User = new User();
+    const clonedUser: User = new User();
     clonedUser.id = user.id;
     clonedUser.username = user.username;
     clonedUser.password = user.password;

@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { HomePageComponent } from '../../home-page.component';
 import { Project } from '../../../shared/models/Project';
 import { Constans } from '../../../shared/models/Constans';
+import { ViewPipe } from '../../../shared/pipes/view.pipe';
+import { EnumPipe } from '../../../shared/pipes/enum.pipe';
 
 @Component({
   selector: 'app-new-task-modal',
@@ -29,12 +31,14 @@ export class NewTaskModalComponent implements OnInit {
   priorities = Object.values(Constans.priorities);
   currentUser: User;
 
-  constructor(private bsModalRef: BsModalRef, public taskService: TaskService) {
+  constructor(private bsModalRef: BsModalRef, public taskService: TaskService, private enumPipe: EnumPipe,
+              private viewPipe: ViewPipe) {
   }
 
   ngOnInit() {
     if (this.task) {
       this.editableTask = Task.cloneBase(this.task);
+      this.editableTask.priority = this.viewPipe.transform(this.editableTask.priority);
       this.assignee = this.editableTask.assignee.username;
       this.projectCode = this.editableTask.project.code;
     } else {
@@ -46,12 +50,12 @@ export class NewTaskModalComponent implements OnInit {
     this.editableTask.project = this.getProjectByCode(this.projectCode);
     this.editableTask.assignee = this.getUserByUsername(this.assignee);
     this.editableTask.code = this.calculateTicketCode(this.projectCode);
-    this.editableTask.priority = this.editableTask.priority.toUpperCase();
     if (!this.editMode) {
       this.editableTask.reporter = this.currentUser;
     }
 
     this.task = Task.cloneBase(this.editableTask);
+    this.task.priority = this.enumPipe.transform(this.task.priority);
     this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
       this.homePageComponent.updateTasks();
       this.closeModal();

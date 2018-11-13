@@ -9,14 +9,15 @@ import { Project } from '../../../shared/models/Project';
 export class ProjectsListComponent {
   @Input() projects: Project[];
   @Input() currentUser;
+
   @Output() edited = new EventEmitter<Project>();
-  @Output() deleted = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<Project>();
 
   edit(project: Project) {
     this.edited.emit(project);
   }
 
-  delete(id: string) {
-    this.deleted.emit(id);
+  delete(project: Project) {
+    this.deleted.emit(project);
   }
 }

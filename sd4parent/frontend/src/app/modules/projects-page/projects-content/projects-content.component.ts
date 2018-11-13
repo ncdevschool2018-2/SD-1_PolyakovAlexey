@@ -1,9 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '../../shared/models/Project';
-import { NewProjectModalComponent } from './new-project-modal/new-project-modal.component';
-import { ProjectsPageComponent } from '../projects-page.component';
-import { Subscription } from 'rxjs';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-projects-content',
@@ -12,31 +8,21 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 })
 export class ProjectsContentComponent {
   @Input() projects: Project[];
-  @Input() subscriptionProjects: Subscription[];
-  @Input() projectsComponent: ProjectsPageComponent;
   @Input() currentUser;
 
+  @Output() added = new EventEmitter();
   @Output() edited = new EventEmitter<Project>();
-  @Output() deleted = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<Project>();
 
-  bsModalRef: BsModalRef;
-
-  constructor(private modalService: BsModalService) {
-  }
-
-  openNewProjectModal() {
-    const initialState = {
-      subscriptionProjects: this.subscriptionProjects,
-      projectsComponent: this.projectsComponent
-    };
-    this.bsModalRef = this.modalService.show(NewProjectModalComponent, {initialState});
+  add() {
+    this.added.emit();
   }
 
   edit(project: Project) {
     this.edited.emit(project);
   }
 
-  delete(id: string) {
-    this.deleted.emit(id);
+  delete(project: Project) {
+    this.deleted.emit(project);
   }
 }

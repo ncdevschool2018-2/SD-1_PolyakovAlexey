@@ -5,7 +5,7 @@
       <div class="col-6 col-sm-6 col-md-4 col-lg-4"><input type="text" class="form-control" placeholder="Search...">
       </div>
       <ng-container *ngIf="currentUser.role === 'ADMIN'">
-        <button class="btn btn-outline-primary ml-3" type="button" (click)="openNewUserModal()">New User</button>
+        <button class="btn btn-outline-primary ml-3" type="button" (click)="add($event)">New User</button>
       </ng-container>
     </div>
     <app-users-list [users]="users" [currentUser]="currentUser" (edited)="edit($event)"

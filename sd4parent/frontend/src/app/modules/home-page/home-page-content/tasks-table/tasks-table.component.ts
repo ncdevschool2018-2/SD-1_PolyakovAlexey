@@ -14,7 +14,6 @@ export class TasksTableComponent {
   @Output() edited = new EventEmitter<Task>();
   @Output() deleted = new EventEmitter<Task>();
 
-
   constructor(private data: DetailsService) {
 
   }

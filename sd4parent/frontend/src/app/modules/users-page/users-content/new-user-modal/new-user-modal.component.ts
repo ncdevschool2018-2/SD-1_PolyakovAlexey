@@ -6,6 +6,7 @@ import { UserService } from '../../../shared/services/user.service';
 import { UsersPageComponent } from '../../users-page.component';
 import { Constans } from '../../../shared/models/Constans';
 import { EnumPipe } from '../../../shared/pipes/enum.pipe';
+import { ViewPipe } from '../../../shared/pipes/view.pipe';
 
 @Component({
   selector: 'app-new-user-modal',
@@ -14,18 +15,20 @@ import { EnumPipe } from '../../../shared/pipes/enum.pipe';
 export class NewUserModalComponent implements OnInit {
   user: User;
   editableUser: User;
-  subscriptionUsers: Subscription[];
+  subscriptionsOnUsers: Subscription[];
 
-  usersComponent: UsersPageComponent;
-  editMode: boolean;
+  usersPageComponent: UsersPageComponent;
   roles = Object.values(Constans.roles);
+  editMode: boolean;
 
-  constructor(public bsModalRef: BsModalRef, public userService: UserService, private enumPipe: EnumPipe) {
+  constructor(public bsModalRef: BsModalRef, public userService: UserService, private viewPipe: ViewPipe,
+              private enumPipe: EnumPipe) {
   }
 
   ngOnInit() {
     if (this.user) {
       this.editableUser = User.cloneBase(this.user);
+      this.editableUser.role = this.viewPipe.transform(this.editableUser.role);
     } else {
       this.editableUser = new User();
     }
@@ -34,8 +37,8 @@ export class NewUserModalComponent implements OnInit {
   public save(): void {
     this.user = User.cloneBase(this.editableUser);
     this.user.role = this.enumPipe.transform(this.user.role);
-    this.subscriptionUsers.push(this.userService.saveUser(this.user).subscribe(() => {
-      this.usersComponent.updateUsers();
+    this.subscriptionsOnUsers.push(this.userService.saveUser(this.user).subscribe(() => {
+      this.usersPageComponent.updateUsers();
       this.closeModal();
     }));
   }

@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
-<app-users-content [users]="users" [subscriptionUsers]="subscriptionUsers" [usersComponent]="this"
-                   [currentUser]="currentUser"
-                   (edited)="edited($event)" (deleted)="deleted($event)"></app-users-content>
+<app-users-content [users]="users" [currentUser]="currentUser"
+                   (added)="added($event)" (edited)="edited($event)"
+                   (deleted)="deleted($event)"></app-users-content>

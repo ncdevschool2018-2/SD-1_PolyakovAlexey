@@ -20,7 +20,7 @@ export class UserService {
     return this.http.post<User>('/api/usr', user);
   }
 
-  deleteUser(id: string): Observable<void> {
+  deleteUser(id: number): Observable<void> {
     return this.http.delete<void>('/api/usr/' + id);
   }
 

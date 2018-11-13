@@ -1,9 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../shared/models/User';
-import { NewUserModalComponent } from './new-user-modal/new-user-modal.component';
-import { Subscription } from 'rxjs';
-import { UsersPageComponent } from '../users-page.component';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 
 @Component({
@@ -13,32 +9,21 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 })
 export class UsersContentComponent {
   @Input() users: User[];
-  @Input() subscriptionUsers: Subscription[];
-  @Input() usersComponent: UsersPageComponent;
   @Input() currentUser;
 
+  @Output() added = new EventEmitter();
   @Output() edited = new EventEmitter<User>();
-  @Output() deleted = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<User>();
 
-  bsModalRef: BsModalRef;
-
-  constructor(private modalService: BsModalService) {
-
-  }
-
-  openNewUserModal() {
-    const initialState = {
-      subscriptionUsers: this.subscriptionUsers,
-      usersComponent: this.usersComponent
-    };
-    this.bsModalRef = this.modalService.show(NewUserModalComponent, {initialState});
+  add() {
+    this.added.emit();
   }
 
   edit(user: User) {
     this.edited.emit(user);
   }
 
-  delete(id: string) {
-    this.deleted.emit(id);
+  delete(user: User) {
+    this.deleted.emit(user);
   }
 }

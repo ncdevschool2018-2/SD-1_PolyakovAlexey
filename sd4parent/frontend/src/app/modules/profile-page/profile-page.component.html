@@ -23,7 +23,8 @@
               <label>Role:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" title="role" [(ngModel)]="currentUser.role"
+              <input type="text" class="form-control h-75 ml-3" title="role" [ngModel]="currentUser.role | view"
+                     (ngModelChange)="editableTask.role=$event"
                      disabled="disabled">
             </div>
           </div>

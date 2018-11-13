@@ -11,9 +11,7 @@ import { NewUserModalComponent } from './users-content/new-user-modal/new-user-m
 })
 export class UsersPageComponent implements OnInit, OnDestroy {
   users: User[];
-
-  subscriptionUsers: Subscription[] = [];
-
+  subscriptionsOnUsers: Subscription[] = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private modalService: BsModalService, private userService: UserService) {
@@ -23,18 +21,27 @@ export class UsersPageComponent implements OnInit, OnDestroy {
     this.loadUsers();
   }
 
-  edited(user: User) {
+  added() {
     const initialState = {
-      user: user,
-      editMode: true,
-      subscriptionUsers: this.subscriptionUsers,
-      usersComponent: this
+      editMode: false,
+      subscriptionsOnUsers: this.subscriptionsOnUsers,
+      usersPageComponent: this
     };
     this.modalService.show(NewUserModalComponent, {initialState});
   }
 
-  public deleted(id: string): void {
-    this.subscriptionUsers.push(this.userService.deleteUser(id).subscribe(() => {
+  edited(user: User) {
+    const initialState = {
+      user: user,
+      editMode: true,
+      subscriptionsOnUsers: this.subscriptionsOnUsers,
+      usersPageComponent: this
+    };
+    this.modalService.show(NewUserModalComponent, {initialState});
+  }
+
+  public deleted(user: User): void {
+    this.subscriptionsOnUsers.push(this.userService.deleteUser(user.id).subscribe(() => {
       this.updateUsers();
     }));
   }
@@ -44,11 +51,11 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptionUsers.forEach(subscription => subscription.unsubscribe());
+    this.subscriptionsOnUsers.forEach(subscription => subscription.unsubscribe());
   }
 
   private loadUsers(): void {
-    this.subscriptionUsers.push(this.userService.getUsers().subscribe(users => {
+    this.subscriptionsOnUsers.push(this.userService.getUsers().subscribe(users => {
       this.users = users as User[];
     }));
   }

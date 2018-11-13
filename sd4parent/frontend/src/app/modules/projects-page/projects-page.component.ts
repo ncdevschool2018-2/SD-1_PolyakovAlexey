@@ -11,9 +11,7 @@ import { NewProjectModalComponent } from './projects-content/new-project-modal/n
 })
 export class ProjectsPageComponent implements OnInit, OnDestroy {
   projects: Project[];
-
-  subscriptionProjects: Subscription[] = [];
-
+  subscriptionsOnProjects: Subscription[] = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private modalService: BsModalService, private projectService: ProjectService) {
@@ -23,18 +21,28 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.loadProjects();
   }
 
-  edited(project: Project) {
+  added() {
     const initialState = {
-      project: project,
-      editMode: true,
-      subscriptionProjects: this.subscriptionProjects,
-      projectsComponent: this
+      currentUser: this.currentUser,
+      subscriptionsOnProjects: this.subscriptionsOnProjects,
+      projectsPageComponent: this,
+      editMode: false
     };
     this.modalService.show(NewProjectModalComponent, {initialState});
   }
 
-  public deleted(id: string): void {
-    this.subscriptionProjects.push(this.projectService.deleteProject(id).subscribe(() => {
+  edited(project: Project) {
+    const initialState = {
+      project: project,
+      subscriptionsOnProjects: this.subscriptionsOnProjects,
+      projectsPageComponent: this,
+      editMode: true
+    };
+    this.modalService.show(NewProjectModalComponent, {initialState});
+  }
+
+  public deleted(project: Project): void {
+    this.subscriptionsOnProjects.push(this.projectService.deleteProject(project.id).subscribe(() => {
       this.updateProjects();
     }));
   }
@@ -44,11 +52,11 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptionProjects.forEach(subscription => subscription.unsubscribe());
+    this.subscriptionsOnProjects.forEach(subscription => subscription.unsubscribe());
   }
 
   private loadProjects(): void {
-    this.subscriptionProjects.push(this.projectService.getProjects().subscribe(projects => {
+    this.subscriptionsOnProjects.push(this.projectService.getProjects().subscribe(projects => {
       this.projects = projects as Project[];
     }));
   }

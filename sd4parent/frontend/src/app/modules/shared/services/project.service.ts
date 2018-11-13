@@ -20,7 +20,7 @@ export class ProjectService {
     return this.http.post<Project>('/api/prj', project);
   }
 
-  deleteProject(id: string): Observable<void> {
+  deleteProject(id: number): Observable<void> {
     return this.http.delete<void>('/api/prj/' + id);
   }
 

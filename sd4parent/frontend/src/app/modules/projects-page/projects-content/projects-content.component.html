@@ -2,7 +2,7 @@
   <div class="jumbotron jumbotron-size border bg-white ">
     <div><h5>Projects:</h5>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-        <button class="btn btn-outline-primary mb-3" type="button" (click)="openNewProjectModal()">New Project</button>
+        <button class="btn btn-outline-primary mb-3" type="button" (click)="add($event)">New Project</button>
       </ng-container>
     </div>
     <app-projects-list [projects]="projects" [currentUser]="currentUser" (edited)="edit($event)"
