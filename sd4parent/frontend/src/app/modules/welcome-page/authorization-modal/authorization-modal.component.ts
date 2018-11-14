@@ -23,8 +23,9 @@ export class AuthorizationModalComponent implements OnInit {
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.closeModal();
+    } else {
+      console.log('incorrect password or username');
     }
-    console.log('incorrect password or username');
   }
 
   getCheckedUser(user: User): User {

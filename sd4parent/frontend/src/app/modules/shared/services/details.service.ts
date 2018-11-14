@@ -15,27 +15,3 @@ export class DetailsService {
     this.taskSource.next(task);
   }
 }
-
-// @Injectable()
-// export class DetailsService {
-//
-//   private taskObservable$: Observable<Task>;
-//   private taskObserver: Observer<Task>;
-//
-//   constructor() {
-//     this.taskObservable$ =
-//       Observable.create((observer: Observer<Task>) => this.taskObserver = observer).pipe(share());
-//   }
-//
-//   getTaskObservable$() {
-//     console.log('getTaskObservable$()');
-//     return this.taskObservable$;
-//   }
-//
-//   setTaskObservable(task: Task) {
-//     console.log('setTaskObservable()');
-//     if (this.taskObserver) {
-//       this.taskObserver.next(task);
-//     }
-//   }
-// }

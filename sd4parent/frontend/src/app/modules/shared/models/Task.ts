@@ -1,5 +1,6 @@
 import { Project } from './Project';
 import { User } from './User';
+import { EnumPipe } from '../pipes/enum.pipe';
 
 export class Task {
   id: number;
@@ -30,5 +31,26 @@ export class Task {
     clonedTask.updated = task.updated;
     clonedTask.estimation = task.estimation;
     return clonedTask;
+  }
+
+  static isEqual(task: Task, anotherTask: Task): boolean {
+    if (!task || !anotherTask) {
+      return false;
+    }
+    if (task === anotherTask) {
+      return true;
+    }
+    let enumPipe: EnumPipe = new EnumPipe();
+    return task.id === anotherTask.id &&
+      task.code === anotherTask.code &&
+      task.project.id === anotherTask.project.id &&
+      task.reporter.id === anotherTask.reporter.id &&
+      task.assignee.id === anotherTask.assignee.id &&
+      enumPipe.transform(task.status) === enumPipe.transform(anotherTask.status) &&
+      enumPipe.transform(task.priority) === enumPipe.transform(anotherTask.priority) &&
+      task.description === anotherTask.description &&
+      task.created === anotherTask.created &&
+      task.updated === anotherTask.updated &&
+      task.estimation === anotherTask.estimation;
   }
 }

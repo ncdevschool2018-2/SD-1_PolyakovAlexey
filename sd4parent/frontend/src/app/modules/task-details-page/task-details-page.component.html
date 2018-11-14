@@ -9,8 +9,9 @@
       <ng-container *ngIf="currentUser.role !== 'ADMIN'">
         <div class="row mb-1"><h5>Actions:</h5></div>
         <div class="row mb-3 actions-row">
+          <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3" (click)="save()">Save</button>
           <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-            <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3">Edit</button>
+            <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3" (click)="toogleEdit()">Edit</button>
           </ng-container>
           <button class="btn btn-outline-primary btn-sm pl-3 pr-3">Assign</button>
           <ng-container *ngIf="currentUser.role === 'DEVELOPER'">
@@ -30,49 +31,54 @@
         <div class="col-md-6 col-sm-12">
           <div class="row">
             <div class="col-md-3 pl-0">
-              <label for="priority">Priority:</label>
+              <label>Priority:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control media-width h-75 w-50" id="priority"
-                     [(ngModel)]="task.priority" disabled="disabled">
+              <select class="form-control w-50 media-width mb-1" title="priority" required
+                      [(ngModel)]="editableTask.priority">
+                <option *ngFor="let priority of priorities" [disabled]="editMode">{{priority}}</option>
+              </select>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 pl-0">
-              <label for="status">Status:</label>
+              <label>Status:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 w-50 media-width" id="status"
-                     [(ngModel)]="task.status" disabled="disabled">
+              <input type="text" class="form-control h-75 w-50 media-width" title="status"
+                     [ngModel]="editableTask.status | view"
+                     (ngModelChange)="editableTask.status=$event" disabled="disabled">
             </div>
           </div>
         </div>
         <div class="col-md-6 col-sm-12">
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
-              <label for="assignee">Assignee:</label>
+              <label>Assignee:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="assignee" [(ngModel)]="task.assignee.username"
+              <input type="text" class="form-control h-75 ml-3" title="assignee"
+                     [(ngModel)]="editableTask.assignee.username"
+                     [disabled]="editMode">
+            </div>
+          </div>
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Reporter:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="reporter"
+                     [(ngModel)]="editableTask.reporter.username"
                      disabled="disabled">
             </div>
           </div>
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
-              <label for="reporter">Reporter:</label>
+              <label>Estimation:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="reporter" [(ngModel)]="task.reporter.username"
-                     disabled="disabled">
-            </div>
-          </div>
-          <div class="row offset-md-5">
-            <div class="col-md-3 pl-0">
-              <label for="estimation">Estimation:</label>
-            </div>
-            <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="estimation" [(ngModel)]="task.estimation"
-                     disabled="disabled">
+              <input type="text" class="form-control h-75 ml-3" title="estimation"
+                     [(ngModel)]="editableTask.estimation">
             </div>
           </div>
         </div>
@@ -83,37 +89,40 @@
       <div class="row mb-1">
         <div class="col-md-6 col-sm-12">
           <div class="row">
-            <textarea class="form-control" rows="5" title="description" [(ngModel)]="task.description"></textarea>
+            <textarea class="form-control" rows="5" title="description" [(ngModel)]="editableTask.description"
+                      [disabled]="editMode"></textarea>
           </div>
         </div>
         <div class="col-md-6 col-sm-12">
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
-              <label for="created">Created:</label>
+              <label>Created:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="created"
-                     [(ngModel)]="task.created" disabled="disabled">
+              <input type="text" class="form-control h-75 ml-3" title="created"
+                     [ngModel]="editableTask.created | date:'yyyy-MM-dd in HH:mm'"
+                     (ngModelChange)="editableTask.created=$event" disabled="disabled">
             </div>
           </div>
           <div class="row offset-md-5">
             <div class="col-md-3 pl-0">
-              <label for="updated">Updated:</label>
+              <label>Updated:</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="updated"
-                     [(ngModel)]="task.updated" disabled="disabled">
+              <input type="text" class="form-control h-75 ml-3" title="updated"
+                     [ngModel]="editableTask.updated | date:'yyyy-MM-dd in HH:mm'"
+                     (ngModelChange)="editableTask.updated=$event" disabled="disabled">
             </div>
           </div>
-          <div class="row offset-md-5">
-            <div class="col-md-3 pl-0">
-              <label for="closed">Closed:</label>
-            </div>
-            <div class="col-md-9">
-              <input type="text" class="form-control h-75 ml-3" id="closed"
-                     placeholder="to do" disabled="disabled">
-            </div>
-          </div>
+          <!--<div class="row offset-md-5">-->
+          <!--<div class="col-md-3 pl-0">-->
+          <!--<label for="closed">Closed:</label>-->
+          <!--</div>-->
+          <!--<div class="col-md-9">-->
+          <!--<input type="text" class="form-control h-75 ml-3" id="closed"-->
+          <!--placeholder="to do" disabled="disabled">-->
+          <!--</div>-->
+          <!--</div>-->
         </div>
       </div>
 

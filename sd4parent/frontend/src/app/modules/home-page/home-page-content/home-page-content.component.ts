@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from '../../shared/models/Task';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../../shared/models/Task';
 
 @Component({
   selector: 'app-home-page-content',
