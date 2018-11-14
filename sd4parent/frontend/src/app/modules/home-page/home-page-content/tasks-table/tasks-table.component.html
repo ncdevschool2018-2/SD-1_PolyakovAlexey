@@ -52,7 +52,7 @@
       </ng-container>
       <td class="border-left">
         <a routerLink="/task-details" class="btn btn-outline-primary btn-sm btn-block btn-size"
-           (click)="details(task)">Details</a>
+           (click)="detailed.emit(task)">Details</a>
       </td>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
         <td class="border-left" >

@@ -11,6 +11,7 @@ export class HomePageContentComponent {
   @Input() currentUser;
 
   @Output() added = new EventEmitter();
+  @Output() detailed = new EventEmitter<Task>();
   @Output() edited = new EventEmitter<Task>();
   @Output() deleted = new EventEmitter<Task>();
 }

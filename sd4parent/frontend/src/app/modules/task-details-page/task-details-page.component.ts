@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Constans } from '../shared/models/Constans';
 import { ViewPipe } from '../shared/pipes/view.pipe';
 import { EnumPipe } from '../shared/pipes/enum.pipe';
+import { TaskService } from '../shared/services/task.service';
+import { HomePageComponent } from '../home-page/home-page.component';
 
 @Component({
   selector: 'app-task-details-page',
@@ -14,15 +16,20 @@ import { EnumPipe } from '../shared/pipes/enum.pipe';
 export class TaskDetailsPageComponent implements OnInit, OnDestroy {
   task: Task;
   editableTask: Task;
-  subscriptionTask: Subscription;
+  subscriptionsOnTasks: Subscription[];
+  homePageComponent: HomePageComponent;
+
+  subscriptionOnTask: Subscription;
+  subscriptionOnSubscriptionsOnTasks: Subscription;
+  subscriptionOnHomePageComponent: Subscription;
 
   priorities = Object.values(Constans.priorities);
-  editMode: boolean;
+  editMode = false;
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private detailsService: DetailsService, private viewPipe: ViewPipe,
-              private enumPipe: EnumPipe) {
+              private enumPipe: EnumPipe, private taskService: TaskService) {
   }
 
   save() {
@@ -32,25 +39,35 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
     } else {
       this.editableTask.priority = this.enumPipe.transform(this.editableTask.priority);
       this.task = Task.cloneBase(this.editableTask);
-      this.detailsService.changeTask(this.task);
+      this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
+        this.homePageComponent.updateTasks();
+      }));
       // todo: add alert
       console.log('Data changed.');
     }
   }
 
   toogleEdit() {
-    this.editMode = this.editMode ? false : true;
+    this.editMode = !this.editMode;
   }
 
   ngOnInit() {
-    this.editMode = false;
-    this.subscriptionTask = this.detailsService.currentTask.subscribe(newTask => this.task = newTask);
+    this.subscriptionOnSubscriptionsOnTasks = this.detailsService.currentSubscriptionsOnTasks.subscribe(currentSubscriptionsOnTasks =>
+      this.subscriptionsOnTasks = currentSubscriptionsOnTasks);
+
+    this.subscriptionOnHomePageComponent = this.detailsService.currentHomePageComponent.subscribe(currentHomePageComponent =>
+      this.homePageComponent = currentHomePageComponent);
+
+    this.subscriptionOnTask = this.detailsService.currentTask.subscribe(currentTask =>
+      this.task = currentTask);
+
     this.editableTask = Task.cloneBase(this.task);
     this.editableTask.priority = this.viewPipe.transform(this.editableTask.priority);
   }
 
   ngOnDestroy() {
-    this.subscriptionTask.unsubscribe();
+    this.subscriptionOnSubscriptionsOnTasks.unsubscribe();
+    this.subscriptionOnHomePageComponent.unsubscribe();
+    this.subscriptionOnTask.unsubscribe();
   }
-
 }

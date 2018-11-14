@@ -8,6 +8,7 @@ import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/User';
 import { Project } from '../shared/models/Project';
 import { ProjectService } from '../shared/services/project.service';
+import { DetailsService } from '../shared/services/details.service';
 
 @Component({
   selector: 'app-home-page',
@@ -24,8 +25,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  constructor(private modalService: BsModalService, private taskService: TaskService,
-              private userService: UserService, private projectService: ProjectService) {
+  constructor(private modalService?: BsModalService, private taskService?: TaskService,
+              private userService?: UserService, private projectService?: ProjectService,
+              private detailsService?: DetailsService) {
   }
 
   ngOnInit() {
@@ -45,6 +47,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
       editMode: false
     };
     this.modalService.show(NewTaskModalComponent, {initialState});
+  }
+
+  onDetailed(task: Task) {
+    this.detailsService.changeTask(task);
+    this.detailsService.changeSubscriptionsOnTasks(this.subscriptionsOnTasks);
+    this.detailsService.changeHomePageComponent(this);
   }
 
   onEdited(task: Task) {

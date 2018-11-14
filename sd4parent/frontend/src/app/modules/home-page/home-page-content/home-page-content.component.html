@@ -10,7 +10,9 @@
       </div>
       <app-filters></app-filters>
     </div>
-    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser" (edited)="edited.emit($event)"
+    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser"
+                     (edited)="edited.emit($event)"
+                     (detailed)="detailed.emit($event)"
                      (deleted)="deleted.emit($event)"></app-tasks-table>
   </div>
 </main>
