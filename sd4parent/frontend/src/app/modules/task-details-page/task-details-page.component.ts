@@ -6,7 +6,6 @@ import { Constans } from '../shared/models/Constans';
 import { ViewPipe } from '../shared/pipes/view.pipe';
 import { EnumPipe } from '../shared/pipes/enum.pipe';
 import { TaskService } from '../shared/services/task.service';
-import { HomePageComponent } from '../home-page/home-page.component';
 
 @Component({
   selector: 'app-task-details-page',
@@ -18,11 +17,9 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
   task: Task;
   editableTask: Task;
   subscriptionsOnTasks: Subscription[];
-  homePageComponent: HomePageComponent;
 
   subscriptionOnTask: Subscription;
   subscriptionOnSubscriptionsOnTasks: Subscription;
-  subscriptionOnHomePageComponent: Subscription;
 
   priorities = Object.values(Constans.priorities);
   editMode = false;
@@ -40,9 +37,7 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
     } else {
       this.task = Task.cloneBase(this.editableTask);
       this.task.priority = this.enumPipe.transform(this.task.priority);
-      this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
-        this.homePageComponent.updateTasks();
-      }));
+      this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe());
       // todo: add bootstrap alert
       console.log('Data changed.');
     }
@@ -60,9 +55,6 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
     this.subscriptionOnSubscriptionsOnTasks = this.detailsService.currentSubscriptionsOnTasks.subscribe(currentSubscriptionsOnTasks =>
       this.subscriptionsOnTasks = currentSubscriptionsOnTasks);
 
-    this.subscriptionOnHomePageComponent = this.detailsService.currentHomePageComponent.subscribe(currentHomePageComponent =>
-      this.homePageComponent = currentHomePageComponent);
-
     this.subscriptionOnTask = this.detailsService.currentTask.subscribe(currentTask =>
       this.task = currentTask);
 
@@ -72,7 +64,6 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionOnSubscriptionsOnTasks.unsubscribe();
-    this.subscriptionOnHomePageComponent.unsubscribe();
     this.subscriptionOnTask.unsubscribe();
   }
 }

@@ -27,7 +27,7 @@
         <mfDefaultSorter by="assignee">Assignee</mfDefaultSorter>
       </th>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-        <th scope="col" class="border-left" >Edit</th>
+        <th scope="col" class="border-left">Edit</th>
       </ng-container>
       <th scope="col" class="border-left">Details</th>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
@@ -46,7 +46,7 @@
       <td>{{task.estimation}}</td>
       <td>{{task.assignee.username}}</td>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-        <td class="border-left" >
+        <td class="border-left">
           <button class="btn btn-outline-primary btn-sm btn-block btn-size" (click)="edited.emit(task)">Edit</button>
         </td>
       </ng-container>
@@ -55,7 +55,7 @@
            (click)="detailed.emit(task)">Details</a>
       </td>
       <ng-container *ngIf="currentUser.role === 'PROJECT_MANAGER'">
-        <td class="border-left" >
+        <td class="border-left">
           <button class="btn btn-outline-danger btn-sm btn-block btn-size" (click)="deleted.emit(task);">Delete</button>
         </td>
       </ng-container>

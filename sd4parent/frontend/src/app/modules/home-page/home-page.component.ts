@@ -25,9 +25,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  constructor(private modalService?: BsModalService, private taskService?: TaskService,
-              private userService?: UserService, private projectService?: ProjectService,
-              private detailsService?: DetailsService) {
+  constructor(private modalService: BsModalService, private taskService: TaskService,
+              private userService: UserService, private projectService: ProjectService,
+              private detailsService: DetailsService) {
   }
 
   ngOnInit() {
@@ -52,7 +52,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   onDetailed(task: Task) {
     this.detailsService.changeTask(task);
     this.detailsService.changeSubscriptionsOnTasks(this.subscriptionsOnTasks);
-    this.detailsService.changeHomePageComponent(this);
   }
 
   onEdited(task: Task) {

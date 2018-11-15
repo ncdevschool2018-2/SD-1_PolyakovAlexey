@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap';
 import { AuthorizationModalComponent } from '../authorization-modal/authorization-modal.component';
 
 @Component({
@@ -7,12 +7,11 @@ import { AuthorizationModalComponent } from '../authorization-modal/authorizatio
   templateUrl: './welcome-page-navbar.component.html',
 })
 export class WelcomePageNavbarComponent {
-  bsModalRef: BsModalRef;
 
-  constructor(private _modalService: BsModalService) {
+  constructor(private modalService: BsModalService) {
   }
 
   openAuthorizationModal() {
-    this.bsModalRef = this._modalService.show(AuthorizationModalComponent);
+    this.modalService.show(AuthorizationModalComponent);
   }
 }

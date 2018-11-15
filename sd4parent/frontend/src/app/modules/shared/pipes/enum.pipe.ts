@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'enum' })
+@Pipe({name: 'enum'})
 export class EnumPipe implements PipeTransform {
   transform(value: string) {
     value = this.replaceAll(value, ' ', '_');

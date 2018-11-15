@@ -40,7 +40,7 @@ export class Task {
     if (task === anotherTask) {
       return true;
     }
-    let enumPipe: EnumPipe = new EnumPipe();
+    const enumPipe: EnumPipe = new EnumPipe();
     return task.id === anotherTask.id &&
       task.code === anotherTask.code &&
       task.project.id === anotherTask.project.id &&

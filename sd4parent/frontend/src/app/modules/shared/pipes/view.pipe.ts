@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'view' })
+@Pipe({name: 'view'})
 export class ViewPipe implements PipeTransform {
   transform(value: string) {
     value = this.replaceAll(value, '_', ' ');
