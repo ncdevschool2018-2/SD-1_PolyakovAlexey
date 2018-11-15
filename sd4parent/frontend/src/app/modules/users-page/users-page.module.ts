@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NewUserModalComponent } from './users-content/new-user-modal/new-user-modal.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     UsersPageComponent,

@@ -3,6 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { User } from '../../shared/models/User';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../shared/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authorization-modal',
@@ -10,20 +11,24 @@ import { UserService } from '../../shared/services/user.service';
   styleUrls: ['./authorization-modal.component.css']
 })
 export class AuthorizationModalComponent implements OnInit {
-  user: User = new User();
+  user: User;
+  editableUser: User;
 
   users: User[];
   subscriptionsOnUsers: Subscription[] = [];
 
-  constructor(public bsModalRef: BsModalRef, private userService: UserService) {
+  constructor(public bsModalRef: BsModalRef, private userService: UserService,
+              private router: Router) {
   }
 
   signIn(): void {
-    this.user = this.getCheckedUser(this.user);
+    this.user = this.getCheckedUser(this.editableUser);
     if (this.user) {
       localStorage.setItem('currentUser', JSON.stringify(this.user));
+      this.router.navigate(['/home']);
       this.closeModal();
     } else {
+      // todo: add bootstrap alert
       console.log('incorrect password or username');
     }
   }
@@ -44,6 +49,7 @@ export class AuthorizationModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.editableUser = new User();
     this.loadUsers();
   }
 

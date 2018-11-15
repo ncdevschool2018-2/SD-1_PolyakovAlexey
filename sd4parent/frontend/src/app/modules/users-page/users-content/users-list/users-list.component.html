@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <ul class="list-group list-group-flush">
       <li class="list-group-item pr-0 pl-0 pt-0 clearfix" *ngFor="let user of users">
-        <a href="profile" class="user" style="background-image: url('http://placehold.it/400x200')"></a>
+        <a routerLink="/profile" class="user" style="background-image: url('http://placehold.it/400x200')"></a>
         <span><a routerLink="/profile">{{user.username}}</a></span>
         <span class="ml-4 text-muted ">{{user.role | view}}</span>
         <div class="float-right mt-2">

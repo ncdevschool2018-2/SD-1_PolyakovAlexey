@@ -24,7 +24,7 @@ export class NewUserModalComponent implements OnInit {
   roles = Object.values(Constans.roles);
   editMode: boolean;
 
-  constructor(public bsModalRef: BsModalRef, public userService: UserService, private viewPipe: ViewPipe,
+  constructor(public bsModalRef: BsModalRef, private userService: UserService, private viewPipe: ViewPipe,
               private enumPipe: EnumPipe) {
   }
 
@@ -32,12 +32,14 @@ export class NewUserModalComponent implements OnInit {
     if (this.user) {
       this.editableUser = User.cloneBase(this.user);
       this.editableUser.role = this.viewPipe.transform(this.editableUser.role);
+      this.currentProjectCode = this.getProjectCodeById(this.editableUser.currentProjectId);
     } else {
       this.editableUser = new User();
     }
   }
 
   public save(): void {
+    this.editableUser.currentProjectId = this.getProjectIdByCode(this.currentProjectCode);
     this.user = User.cloneBase(this.editableUser);
     this.user.role = this.enumPipe.transform(this.user.role);
     this.subscriptionsOnUsers.push(this.userService.saveUser(this.user).subscribe(() => {
@@ -46,15 +48,25 @@ export class NewUserModalComponent implements OnInit {
     }));
   }
 
-  //
-  // private getProjectIdByCode(code: string) {
-  //   let id = -1;
-  //   for (let i = 0; i < this.projects.length; i++) {
-  //     if ()
-  //   }
-  //
-  //   return id;
-  // }
+  private getProjectIdByCode(code: string) {
+    let id = -1;
+    for (let i = 0; i < this.projects.length; i++) {
+      if (this.projects[i].code === code) {
+        id = this.projects[i].id;
+      }
+    }
+    return id;
+  }
+
+  private getProjectCodeById(id: number) {
+    let code = '';
+    for (let i = 0; i < this.projects.length; i++) {
+      if (this.projects[i].id === id) {
+        code = this.projects[i].code;
+      }
+    }
+    return code;
+  }
 
   closeModal() {
     this.bsModalRef.hide();
