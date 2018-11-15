@@ -14,6 +14,7 @@ import { HomePageComponent } from '../home-page/home-page.component';
   styleUrls: ['./task-details-page.component.css'],
 })
 export class TaskDetailsPageComponent implements OnInit, OnDestroy {
+  // todo: create modal window to assign button. Disable assign field
   task: Task;
   editableTask: Task;
   subscriptionsOnTasks: Subscription[];
@@ -34,17 +35,21 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
 
   save() {
     if (Task.isEqual(this.task, this.editableTask)) {
-      // todo: add alert
+      // todo: add bootstrap alert
       console.log('No data has been changed.');
     } else {
-      this.editableTask.priority = this.enumPipe.transform(this.editableTask.priority);
       this.task = Task.cloneBase(this.editableTask);
+      this.task.priority = this.enumPipe.transform(this.task.priority);
       this.subscriptionsOnTasks.push(this.taskService.saveTask(this.task).subscribe(() => {
         this.homePageComponent.updateTasks();
       }));
-      // todo: add alert
+      // todo: add bootstrap alert
       console.log('Data changed.');
     }
+  }
+
+  changeStatus(status: string) {
+    this.editableTask.status = status;
   }
 
   toogleEdit() {
