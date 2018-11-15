@@ -14,7 +14,7 @@ export class Task {
   created: Date = new Date(Date.now());
   dueDate: Date;
   updated: Date = new Date(Date.now());
-  estimation: string;
+  estimation = '-';
 
   static cloneBase(task: Task): Task {
     const clonedTask: Task = new Task();
