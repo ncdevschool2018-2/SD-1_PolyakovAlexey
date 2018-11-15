@@ -19,9 +19,9 @@ export class AuthorizationModalComponent implements OnInit {
   }
 
   signIn(): void {
-    const user: User = this.getCheckedUser(this.user);
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+    this.user = this.getCheckedUser(this.user);
+    if (this.user) {
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
       this.closeModal();
     } else {
       console.log('incorrect password or username');

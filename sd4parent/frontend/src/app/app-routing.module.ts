@@ -7,14 +7,43 @@ import { ProjectsPageComponent } from './modules/projects-page/projects-page.com
 import { TaskDetailsPageComponent } from './modules/task-details-page/task-details-page.component';
 import { ProfilePageComponent } from './modules/profile-page/profile-page.component';
 import { UsersPageComponent } from './modules/users-page/users-page.component';
+import { AuthGuardService } from './modules/shared/services/auth-guard.service';
 
 const appRoutes: Routes = [
-  {path: '', component: WelcomePageComponent},
-  {path: 'home', component: HomePageComponent, data: {title: 'Home'}},
-  {path: 'projects', component: ProjectsPageComponent, data: {title: 'Projects'}},
-  {path: 'task-details', component: TaskDetailsPageComponent, data: {title: 'Task details'}},
-  {path: 'profile', component: ProfilePageComponent, data: {title: 'Profile'}},
-  {path: 'users', component: UsersPageComponent, data: {title: 'Users'}},
+  {
+    path: '',
+    component: WelcomePageComponent
+  },
+  {
+    path: 'home',
+    component: HomePageComponent,
+    canActivate: [AuthGuardService],
+    data: {title: 'Home'}
+  },
+  {
+    path: 'projects',
+    component: ProjectsPageComponent,
+    canActivate: [AuthGuardService],
+    data: {title: 'Projects'}
+  },
+  {
+    path: 'task-details',
+    component: TaskDetailsPageComponent,
+    canActivate: [AuthGuardService],
+    data: {title: 'Task details'}
+  },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [AuthGuardService],
+    data: {title: 'Profile'}
+  },
+  {
+    path: 'users',
+    component: UsersPageComponent,
+    canActivate: [AuthGuardService],
+    data: {title: 'Users'}
+  },
   // { path: '**', component: NotFoundComponent},
 ];
 
@@ -24,6 +53,9 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AuthGuardService
   ]
 })
 
