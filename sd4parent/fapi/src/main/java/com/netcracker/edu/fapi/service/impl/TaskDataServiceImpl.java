@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Service
+@Service(value = "taskService")
 public class TaskDataServiceImpl implements TaskDataService {
 
     @Value("${backend.server.url}")
