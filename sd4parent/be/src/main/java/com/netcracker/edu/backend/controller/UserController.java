@@ -20,8 +20,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getUserById(@PathVariable(name = "user_id") Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable(name = "id") Long id) {
         Optional<User> user = userService.getUserById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserByUsername(@PathVariable(name = "username") String username) {
+        Optional<User> user = userService.getUserByUsername(username);
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
         } else {

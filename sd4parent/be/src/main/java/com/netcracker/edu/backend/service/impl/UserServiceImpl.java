@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Optional<User> getUserByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
+    @Override
     public Iterable<User> getAllUsers() {
         return repository.findAll();
     }
