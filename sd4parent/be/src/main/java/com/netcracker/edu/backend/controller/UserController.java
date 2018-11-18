@@ -29,7 +29,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/login/{username}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByUsername(@PathVariable(name = "username") String username) {
         Optional<User> user = userService.getUserByUsername(username);
         if (user.isPresent()) {
