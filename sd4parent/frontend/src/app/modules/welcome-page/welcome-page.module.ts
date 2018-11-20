@@ -8,6 +8,8 @@ import { AuthorizationModalComponent } from './authorization-modal/authorization
 import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
+import { TokenStorageService } from '../shared/services/token-storage.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import { RouterModule } from '@angular/router';
     WelcomePageFooterComponent,
     AuthorizationModalComponent
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    TokenStorageService
+  ],
   entryComponents: [
     AuthorizationModalComponent
   ]
