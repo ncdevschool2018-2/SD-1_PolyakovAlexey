@@ -10,7 +10,7 @@ public interface UserDataService {
 
     Optional<UserViewModel> getUserById(Long id);
 
-    Optional<UserViewModel> getUserByUsername(String username);
+    UserViewModel getUserByUsername(String username);
 
     UserViewModel saveUser(UserViewModel user);
 

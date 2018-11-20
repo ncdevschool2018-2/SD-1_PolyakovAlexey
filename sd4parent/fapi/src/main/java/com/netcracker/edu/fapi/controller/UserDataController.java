@@ -17,7 +17,7 @@ public class UserDataController {
     @Autowired
     private UserDataService userDataService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @RequestMapping
     public ResponseEntity<List<UserViewModel>> getAllUsers() {
         return ResponseEntity.ok(userDataService.getAll());
@@ -33,17 +33,7 @@ public class UserDataController {
         }
     }
 
-    @RequestMapping(value = "login/{username}", method = RequestMethod.GET)
-    public ResponseEntity<UserViewModel> getUserByUsername(@PathVariable(name = "username") String username) {
-        Optional<UserViewModel> user = userDataService.getUserByUsername(username);
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UserViewModel> saveUser(@RequestBody UserViewModel user /* todo server validation*/) {
         if (user != null) {
@@ -52,6 +42,7 @@ public class UserDataController {
         return null;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable String id) {
         userDataService.deleteUser(Long.valueOf(id));

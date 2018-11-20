@@ -32,23 +32,18 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     }
 
     @Override
-    public Optional<UserViewModel> getUserByUsername(String username) {
+    public UserViewModel getUserByUsername(String username) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl + "/api/users/login/" + username, Optional.class);
+        return restTemplate.getForObject(backendServerUrl + "/api/users/login/" + username, UserViewModel.class);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        RestTemplate restTemplate = new RestTemplate();
-        UserViewModel user = restTemplate.getForEntity(backendServerUrl + "/api/users/login/" + username, UserViewModel.class).getBody();
+        UserViewModel user = getUserByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority(user));
-    }
-
-    private List<SimpleGrantedAuthority> getAuthority(UserViewModel user) {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + user.getRole().toString()));
     }
 
     @Override
@@ -63,4 +58,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
         restTemplate.delete(backendServerUrl + "/api/users/" + id);
     }
 
+    private List<SimpleGrantedAuthority> getAuthority(UserViewModel user) {
+        return Arrays.asList(new SimpleGrantedAuthority(user.getRole().toString()));
+    }
 }

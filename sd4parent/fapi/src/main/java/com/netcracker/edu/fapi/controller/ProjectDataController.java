@@ -4,6 +4,7 @@ import com.netcracker.edu.fapi.models.ProjectViewModel;
 import com.netcracker.edu.fapi.service.ProjectDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ProjectDataController {
         return ResponseEntity.ok(projectDataService.getAll());
     }
 
+    @PreAuthorize("hasAuthority('PROJECT_MANAGER')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ProjectViewModel> saveProject(@RequestBody ProjectViewModel project /* todo server validation*/) {
         if (project != null) {
@@ -28,6 +30,7 @@ public class ProjectDataController {
         return null;
     }
 
+    @PreAuthorize("hasAuthority('PROJECT_MANAGER')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProject(@PathVariable String id) {
         projectDataService.deleteProject(Long.valueOf(id));
