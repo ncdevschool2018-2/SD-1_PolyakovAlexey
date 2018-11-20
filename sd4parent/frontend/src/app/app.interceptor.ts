@@ -10,10 +10,10 @@ import {
   HttpSentEvent,
   HttpUserEvent
 } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../app/modules/shared/services/token-storage.service';
-import 'rxjs/add/operator/do';
+import { tap } from 'rxjs/operators';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -31,7 +31,7 @@ export class AppInterceptor implements HttpInterceptor {
       authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken())});
     }
 
-    return next.handle(authReq).do(
+    return next.handle(authReq).pipe(tap(
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
           console.log(err);
@@ -41,7 +41,7 @@ export class AppInterceptor implements HttpInterceptor {
           }
         }
       }
-    );
+    ));
   }
 
 }

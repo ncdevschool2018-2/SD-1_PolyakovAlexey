@@ -29,7 +29,6 @@ export class AuthorizationModalComponent implements OnInit {
       data => {
         this.user = this.getCheckedUser(this.editableUser);
 
-        alert(this.user);
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.token.saveToken(data.token);
         this.closeModal();
@@ -51,10 +50,9 @@ export class AuthorizationModalComponent implements OnInit {
   // }
 
   getCheckedUser(user: User): User {
+    1
     let checkedUser: User;
     for (let i = 0; i < this.users.length; i++) {
-      console.log('>>>> username =' + this.users[i].username);
-      console.log('>>>> password =' + this.users[i].password);
       if (this.users[i].username === user.username) {
         checkedUser = this.users[i];
       }

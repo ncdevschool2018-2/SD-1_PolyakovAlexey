@@ -32,6 +32,8 @@
       </div>
       <!-- Current tickets-->
       <ng-container *ngIf="currentUser.role !== 'ADMIN'">
+        <div class="row mb-1"><h5>Current project:</h5></div>
+        <div class="row"><span>{{currentUser.currentProjectId}}</span></div>
         <div class="row mb-1"><h5>Current tickets:</h5></div>
         <div class="row">
           <div class="col-md-12">

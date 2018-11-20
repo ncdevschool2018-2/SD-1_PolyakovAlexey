@@ -46,6 +46,7 @@ export class NewTaskModalComponent implements OnInit {
     }
   }
 
+  // todo: add ngx-bootstrap select with fields of object
   save(): void {
     this.editableTask.project = this.getProjectByCode(this.projectCode);
     this.editableTask.assignee = this.getUserByUsername(this.assignee);

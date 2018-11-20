@@ -21,6 +21,9 @@ export class TaskDetailsPageComponent implements OnInit, OnDestroy {
   subscriptionOnTask: Subscription;
   subscriptionOnSubscriptionsOnTasks: Subscription;
 
+  // users: Users[];
+  // subscriptionsOnUsers: Subscription[];
+
   priorities = Object.values(Constans.priorities);
   editMode = false;
 

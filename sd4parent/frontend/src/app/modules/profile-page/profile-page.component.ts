@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ProfilePageComponent {
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  // private getProjectCodeById(id: number) {
+  //   let code = '';
+  //   for (let i = 0; i < this.projects.length; i++) {
+  //     if (this.projects[i].id === id) {
+  //       code = this.projects[i].code;
+  //     }
+  //   }
+  //   return code;
+  // }
 }
