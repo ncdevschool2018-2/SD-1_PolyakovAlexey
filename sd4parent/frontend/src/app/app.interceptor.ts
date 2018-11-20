@@ -18,7 +18,7 @@ import 'rxjs/add/operator/do';
 const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
-export class Interceptor implements HttpInterceptor {
+export class AppInterceptor implements HttpInterceptor {
 
   constructor(private token: TokenStorageService, private router: Router) {
   }

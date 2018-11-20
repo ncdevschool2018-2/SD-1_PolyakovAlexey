@@ -10,6 +10,8 @@ import { ProjectsPageModule } from './modules/projects-page/projects-page.module
 import { UsersPageModule } from './modules/users-page/users-page.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AppInterceptor } from './app.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +29,14 @@ import { AppRoutingModule } from './app-routing.module';
     UsersPageModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    AppInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
