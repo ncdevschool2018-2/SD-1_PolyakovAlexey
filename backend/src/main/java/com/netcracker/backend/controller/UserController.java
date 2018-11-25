@@ -38,6 +38,15 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
+    @RequestMapping(value = "/login/{username}", method = RequestMethod.GET)
+    public ResponseEntity<User> findByUsername(@PathVariable(name = "username") String username) {
+        Optional<User> user = userService.findByUsername(username);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteById(@PathVariable(name = "id") Long id) {
         userService.deleteById(id);
