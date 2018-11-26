@@ -6,19 +6,19 @@ INSERT INTO roles (id, name) VALUES (4, 'quality assurance');
 
 -- fill users
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (1, 'admin', 'root', 1, 'path');
+	   VALUES (1, 'admin', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 1, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (2, 'pm_1', 'root', 2, 'path');
+	   VALUES (2, 'pm_1', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 2, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (3, 'pm_2', 'root', 2, 'path');
+	   VALUES (3, 'pm_2', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 2, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (4, 'dev_1', 'root', 3, 'path');
+	   VALUES (4, 'dev_1', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 3, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (5, 'dev_2', 'root', 3, 'path');
+	   VALUES (5, 'dev_2', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 3, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (6, 'qa_1', 'root', 4, 'path');
+	   VALUES (6, 'qa_1', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 4, 'path');
 INSERT INTO users (id, username, password, role_id, avatar)
-	   VALUES (7, 'qa_2', 'root', 4, 'path');
+	   VALUES (7, 'qa_2', '$2a$04$NUuAuVBP0SP538fh5tcwEunxj896HGsKL0gpVzvz403tIpU33fOK6', 4, 'path');
 	   
 -- fill projects
 INSERT INTO projects (id, code, description, owner_id, created, updated, closed)
