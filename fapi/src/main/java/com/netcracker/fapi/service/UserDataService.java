@@ -11,5 +11,7 @@ public interface UserDataService {
 
     UserViewModel findById(Long id);
 
+    UserViewModel findByUsername(String username);
+
     void deleteById(Long id);
 }

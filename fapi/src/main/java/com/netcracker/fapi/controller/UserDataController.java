@@ -41,6 +41,15 @@ public class UserDataController {
         return ResponseEntity.notFound().build();
     }
 
+    @RequestMapping(value = "/login/{username}", method = RequestMethod.GET)
+    public ResponseEntity<UserViewModel> findByUsername(@PathVariable(name = "username") String username) {
+        UserViewModel user = userDataService.findByUsername(username);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteById(@PathVariable(name = "id") Long id) {
         userDataService.deleteById(id);
