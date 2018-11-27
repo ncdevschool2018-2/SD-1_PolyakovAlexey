@@ -11,6 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 import static com.netcracker.fapi.model.Constants.TOKEN_PREFIX;
 
 @RestController
@@ -38,8 +40,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(new AuthToken(token));
     }
 
-    @RequestMapping(value = "/expDate", method = RequestMethod.GET)
-    public ResponseEntity<?> getExpDate(@RequestHeader(name = "authorization") String token) {
+    @RequestMapping(value = "/exp-date", method = RequestMethod.GET)
+    public ResponseEntity<Date> getExpDate(@RequestHeader(name = "authorization") String token) {
         token = token.replace(TOKEN_PREFIX, "");
         return ResponseEntity.ok(jwtTokenUtil.getExpirationDateFromToken(token));
     }
