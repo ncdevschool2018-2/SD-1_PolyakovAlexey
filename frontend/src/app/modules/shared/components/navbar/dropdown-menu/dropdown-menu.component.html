@@ -1,0 +1,12 @@
+<div class="btn-group" dropdown>
+  <div class="user-button" dropdownToggle style="background-image: url('http://placehold.it/400x200')"></div>
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu-margin-top" role="menu">
+    <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+    <li role="menuitem"><a class="dropdown-item" routerLink="/projects">Project list</a></li>
+    <li role="menuitem"><a class="dropdown-item" routerLink="/home">Task table</a></li>
+    <li role="menuitem"><a class="dropdown-item" routerLink="/users">User list</a></li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem"><a class="dropdown-item" routerLink="" (click)="signOut()">Sign out</a>
+    </li>
+  </ul>
+</div>
