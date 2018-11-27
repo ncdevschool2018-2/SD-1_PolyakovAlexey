@@ -1,0 +1,16 @@
+<div class="modal-body">
+  <form class="form-signin">
+    <button type="button" class="close" data-dismiss="modal" (click)="this.bsModalRef.hide()">
+      <span>&times;</span>
+    </button>
+    <h3 class="font-weight-normal">Please sign in</h3>
+    <input type="text" name="username" class="form-control" placeholder="Username" required
+           [(ngModel)]="loginUser.username">
+    <input type="password" name="password" class="form-control" placeholder="Password" required
+           [(ngModel)]="loginUser.password">
+    <div class="checkbox mb-2"> <!-- todo: mb delete -->
+      <input type="checkbox" value="remember-me" title="remember"> Remember me
+    </div>
+    <button class="btn btn-lg btn-outline-primary btn-block" type="submit" (click)="signIn()">Sign in</button>
+  </form>
+</div>

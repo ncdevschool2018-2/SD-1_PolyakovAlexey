@@ -1,0 +1,165 @@
+<app-navbar></app-navbar>
+
+<main class="container container-margin">
+  <div class="jumbotron jumbotron-size border bg-white">
+    <div class="container ml-0 mr-0">
+      <div class="row border-bottom mb-3 pb-3"><h4>Project</h4></div>
+
+      <!-- Action buttons-->
+      <ng-container *ngIf="currentUser.role.name !== 'admin'">
+        <div class="row mb-1"><h5>Actions:</h5></div>
+        <div class="row mb-3 actions-row">
+          <ng-container *ngIf="currentUser.role.name === 'project manager'">
+            <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3" (click)="toogleEdit()">Edit</button>
+          </ng-container>
+          <button class="btn btn-outline-primary btn-sm pl-4 pr-4 mr-3" (click)="save()">Save</button>
+          <ng-container *ngIf="currentUser.role.name === 'developer'">
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3 mr-3"
+                    (click)="changeStatus('in progress')">In progress
+            </button>
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3"
+                    (click)="changeStatus('ready for test')">Ready for Test
+            </button>
+          </ng-container>
+          <ng-container *ngIf="currentUser.role.name === 'quality assurance'">
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3 mr-3"
+                    (click)="changeStatus('open')">Reopened
+            </button>
+            <button class="btn btn-outline-primary btn-sm pl-3 pr-3" (click)="changeStatus('closed')">Closed</button>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <!-- Details -->
+      <div class="row mb-1"><h5>Details:</h5></div>
+      <div class="row mb-1">
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-md-3 pl-0">
+              <label>Priority:</label>
+            </div>
+            <div class="col-md-9">
+              <select class="form-control w-50 media-width mb-1" title="priority" required
+                      [(ngModel)]="editableTask.priority" [compareWith]="comparePriorities">
+                <option *ngFor="let priority of priorities" [disabled]="!editMode"
+                        [ngValue]="priority">{{priority.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 pl-0">
+              <label>Status:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 w-50 media-width" title="status"
+                     [ngModel]="editableTask.status.name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Assignee:</label>
+            </div>
+            <div class="col-md-9">
+              <select class="ml-3 form-control media-width mb-1" title="assignee" required
+                      [(ngModel)]="editableTask.assignee" [compareWith]="compareUsers">
+                <ng-container *ngFor="let user of users">
+                  <option *ngIf="user.role.name !== 'admin'" [ngValue]="user">{{user.username}}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Reporter:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="reporter"
+                     [ngModel]="editableTask.reporter.username"
+                     disabled="disabled">
+            </div>
+          </div>
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Estimation:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="estimation"
+                     [(ngModel)]="editableTask.estimation">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row mb-1"><h5>Description:</h5></div>
+      <div class="row mb-1">
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <textarea class="form-control" rows="5" title="description" [(ngModel)]="editableTask.description"
+                      [disabled]="!editMode"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Created:</label>
+            </div>
+            <div class="col-md-9"> <!-- todo: add p tag and ngif closed-->
+              <input type="text" class="form-control h-75 ml-3" title="created"
+                     [ngModel]="editableTask.created | date:'yyyy-MM-dd in HH:mm'"
+                     disabled="disabled">
+            </div>
+          </div>
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Updated:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="updated"
+                     [ngModel]="editableTask.updated | date:'yyyy-MM-dd in HH:mm'"
+                     disabled="disabled">
+            </div>
+          </div>
+          <div class="row offset-md-5">
+            <div class="col-md-3 pl-0">
+              <label>Closed:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="closed"
+                     [ngModel]="editableTask.closed | date:'yyyy-MM-dd in HH:mm'"
+                     disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attachments -->
+      <div class="row mb-1"><h5>Attachments:</h5></div>
+      <div class="row mb-1">
+        <div class="col-md-12">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">index.html</li>
+            <li class="list-group-item">readme.md</li>
+            <li class="list-group-item">style.css</li>
+            <li class="list-group-item">main.js</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="row mb-1"><h5>Comments:</h5></div>
+      <div class="row mb-1">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea class="form-control" title="comments" rows="5"></textarea>
+          </div>
+          <button class="btn btn-outline-primary float-right">Add Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

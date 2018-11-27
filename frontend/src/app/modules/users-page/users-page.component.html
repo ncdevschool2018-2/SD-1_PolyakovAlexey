@@ -1,0 +1,5 @@
+<app-navbar></app-navbar>
+<app-users-content [users]="users" [currentUser]="currentUser"
+                   (added)="onAdded($event)" (edited)="onEdited($event)"
+                   (deleted)="onDeleted($event)">
+</app-users-content>

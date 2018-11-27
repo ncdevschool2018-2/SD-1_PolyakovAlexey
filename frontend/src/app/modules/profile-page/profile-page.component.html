@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<main class="container">
+  <div class="jumbotron border bg-white jumbotron-size">
+    <div class="container ml-0 mr-0">
+      <!-- Personal data-->
+      <div class="row mb-5">
+        <div class="col-lg-6 mb-md-3 pl-0">
+          <div class="avatar" style="background-image: url('http://via.placeholder.com/640x360')"></div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-3 pl-0">
+              <label>Username:</label>
+            </div>
+            <div class="col-md-9">
+              <input type="text" class="form-control h-75 ml-3" title="username" [ngModel]="currentUser.username"
+                     disabled="disabled">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 pl-0">
+              <label>Role:</label>
+            </div>
+            <div class="col-md-9"> <!-- todo: add p tag instead of input -->
+              <input type="text" class="form-control h-75 ml-3" title="role" [ngModel]="currentUser.role.name"
+                     disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngIf="currentUser.role.name !== 'admin'">
+        <!-- Current projects--> <!-- todo: add current projects -->
+        <!--<div class="row mb-1"><h5>Current project:</h5></div>-->
+        <!--<div class="row">-->
+        <!--<span>{{currentUser.currentProjectId}}</span>-->
+        <!--</div>-->
+        <!-- Current tickets--> <!-- todo: add current tickets -->
+        <div class="row mb-1"><h5>Current tickets:</h5></div>
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ProjectSystem-1</li>
+              <li class="list-group-item">ProjectSystem-2</li>
+              <li class="list-group-item">NetworkController-6</li>
+              <li class="list-group-item">AndroidApp-3</li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</main>

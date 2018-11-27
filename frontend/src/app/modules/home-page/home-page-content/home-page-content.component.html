@@ -1,0 +1,19 @@
+<main class="container container-margin">
+  <div class="jumbotron jumbotron-size border bg-white clearfix">
+    <div class="row justify-content-between mb-4">
+      <div class="float-left">
+        <ng-container *ngIf="currentUser.role.name === 'project manager'">
+          <button class="btn btn-outline-primary ml-3" type="button" (click)="added.emit($event)">
+            New Task
+          </button>
+        </ng-container>
+      </div>
+      <app-filters></app-filters>
+    </div>
+    <app-tasks-table [tasks]="tasks" [currentUser]="currentUser"
+                     (edited)="edited.emit($event)"
+                     (detailed)="detailed.emit($event)"
+                     (deleted)="deleted.emit($event)">
+    </app-tasks-table>
+  </div>
+</main>

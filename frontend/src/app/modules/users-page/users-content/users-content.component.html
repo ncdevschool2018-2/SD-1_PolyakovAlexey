@@ -1,0 +1,16 @@
+<main class="container wrapper">
+  <div class="jumbotron border bg-white clearfix jumbotron-size">
+    <div class="row mb-3">
+      <div class="col-6 col-sm-6 col-md-8 col-lg-8"><h5>Users:</h5></div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-4"><input type="text" class="form-control" placeholder="Search...">
+      </div>
+      <ng-container *ngIf="currentUser.role.name === 'admin'">
+        <button class="btn btn-outline-primary ml-3" type="button" (click)="this.added.emit($event)">New User</button>
+      </ng-container>
+    </div>
+    <app-users-list [users]="users" [currentUser]="currentUser" (edited)="this.edited.emit($event)"
+                    (deleted)="this.deleted.emit($event)">
+    </app-users-list>
+  </div>
+</main>
+
