@@ -6,10 +6,10 @@
         <mfDefaultSorter by="code">Ticket Code</mfDefaultSorter>
       </th>
       <th scope="col">
-        <mfDefaultSorter by="priority">Priority</mfDefaultSorter>
+        <mfDefaultSorter by="priority.name">Priority</mfDefaultSorter>
       </th>
       <th scope="col">
-        <mfDefaultSorter by="status">Status</mfDefaultSorter>
+        <mfDefaultSorter by="status.name">Status</mfDefaultSorter>
       </th>
       <th scope="col">
         <mfDefaultSorter by="created">Created</mfDefaultSorter>
@@ -27,7 +27,7 @@
         <mfDefaultSorter by="estimation">Estimation</mfDefaultSorter>
       </th>
       <th scope="col">
-        <mfDefaultSorter by="assignee">Assignee</mfDefaultSorter>
+        <mfDefaultSorter by="assignee.username">Assignee</mfDefaultSorter>
       </th>
       <ng-container *ngIf="currentUser.role.name === 'project manager'">
         <th scope="col" class="border-left">Edit</th>
